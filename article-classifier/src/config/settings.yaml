@@ -1,0 +1,219 @@
+# Settings for project paths, models, thresholds
+paths:
+  data_raw: data/raw
+  data_processed: data/processed
+  results: data/results
+
+runtime:
+  affinity:
+    top_k: 48 # Number of research questions to consider for affinity scoring. 
+    save_every: 2
+    mode: ra # 'both', 'prp', or 'ra'
+    ra_retrieval_mode: cosine 
+    abstracts_file: abstracts_cleaned.csv
+    prp_input: data/results/prp_affinities.csv
+    prp_top_n: 6 # For ra_retrieval_mode = prp_only or prp_filter, it selects the RA question from the top N PRPs by affinity score; set to 1 to always select from the single highest-affinity PRP.
+    prp_min_affinity:
+    prp_membership_confidence_min: 10
+    prp_scope_fallback_mode: legacy_scores # The abstract is scored against all PRPs (including General), and no out-of-scope zeroing rule is applied for that abstract.
+    affinity_debug: false
+    prp_assignment:
+      relative_margin: 120
+    adjudication:
+      mode: ra  # 'both', 'prp', or 'ra'
+      input_root: data/results/affinity_benchmark
+      prp_input_file: merged_prp_affinities.csv
+      ra_input_file: merged_ra_affinities.csv
+      prp_output_file: adjudicated_prp_affinities.csv
+      prp_output_model_rows_file: adjudicated_prp_model_rows.csv
+      ra_output_file: adjudicated_ra_affinities.csv
+      ra_output_model_rows_file: adjudicated_ra_model_rows.csv
+      min_agreement: 0.0
+      min_agreement_mean: 0.0
+      first_n_abstracts: null
+  llm_reasoner:
+    temperature: 0.1
+    max_retries: 3
+    timeout_seconds: 60
+    requests_per_minute_default_cloud: 3
+    requests_per_minute_default_local: 9999
+    micro_batch_size: 48 # Set it to >1 to enable multiple RA questions per prompt, which can improve throughput but may increase latency and memory usage.
+    enable_few_shot: true
+    enable_affinity_reasons: true
+    few_shot_ra_file: data/prompts/few_shot_ra.yaml
+    few_shot_prp_file: data/prompts/few_shot_prp.yaml
+    # Active version in data/prompts/affinity_scoring_scale.yaml.
+    # Use this to switch the scoring language without editing code.
+    score_scale_version: 2
+    score_scale_file: data/prompts/affinity_scoring_scale.yaml
+    few_shot_max_examples_per_prompt: 4
+
+models:
+  embedding_model: all-mpnet-base-v2
+  llm:
+    # Global backend selector. Supported values: local, cloud
+    # Can be overridden with env var LLM_BACKEND.
+    default_backend: cloud
+
+    # Environment variable names used by runtime resolvers.
+    backend_env_var: LLM_BACKEND
+    model_env_var: OPENAI_MODEL
+    base_url_env_var: OPENAI_BASE_URL
+    api_key_env_var: OPENAI_CLOUD_API_KEY
+    rpm_env_var: OPENAI_REQUESTS_PER_MINUTE
+
+    # Local OpenAI-compatible backend defaults (Ollama).
+    local:
+      base_url: http://localhost:11434/v1
+      api_key: ollama
+      model: gemma4:31b-cloud
+      requests_per_minute_default: 9999
+
+    # Cloud backend defaults.
+    cloud:
+      model: gpt-5.4 #gpt-5.4-mini #gpt-5.4
+      # Keep null to use SDK/provider default base URL.
+      base_url:
+      # Name of env var that holds the cloud key.
+      api_key_env: OPENAI_CLOUD_API_KEY
+      requests_per_minute_default: 500
+
+    # Models used by affinity multi-model benchmarking.
+    # Orchestrators can override this list with AFFINITY_BENCHMARK_MODELS
+    # (comma-separated model IDs), and backend with AFFINITY_BENCHMARK_BACKEND.
+    benchmark:
+      models_env_var: AFFINITY_BENCHMARK_MODELS
+      backend_env_var: AFFINITY_BENCHMARK_BACKEND
+      models:
+        - name: gpt-5.4-mini
+          backend: cloud
+          model: gpt-5.4-mini
+          base_url:
+          api_key_env: OPENAI_CLOUD_API_KEY
+          execution_group: cloud_openai
+          enabled: true
+
+        # - name: gpt-5.4
+        #   backend: cloud
+        #   model: gpt-5.4
+        #   base_url:
+        #   api_key_env: OPENAI_CLOUD_API_KEY
+        #   execution_group: cloud_openai
+        #   enabled: true
+
+        - name: gemini-3.1-flash-lite # 
+          backend: cloud
+          model: gemini-3.1-flash-lite
+          base_url: https://generativelanguage.googleapis.com/v1beta/openai
+          api_key_env: GOOGLE_API_KEY
+          execution_group: cloud_google
+          enabled: true
+
+        - name: gemini-3.7-flash # 
+          backend: cloud
+          model: gemini-3.7-flash
+          base_url: https://generativelanguage.googleapis.com/v1beta/openai
+          api_key_env: GOOGLE_API_KEY
+          execution_group: cloud_google
+          enabled: false
+        
+        - name: gemma4-31b-cloud
+          backend: local
+          model: gemma4:31b-cloud
+          execution_group: local_gpu_1
+          enabled: true
+
+        - name: glm-5.3-flash:cloud
+          backend: local
+          model: glm-5.3-flash:cloud
+          execution_group: local_gpu_1
+          enabled: false
+        
+        - name: kimi-k3:cloud
+          backend: local
+          model: kimi-k3:cloud
+          execution_group: local_gpu_1
+          enabled: false
+        
+
+        # - name: mistral-large-3:675b-cloud
+        #   backend: local
+        #   model: mistral-large-3:675b-cloud
+        #   execution_group: local_gpu_2
+        #   enabled: true
+
+        - name: deepseek-v4-flash-cloud # fast
+          backend: local
+          model: deepseek-v4-flash:cloud
+          execution_group: local_gpu_3
+          enabled: true
+
+        # - name: deepseek-v4-flash:0731-cloud # fast ?
+        #   backend: local
+        #   model: deepseek-v4-flash:0731-cloud
+        #   execution_group: local_gpu_3
+        #   enabled: true
+
+
+        # OpenAI-compatible cloud profiles for externally hosted models.
+        # Endpoint/key settings are provider-specific.
+        - name: claude-haiku-4.5
+          backend: cloud
+          model: claude-haiku-4-5
+          base_url: https://api.anthropic.com/v1/
+          api_key_env: ANTHROPIC_API_KEY
+          execution_group: cloud_anthropic
+          enabled: true
+
+        # - name: deepseek-v4-flash # slow
+        #   backend: cloud
+        #   model: deepseek-v4-flash
+        #   base_url: https://api.deepseek.com
+        #   api_key_env: DEEPSEEK_API_KEY
+        #   execution_group: cloud_deepseek
+        #   enabled: true
+
+        # - name: mistral-large-2512 # slow
+        #   backend: cloud
+        #   model: mistral-large-2512
+        #   base_url: https://api.mistral.ai/v1
+        #   api_key_env: MISTRAL_API_KEY
+        #   execution_group: cloud_mistral
+        #   enabled: true
+
+        # - name: mistral-small-2603
+        #   backend: cloud
+        #   model: mistral-small-2603
+        #   base_url: https://api.mistral.ai/v1
+        #   api_key_env: MISTRAL_API_KEY
+        #   execution_group: cloud_mistral
+        #   enabled: false
+
+        # - name: ministral-8b-2512 # slow
+        #   backend: cloud
+        #   model: ministral-8b-2512
+        #   base_url: https://api.mistral.ai/v1
+        #   api_key_env: MISTRAL_API_KEY
+        #   execution_group: cloud_mistral
+        #   enabled: true
+
+        # - name: qwen3.6-flash
+        #   backend: cloud
+        #   model: qwen3.6-flash
+        #   base_url: https://dashscope-intl.aliyuncs.com/compatible-mode/v1
+        #   api_key_env: QWEN_API_KEY
+        #   execution_group: cloud_qwen
+        #   enabled: true
+
+        # - name: grok-4.20-0309-reasoning
+        #   backend: cloud
+        #   model: grok-4.20-0309-reasoning
+        #   base_url: https://api.x.ai/v1
+        #   api_key_env: XAI_API_KEY
+        #   execution_group: cloud_xai
+        #   enabled: true
+          
+
+
+thresholds:
+  match_score: 0.5

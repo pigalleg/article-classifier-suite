@@ -4,17 +4,22 @@
 from __future__ import annotations
 
 import argparse
+import warnings
+from contextlib import contextmanager, nullcontext
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_BENCHMARK_ROOT = REPO_ROOT / "data" / "results" / "affinity_benchmark"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "notebooks" / "outputs" / "tpwrs_prp_publications_by_year"
-PROGRAMME_ORDER = ["IBR", "Stability", "DER", "CROF", "System Services", "Planning"]
+# Programme names as printed in the paper; the data files keep their original names.
+PROGRAMME_DISPLAY_NAMES = {"System Services": "Services"}
+PROGRAMME_ORDER = ["IBR", "Stability", "DER", "CROF", "Services", "Planning"]
 LEVEL_ORDER = ["Low", "Low+", "Moderate", "Moderate+", "High", "High+"]
 PLOT_LEVEL_ORDER = list(reversed(LEVEL_ORDER))
 LEVEL_DTYPE = pd.CategoricalDtype(categories=LEVEL_ORDER, ordered=True)
@@ -40,6 +45,12 @@ GAIN = "#e34948"
 INK_SECONDARY = "#52514e"
 INK_MUTED = "#898781"
 FIGURE_DIM = (516, 310)
+# Kaleido writes PDFs at 96 px per inch; print sizes are in points (72 per inch).
+PX_PER_PT = 96 / 72
+IEEE_COLUMN_WIDTH_PT = 252  # IEEE Transactions single column, 3.5 in
+FONT_FAMILY = "Arial"
+# Figures saved without Kaleido's PDF page margins, so the page is exactly the figure.
+ZERO_MARGIN_PDF_FIGURES = {"article_ra_affinity_distribution"}
 ARTICLE_RUN_ID = "tpwrs_2026_tpwrs_2026"
 ARTICLE_IGNORE_MODELS = [
     "smollm2-1.7b",
@@ -48,12 +59,21 @@ ARTICLE_IGNORE_MODELS = [
     "deepseek-v3.2-cloud",
     "qwen3.5-397b-cloud",
 ]
+ARTICLE_SHOW_BAND_LABELS = True  # band names (Low+ ... High+) at the right of the plot
+ARTICLE_HIDDEN_BAND_LABELS = {"Low"}  # "Low" would sit on top of the data
+ARTICLE_BAND_LABEL_COLOUR = "#808080"
+ARTICLE_SHOW_MEDIAN = False  # median line inside each box
+ARTICLE_SHOW_POINTS = False  # individual model scores drawn over each box
+ARTICLE_POINT_JITTER = 0.3  # sideways spread of those points; 0 centres them exactly
+ARTICLE_PLOT_BACKGROUND = "#f5f5f5"
+ARTICLE_ONE_LINE_LEGEND = False  # one text line above the plot; False uses Plotly's legend
+ARTICLE_LEGEND_GAP = 2  # spaces between one-line legend entries
 ARTICLE_PROGRAMME_COLOURS = {
     "IBR": "#4f8b75",
     "Planning": "#9b6fb6",
     "Stability": "#d96c7c",
     "CROF": "#3c9fca",
-    "System Services": "#78ae68",
+    "Services": "#78ae68",
     "DER": "#d68a4a",
 }
 
@@ -82,6 +102,15 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def use_display_names(frame: pd.DataFrame) -> pd.DataFrame:
+    """Rename programmes for the paper and check every programme is one we plot."""
+    frame = frame.assign(PRP_Name=frame["PRP_Name"].replace(PROGRAMME_DISPLAY_NAMES))
+    unknown = set(frame["PRP_Name"].dropna()) - set(PROGRAMME_ORDER)
+    if unknown:
+        raise ValueError(f"Programmes missing from PROGRAMME_ORDER: {sorted(unknown)}")
+    return frame
+
+
 def load_assignments(benchmark_root: Path) -> pd.DataFrame:
     """Load each yearly TPWRS adjudication result and label PRP affinities."""
     import sys
@@ -105,6 +134,7 @@ def load_assignments(benchmark_root: Path) -> pd.DataFrame:
         ],
         ignore_index=True,
     )
+    assignments = use_display_names(assignments)
     assignments["Affinity_Level"] = assignments["Affinity_Level"].astype(LEVEL_DTYPE)
     assignments["Era"] = pd.cut(
         assignments["Year"], bins=ERA_BINS, labels=ERA_LABELS
@@ -362,10 +392,6 @@ def build_era_shift_figure(era_shift: pd.DataFrame) -> px.line:
         title=None,
         tickmode="array",
         tickvals=PROGRAMME_ORDER,
-        ticktext=[
-            programme.replace("System Services", "System<br>Services")
-            for programme in PROGRAMME_ORDER
-        ],
     )
     figure.update_layout(
         width=FIGURE_DIM[0],
@@ -501,7 +527,9 @@ def build_article_ra_plot_data(
     comparison_rows["RA2025_ID"] = pd.to_numeric(
         comparison_rows["RA2025_ID"], errors="coerce"
     ).astype("Int64")
-    comparison_rows = comparison_rows.merge(ra_to_programme, on="RA2025_ID", how="left")
+    comparison_rows = use_display_names(
+        comparison_rows.merge(ra_to_programme, on="RA2025_ID", how="left")
+    )
 
     selected_abstract = "10.1109/TPWRS.2026.3659399"
     selected_rows = comparison_rows[
@@ -517,74 +545,264 @@ def build_article_ra_plot_data(
     )
 
 
+def _rgba(hex_colour: str, alpha: float) -> str:
+    red, green, blue = (int(hex_colour[i : i + 2], 16) for i in (1, 3, 5))
+    return f"rgba({red},{green},{blue},{alpha})"
+
+
 def build_article_ra_figure(
     benchmark_rows: pd.DataFrame,
     final_rows: pd.DataFrame,
     selected_abstract: object,
-) -> px.box:
-    """Build the annotated selected-article RA affinity distribution figure."""
+) -> go.Figure:
+    """Build the annotated selected-article RA affinity distribution figure.
+
+    Boxes are drawn from precomputed statistics rather than with ``px.box``, because
+    Plotly box plots always draw a median line; here the median is optional. Each box
+    spans the quartiles, and its whiskers run to the lowest and highest model score.
+    """
     from src.analysis.affinity_levels import affinity_level_fixed
 
-    figure = px.box(
-        benchmark_rows,
-        x="RA2025_ID",
-        y="LLM_Affinity",
-        points="all",
-        color="PRP_Name",
-        color_discrete_map=ARTICLE_PROGRAMME_COLOURS,
-        category_orders={"PRP_Name": PROGRAMME_ORDER},
-        title=f"Distribution of affinity scores per RA Agenda question",
+    box_width = 0.6  # in question units, so neighbouring boxes do not touch
+    scores = benchmark_rows.assign(
+        LLM_Affinity=pd.to_numeric(benchmark_rows["LLM_Affinity"], errors="coerce")
+    ).dropna(subset=["LLM_Affinity"])
+    # "hazen" quartiles are the ones Plotly box plots draw by default.
+    box_stats = (
+        scores.groupby(["PRP_Name", "RA2025_ID"], observed=True)["LLM_Affinity"]
+        .agg(
+            Lowest="min",
+            Q1=lambda values: np.percentile(values, 25, method="hazen"),
+            Median="median",
+            Q3=lambda values: np.percentile(values, 75, method="hazen"),
+            Highest="max",
+        )
+        .reset_index()
     )
-    for band_start in range(0, 120, 20):
-        figure.add_hline(
-            y=band_start,
-            line_color="gray",
-            line_width=1,
-            line_dash="dash",
-            annotation_text=affinity_level_fixed(band_start, six_bands=True),
-            annotation_position="top right",
+    # Fixed seed so the jittered points are identical on every run.
+    jitter_rng = np.random.default_rng(0)
+
+    figure = go.Figure()
+    for programme in PROGRAMME_ORDER:
+        stats = box_stats[box_stats["PRP_Name"] == programme]
+        if stats.empty:
+            continue
+        colour = ARTICLE_PROGRAMME_COLOURS[programme]
+        questions = stats["RA2025_ID"].astype(float)
+
+        def segments(x_starts, x_ends, y_starts, y_ends):
+            """Interleave line segments with gaps for a single scatter trace."""
+            xs, ys = [], []
+            for x0, x1, y0, y1 in zip(x_starts, x_ends, y_starts, y_ends):
+                xs += [x0, x1, None]
+                ys += [y0, y1, None]
+            return xs, ys
+
+        whisker_x, whisker_y = segments(
+            [*questions, *questions],
+            [*questions, *questions],
+            [*stats["Lowest"], *stats["Q3"]],
+            [*stats["Q1"], *stats["Highest"]],
+        )
+        figure.add_scatter(
+            x=whisker_x,
+            y=whisker_y,
+            mode="lines",
+            line=dict(color=colour, width=1.2),
+            legendgroup=programme,
+            showlegend=False,
+            hoverinfo="skip",
+        )
+        figure.add_bar(
+            x=questions,
+            y=stats["Q3"] - stats["Q1"],
+            base=stats["Q1"],
+            width=box_width,
+            name=programme,
+            legendgroup=programme,
+            marker=dict(color=_rgba(colour, 0.5), line=dict(color=colour, width=1.2)),
+            customdata=stats[["Lowest", "Q1", "Median", "Q3", "Highest"]],
+            hovertemplate=(
+                f"{programme}, question %{{x}}<br>lowest %{{customdata[0]}}, "
+                "Q1 %{customdata[1]}, median %{customdata[2]}, Q3 %{customdata[3]}, "
+                "highest %{customdata[4]}<extra></extra>"
+            ),
+        )
+        if ARTICLE_SHOW_MEDIAN:
+            median_x, median_y = segments(
+                questions - box_width / 2,
+                questions + box_width / 2,
+                stats["Median"],
+                stats["Median"],
+            )
+            figure.add_scatter(
+                x=median_x,
+                y=median_y,
+                mode="lines",
+                line=dict(color=colour, width=1),
+                legendgroup=programme,
+                showlegend=False,
+                hoverinfo="skip",
+            )
+        if ARTICLE_SHOW_POINTS:
+            programme_scores = scores[scores["PRP_Name"] == programme]
+            offsets = (
+                jitter_rng.uniform(-0.5, 0.5, len(programme_scores))
+                * box_width
+                * ARTICLE_POINT_JITTER
+            )
+            figure.add_scatter(
+                x=programme_scores["RA2025_ID"].astype(float) + offsets,
+                y=programme_scores["LLM_Affinity"],
+                mode="markers",
+                marker=dict(color=colour, size=3),
+                legendgroup=programme,
+                showlegend=False,
+                hoverinfo="skip",
+            )
+    # Band names sit inside the plot at its right edge, centred in each band; the y
+    # gridlines (every 20) mark the band boundaries.
+    for band_start in range(0, 120, 20) if ARTICLE_SHOW_BAND_LABELS else []:
+        band = affinity_level_fixed(band_start, six_bands=True)
+        if band in ARTICLE_HIDDEN_BAND_LABELS:
+            continue
+        figure.add_annotation(
+            x=1,
+            xref="paper",
+            xanchor="right",
+            xshift=-3,
+            y=band_start + 10,
+            yref="y",
+            text=band,
+            font=dict(color=ARTICLE_BAND_LABEL_COLOUR),
+            showarrow=False,
         )
     figure.add_scatter(
         x=final_rows["RA2025_ID"],
         y=final_rows["LLM_Affinity"],
         mode="markers",
         name="Mean",
-        marker=dict(size=6, symbol="x", color="black"),
+        marker=dict(size=4, symbol="circle", color="black"),
         hovertext=final_rows["PRP_Name"],
         hovertemplate=(
             "RA2025_ID=%{x}<br>LLM_Affinity=%{y}<br>PRP=%{hovertext}<extra></extra>"
         ),
     )
+    if ARTICLE_ONE_LINE_LEGEND:
+        # Plotly's legend needs two rows at this width (each entry has a 30 px symbol and a
+        # fixed gap), so the legend is one line of text: a coloured square per programme,
+        # then a dot for the mean. Anchored to the right edge, where it has the most room.
+        entries = [
+            f"<span style='color:{ARTICLE_PROGRAMME_COLOURS[programme]}'>■</span>"
+            f" {programme}"
+            for programme in PROGRAMME_ORDER
+        ] + ["● Mean"]
+        figure.add_annotation(
+            x=1,
+            xref="paper",
+            xanchor="right",
+            y=1,
+            yref="paper",
+            yanchor="bottom",
+            yshift=2,
+            text=(" " * ARTICLE_LEGEND_GAP).join(entries),
+            showarrow=False,
+        )
     figure.update_layout(
-        xaxis_title="RA Question",
-        yaxis_title="LLM Affinity",
-        width=FIGURE_DIM[0],
-        height=FIGURE_DIM[1],
-        xaxis=dict(range=[-1, 53]),
-        yaxis=dict(range=[-4, 120], dtick=20),
-        title=dict(y=0.99, yanchor="top"),
+        showlegend=not ARTICLE_ONE_LINE_LEGEND,
+        xaxis_title="G-PST Research Agenda question",
+        yaxis_title="Affinity score",
+        # Single IEEE column at print size, so fonts stay 8-9 pt in the paper.
+        width=round(IEEE_COLUMN_WIDTH_PT * PX_PER_PT),
+        height=round(200 * PX_PER_PT),
+        font=dict(family=FONT_FAMILY, size=8 * PX_PER_PT, color="black"),
+        plot_bgcolor=ARTICLE_PLOT_BACKGROUND,
+        # Each question belongs to one programme; "group" mode would offset each box
+        # into its programme's slot, away from the question's x position and its mean marker.
+        barmode="overlay",
+        # automargin sizes the margins to fit the tick labels and axis titles exactly.
+        xaxis=dict(
+            range=[0, 49],
+            tickmode="array",
+            tickvals=[1, 10, 20, 30, 40, 48],  # first and last question, plus every 10
+            title_standoff=8,  # gap (px) between the tick labels and the axis title
+            automargin=True,
+        ),
+        yaxis=dict(
+            range=[-0.5, 120],  # a little room below 0 so boxes starting at 0 are not clipped
+            dtick=20,
+            title_standoff=4,
+            ticklabelstandoff=4,
+            automargin=True,
+        ),
         legend=dict(
             title=None,
             orientation="h",
             yanchor="bottom",
-            y=1,
-            xanchor="center",
-            x=0.5,
+            y=1.01,
+            xanchor="left",
+            x=0,
+            itemwidth=30,
+            tracegroupgap=0,
         ),
-        margin=dict(l=4, r=34, t=69, b=54),
+        # No extra margins: the axes and Plotly's legend reserve their own space. The
+        # one-line legend is an annotation, which does not, so it gets a 12 pt top margin.
+        margin=dict(l=0, r=0, t=round(12 * PX_PER_PT) if ARTICLE_ONE_LINE_LEGEND else 0, b=0),
     )
     return figure
+
+
+@contextmanager
+def pdf_pages_without_margins():
+    """Temporarily make Kaleido print PDFs with zero page margins.
+
+    Kaleido (1.4-1.5) prints every PDF with fixed 0.1 in page margins and shrinks the
+    figure to fit inside them, so fonts come out about 5% smaller than specified and the
+    bottom edge can be clipped. This swaps in the same print call with zero margins. It
+    relies on Kaleido internals; if those change, figures are saved the default way.
+    """
+    try:
+        from kaleido._kaleido_tab import _devtools_utils
+    except ImportError:
+        warnings.warn("Kaleido internals changed; PDFs keep Kaleido's page margins.")
+        yield
+        return
+
+    async def print_pdf_without_margins(tab):
+        response = await tab.send_command(
+            "Page.printToPDF",
+            params={
+                "printBackground": True,
+                "marginTop": 0,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "preferCSSPageSize": True,
+                "pageRanges": "1",
+            },
+        )
+        _devtools_utils._raise_error(response)
+        return response.get("result", {}).get("data")
+
+    original = _devtools_utils.print_pdf
+    _devtools_utils.print_pdf = print_pdf_without_margins
+    try:
+        yield
+    finally:
+        _devtools_utils.print_pdf = original
 
 
 def write_outputs(output_dir: Path, figures: dict[str, object], tables: dict[str, pd.DataFrame]) -> None:
     figure_dir = output_dir / "figures"
     figure_dir.mkdir(parents=True, exist_ok=True)
     for slug, figure in figures.items():
-        figure.write_image(
-            str(figure_dir / f"{slug}.pdf"),
-            width=figure.layout.width,
-            height=figure.layout.height,
-        )
+        exact_page = slug in ZERO_MARGIN_PDF_FIGURES
+        with pdf_pages_without_margins() if exact_page else nullcontext():
+            figure.write_image(
+                str(figure_dir / f"{slug}.pdf"),
+                width=figure.layout.width,
+                height=figure.layout.height,
+            )
     for slug, table in tables.items():
         table.to_excel(output_dir / f"{slug}.xlsx", index=False)
 

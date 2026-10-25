@@ -1,0 +1,177 @@
+{
+  "entity": "ERCOT",
+  "region": "US",
+  "total_docs": 10,
+  "total_citations": 80,
+  "ref_type_counts": {
+    "report": 18,
+    "magazine": 1,
+    "website": 3,
+    "other": 41,
+    "book": 1,
+    "standard": 1,
+    "conference": 4,
+    "journal": 10,
+    "dataset": 1
+  },
+  "ieee_transactions": 5,
+  "by_gpst_area": {
+    "ibrs": {
+      "total": 18,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 1,
+      "other": 17,
+      "docs": [
+        "ERCOT_SPWG_Review_of_Ground_Fault_Protection_Methods_For_Transmission_Lines.pdf"
+      ],
+      "by_doc": {
+        "ERCOT_SPWG_Review_of_Ground_Fault_Protection_Methods_For_Transmission_Lines.pdf": {
+          "doc_title": "A Review of Ground Fault",
+          "doc_year": "2017",
+          "total": 18,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 1,
+          "other": 17
+        }
+      }
+    },
+    "stability": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "ders": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "crof": {
+      "total": 23,
+      "ieee_transactions": 2,
+      "other_journals": 2,
+      "conferences": 1,
+      "other": 18,
+      "docs": [
+        "Artificial-Intelligence-and-Machine-Learning.pdf",
+        "Optimal-Power-Flow.pdf",
+        "ercot_loss_of_load_study_2013partii.pdf"
+      ],
+      "by_doc": {
+        "ercot_loss_of_load_study_2013partii.pdf": {
+          "doc_title": "2012 ERCOT Loss of Load Study",
+          "doc_year": "2012",
+          "total": 3,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 3
+        },
+        "Artificial-Intelligence-and-Machine-Learning.pdf": {
+          "doc_title": "Grid Research, Innovation,",
+          "doc_year": "2025",
+          "total": 14,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 0,
+          "other": 13
+        },
+        "Optimal-Power-Flow.pdf": {
+          "doc_title": "Grid Research, Innovation,",
+          "doc_year": "2025",
+          "total": 6,
+          "ieee_transactions": 2,
+          "other_journals": 1,
+          "conferences": 1,
+          "other": 2
+        }
+      }
+    },
+    "services": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "planning": {
+      "total": 39,
+      "ieee_transactions": 3,
+      "other_journals": 3,
+      "conferences": 2,
+      "other": 31,
+      "docs": [
+        "E3_ERCOT_Congestion_Cost_Savings_Test_for_Economic_Transmission_Report_March_2024.pdf",
+        "Estimating_the_Economically_Optimal_Reserve_Margin_in_ERCOT_Revised.pdf",
+        "brattle_ercot_resource_adequacy_review_2012_06_01.pdf",
+        "crez_reactive_power_compensation_study.pdf",
+        "ercot_loss_of_load_study_2013.pdf",
+        "ercot_valueoflostload_literaturereviewandmacroeconomic.pdf"
+      ],
+      "by_doc": {
+        "brattle_ercot_resource_adequacy_review_2012_06_01.pdf": {
+          "doc_title": "ERCOT Investment Incentives and",
+          "doc_year": "2012",
+          "total": 12,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 12
+        },
+        "Estimating_the_Economically_Optimal_Reserve_Margin_in_ERCOT_Revised.pdf": {
+          "doc_title": "Estimating the Economically Optimal",
+          "doc_year": "2014",
+          "total": 2,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 2
+        },
+        "crez_reactive_power_compensation_study.pdf": {
+          "doc_title": "ERCOT",
+          "doc_year": "2010",
+          "total": 8,
+          "ieee_transactions": 3,
+          "other_journals": 2,
+          "conferences": 2,
+          "other": 1
+        },
+        "ercot_valueoflostload_literaturereviewandmacroeconomic.pdf": {
+          "doc_title": "Estimating the Value of Lost Load",
+          "doc_year": "2013",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 0,
+          "other": 0
+        },
+        "ercot_loss_of_load_study_2013.pdf": {
+          "doc_title": "2012 ERCOT Loss of Load Study",
+          "doc_year": "2012",
+          "total": 2,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 2
+        },
+        "E3_ERCOT_Congestion_Cost_Savings_Test_for_Economic_Transmission_Report_March_2024.pdf": {
+          "doc_title": "Congestion Cost Savings Test",
+          "doc_year": "2024",
+          "total": 14,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 14
+        }
+      }
+    }
+  }
+}

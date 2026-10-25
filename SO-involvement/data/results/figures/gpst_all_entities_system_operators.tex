@@ -1,0 +1,77 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+\usepgfplotslibrary{groupplots}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{ieeecolor}{HTML}{042C53}
+\definecolor{jrnlcolor}{HTML}{378ADD}
+\definecolor{othercolor}{HTML}{B4B2A9}
+\definecolor{confcolor}{HTML}{D98B3F}
+\pgfplotsset{every axis/.append style={ybar stacked, bar width=8pt}}
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[
+    group style={group size=3 by 2, horizontal sep=1.6cm, vertical sep=1.8cm},
+    width=5.3cm, height=4cm,
+    ylabel={Citations},
+    x tick label style={font=\tiny, rotate=45, anchor=east},
+    y tick label style={font=\tiny},
+    label style={font=\small},
+    title style={font=\small\bfseries},
+    axis line style={color=black!40},
+    tick style={color=black!40},
+    enlarge x limits=0.15,
+]
+\nextgroupplot[title={IBRs}, symbolic x coords={ENTSO-E,ERCOT,Swissgrid,SPP}, xtick=data, ymin=0, ymax=23]
+\addplot[fill=othercolor] coordinates {(ENTSO-E,16) (ERCOT,17) (Swissgrid,5) (SPP,3)};
+\addplot[fill=jrnlcolor] coordinates {(ENTSO-E,0) (ERCOT,0) (Swissgrid,1) (SPP,0)};
+\addplot[fill=ieeecolor] coordinates {(ENTSO-E,2) (ERCOT,0) (Swissgrid,0) (SPP,0)};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:ENTSO-E,18) {2/18};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:ERCOT,17) {0/17};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:Swissgrid,6) {0/6};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:SPP,3) {0/3};
+\nextgroupplot[title={Stability}, symbolic x coords={ENTSO-E,Swissgrid}, xtick=data, ymin=0, ymax=74]
+\addplot[fill=othercolor] coordinates {(ENTSO-E,50) (Swissgrid,12)};
+\addplot[fill=jrnlcolor] coordinates {(ENTSO-E,3) (Swissgrid,0)};
+\addplot[fill=ieeecolor] coordinates {(ENTSO-E,4) (Swissgrid,9)};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:ENTSO-E,57) {4/57};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:Swissgrid,21) {9/21};
+\nextgroupplot[title={DER}, symbolic x coords={ENTSO-E,IESO,PJM,RTE France}, xtick=data, ymin=0, ymax=127]
+\addplot[fill=othercolor] coordinates {(ENTSO-E,97) (IESO,82) (PJM,3) (RTE France,1)};
+\addplot[fill=jrnlcolor] coordinates {(ENTSO-E,1) (IESO,1) (PJM,0) (RTE France,0)};
+\addplot[fill=ieeecolor] coordinates {(ENTSO-E,0) (IESO,0) (PJM,0) (RTE France,0)};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:ENTSO-E,98) {0/98};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:IESO,83) {0/83};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:PJM,3) {0/3};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:RTE France,1) {0/1};
+\nextgroupplot[title={CROF}, symbolic x coords={ENTSO-E,ERCOT,PJM}, xtick=data, ymin=0, ymax=46]
+\addplot[fill=othercolor] coordinates {(ENTSO-E,30) (ERCOT,18) (PJM,6)};
+\addplot[fill=jrnlcolor] coordinates {(ENTSO-E,5) (ERCOT,2) (PJM,0)};
+\addplot[fill=ieeecolor] coordinates {(ENTSO-E,0) (ERCOT,2) (PJM,0)};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:ENTSO-E,35) {0/35};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:ERCOT,22) {2/22};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:PJM,6) {0/6};
+\nextgroupplot[title={Services}, symbolic x coords={ENTSO-E}, xtick=data, ymin=0, ymax=35]
+\addplot[fill=othercolor] coordinates {(ENTSO-E,26)};
+\addplot[fill=jrnlcolor] coordinates {(ENTSO-E,1)};
+\addplot[fill=ieeecolor] coordinates {(ENTSO-E,0)};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:ENTSO-E,27) {0/27};
+\nextgroupplot[title={Planning}, symbolic x coords={ENTSO-E,50Hertz,SPP,ERCOT,PJM,NYISO,Swissgrid}, xtick=data, ymin=0, ymax=120]
+\addplot[fill=othercolor] coordinates {(ENTSO-E,86) (50Hertz,69) (SPP,44) (ERCOT,31) (PJM,2) (NYISO,0) (Swissgrid,1)};
+\addplot[fill=jrnlcolor] coordinates {(ENTSO-E,5) (50Hertz,0) (SPP,1) (ERCOT,3) (PJM,0) (NYISO,0) (Swissgrid,0)};
+\addplot[fill=ieeecolor] coordinates {(ENTSO-E,1) (50Hertz,0) (SPP,0) (ERCOT,3) (PJM,1) (NYISO,2) (Swissgrid,0)};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:ENTSO-E,92) {1/92};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:50Hertz,69) {0/69};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:SPP,45) {0/45};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:ERCOT,37) {3/37};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:PJM,3) {1/3};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:NYISO,2) {2/2};
+\node[font=\tiny\bfseries, anchor=south] at (axis cs:Swissgrid,1) {0/1};
+\end{groupplot}
+\begin{scope}[shift={(4,5.3)}]
+\node[fill=ieeecolor, minimum width=10pt, minimum height=8pt, anchor=west] (legbox0) at (0,0) {}; \node[anchor=west, font=\small, right=3pt of legbox0] (legtxt0) {IEEE PES Transactions}; \node[fill=jrnlcolor, minimum width=10pt, minimum height=8pt, anchor=west, right=16pt of legtxt0] (legbox1) {}; \node[anchor=west, font=\small, right=3pt of legbox1] (legtxt1) {Other journals}; \node[fill=othercolor, minimum width=10pt, minimum height=8pt, anchor=west, right=16pt of legtxt1] (legbox2) {}; \node[anchor=west, font=\small, right=3pt of legbox2] (legtxt2) {Other};
+\end{scope}
+\end{tikzpicture}
+\end{document}

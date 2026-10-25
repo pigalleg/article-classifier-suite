@@ -1,0 +1,486 @@
+{
+  "entity": "ESIG",
+  "region": "US",
+  "total_docs": 40,
+  "total_citations": 654,
+  "ref_type_counts": {
+    "other": 291,
+    "journal": 112,
+    "report": 189,
+    "book": 6,
+    "magazine": 23,
+    "standard": 5,
+    "conference": 25,
+    "thesis": 1,
+    "dataset": 2
+  },
+  "ieee_transactions": 26,
+  "by_gpst_area": {
+    "ibrs": {
+      "total": 46,
+      "ieee_transactions": 3,
+      "other_journals": 8,
+      "conferences": 6,
+      "other": 29,
+      "docs": [
+        "ESIG-GFM-Performance-Testing-report-2025.pdf",
+        "ESIG-GFM-report-2022.pdf",
+        "ESIG-Reliability-services-voltage-frequency-phase-I-2024.pdf"
+      ],
+      "by_doc": {
+        "ESIG-GFM-report-2022.pdf": {
+          "doc_title": "Grid-Forming Technology",
+          "doc_year": "2022",
+          "total": 22,
+          "ieee_transactions": 3,
+          "other_journals": 3,
+          "conferences": 3,
+          "other": 13
+        },
+        "ESIG-Reliability-services-voltage-frequency-phase-I-2024.pdf": {
+          "doc_title": "Assessment of Inverter-Based",
+          "doc_year": "2024",
+          "total": 16,
+          "ieee_transactions": 0,
+          "other_journals": 5,
+          "conferences": 2,
+          "other": 9
+        },
+        "ESIG-GFM-Performance-Testing-report-2025.pdf": {
+          "doc_title": "Testing the Performance",
+          "doc_year": "2025",
+          "total": 8,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 1,
+          "other": 7
+        }
+      }
+    },
+    "stability": {
+      "total": 67,
+      "ieee_transactions": 20,
+      "other_journals": 7,
+      "conferences": 9,
+      "other": 31,
+      "docs": [
+        "ESIG-Large-Loads-Disturbance-Events-report-2026.pdf",
+        "ESIG-Large-Loads-Modeling-for-Dynamic-Studies-report-2026d.pdf",
+        "ESIG-Oscillations-Guide-2024.pdf"
+      ],
+      "by_doc": {
+        "ESIG-Oscillations-Guide-2024.pdf": {
+          "doc_title": "Diagnosis and Mitigation",
+          "doc_year": "2024",
+          "total": 47,
+          "ieee_transactions": 19,
+          "other_journals": 4,
+          "conferences": 9,
+          "other": 15
+        },
+        "ESIG-Large-Loads-Disturbance-Events-report-2026.pdf": {
+          "doc_title": "ESIG",
+          "doc_year": "2026",
+          "total": 3,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 3
+        },
+        "ESIG-Large-Loads-Modeling-for-Dynamic-Studies-report-2026d.pdf": {
+          "doc_title": "ESIG",
+          "doc_year": "2026",
+          "total": 17,
+          "ieee_transactions": 1,
+          "other_journals": 3,
+          "conferences": 0,
+          "other": 13
+        }
+      }
+    },
+    "ders": {
+      "total": 121,
+      "ieee_transactions": 1,
+      "other_journals": 13,
+      "conferences": 0,
+      "other": 107,
+      "docs": [
+        "ESIG-DER-Transmission-report-2024-updated.pdf",
+        "ESIG-DER-integration-UK-AU-report-2022.pdf",
+        "ESIG-DER-integration-US-initiative-report-2022.pdf",
+        "ESIG-Demand-Response-Wholesale-Markets-report-2025.pdf",
+        "ESIG-Grid-Planning-Vehicle-Electrification-ES-2024.pdf",
+        "ESIG-Industrial-Elec-Hydrogen-report-2022.pdf",
+        "ESIG-Large-Load-Rate-Impacts-primer-WP-2026.pdf",
+        "ESIG-Large-Loads-Resource-Adequacy-report-2026.pdf",
+        "ESIG-Retail-Pricing-EV-flexibility-Chen-wp-2023.pdf",
+        "ESIG-Retail-Pricing-dynamic-rates-E3-wp-2023.pdf",
+        "Tapping-the-Mother-Lode-Employing-Price-Responsive-Demand-to-Reduce-the-Investment-Challenge.pdf"
+      ],
+      "by_doc": {
+        "ESIG-Industrial-Elec-Hydrogen-report-2022.pdf": {
+          "doc_title": "Increasing Electric",
+          "doc_year": "2022",
+          "total": 24,
+          "ieee_transactions": 1,
+          "other_journals": 11,
+          "conferences": 0,
+          "other": 12
+        },
+        "Tapping-the-Mother-Lode-Employing-Price-Responsive-Demand-to-Reduce-the-Investment-Challenge.pdf": {
+          "doc_title": "WHITE PAPER",
+          "doc_year": "",
+          "total": 10,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 10
+        },
+        "ESIG-Retail-Pricing-EV-flexibility-Chen-wp-2023.pdf": {
+          "doc_title": "WHITE PAPER",
+          "doc_year": "",
+          "total": 33,
+          "ieee_transactions": 0,
+          "other_journals": 2,
+          "conferences": 0,
+          "other": 31
+        },
+        "ESIG-Retail-Pricing-dynamic-rates-E3-wp-2023.pdf": {
+          "doc_title": "WHITE PAPER",
+          "doc_year": "",
+          "total": 9,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 9
+        },
+        "ESIG-Grid-Planning-Vehicle-Electrification-ES-2024.pdf": {
+          "doc_title": "ESIG REPORT",
+          "doc_year": "",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "ESIG-DER-Transmission-report-2024-updated.pdf": {
+          "doc_title": "Modeling the Effects of Distributed",
+          "doc_year": "2024",
+          "total": 5,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 5
+        },
+        "ESIG-Demand-Response-Wholesale-Markets-report-2025.pdf": {
+          "doc_title": "Gaps, Barriers, and Solutions to",
+          "doc_year": "2025",
+          "total": 12,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 12
+        },
+        "ESIG-DER-integration-UK-AU-report-2022.pdf": {
+          "doc_title": "Lessons Learned for",
+          "doc_year": "2022",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "ESIG-DER-integration-US-initiative-report-2022.pdf": {
+          "doc_title": "The Transition to a",
+          "doc_year": "2022",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "ESIG-Large-Loads-Resource-Adequacy-report-2026.pdf": {
+          "doc_title": "ESIG",
+          "doc_year": "2026",
+          "total": 14,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 14
+        },
+        "ESIG-Large-Load-Rate-Impacts-primer-WP-2026.pdf": {
+          "doc_title": "Impacts of Large Loads",
+          "doc_year": "",
+          "total": 11,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 11
+        }
+      }
+    },
+    "crof": {
+      "total": 29,
+      "ieee_transactions": 0,
+      "other_journals": 2,
+      "conferences": 4,
+      "other": 23,
+      "docs": [
+        "ESIG-EV-Load-Forecasting-Guide-appendices-2026.pdf",
+        "ESIG-Grid-Enhancing-Technologies-report-2025.pdf"
+      ],
+      "by_doc": {
+        "ESIG-Grid-Enhancing-Technologies-report-2025.pdf": {
+          "doc_title": "Utility Perspectives on Making",
+          "doc_year": "2025",
+          "total": 21,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 3,
+          "other": 18
+        },
+        "ESIG-EV-Load-Forecasting-Guide-appendices-2026.pdf": {
+          "doc_title": "APPENDICES",
+          "doc_year": "2026",
+          "total": 8,
+          "ieee_transactions": 0,
+          "other_journals": 2,
+          "conferences": 1,
+          "other": 5
+        }
+      }
+    },
+    "services": {
+      "total": 44,
+      "ieee_transactions": 1,
+      "other_journals": 8,
+      "conferences": 1,
+      "other": 34,
+      "docs": [
+        "ESIG-Flexibility-Hydrogen-Power-System-Models-report-2024.pdf",
+        "ESIG-Market-Vision-report-2025.pdf"
+      ],
+      "by_doc": {
+        "ESIG-Flexibility-Hydrogen-Power-System-Models-report-2024.pdf": {
+          "doc_title": "Assessing the",
+          "doc_year": "2024",
+          "total": 16,
+          "ieee_transactions": 0,
+          "other_journals": 7,
+          "conferences": 1,
+          "other": 8
+        },
+        "ESIG-Market-Vision-report-2025.pdf": {
+          "doc_title": "Electricity Market Visions",
+          "doc_year": "2025",
+          "total": 28,
+          "ieee_transactions": 1,
+          "other_journals": 1,
+          "conferences": 0,
+          "other": 26
+        }
+      }
+    },
+    "planning": {
+      "total": 347,
+      "ieee_transactions": 1,
+      "other_journals": 48,
+      "conferences": 5,
+      "other": 293,
+      "docs": [
+        "ESIG-Grid-Planning-Building-Electrification-report-2024.pdf",
+        "ESIG-Grid-Planning-Vehicle-Electrification-report-2024.pdf",
+        "ESIG-Historical-vs-Modern-Large-Loads-white-paper-2026.pdf",
+        "ESIG-IP-Guidebook-report-2025.pdf",
+        "ESIG-Integrating-Transmission-Silos-report-2025.pdf",
+        "ESIG-Interregional-Transmission-Resilience-methodology-report-2024.pdf",
+        "ESIG-Large-Loads-Forecasting-report-2025.pdf",
+        "ESIG-Long-Term-Load-DER-Forecasting-report-2025.pdf",
+        "ESIG-Market-Vision-white-paper-K-Joseph-2025.pdf",
+        "ESIG-Multi-Value-Transmission-Planning-report-2022.pdf",
+        "ESIG-New-Criteria-Resource-Adequacy-report-2024.pdf",
+        "ESIG-Plannning-for-Ambitious-Targets-report-2025.pdf",
+        "ESIG-Redefining-Resource-Adequacy-2021-b.pdf",
+        "ESIG-Stress-Testing-Evaluating-Interregional-Transmission-report-2026.pdf",
+        "ESIG-Weather-Datasets-full-report-2023b.pdf",
+        "ESIG-Weather-Datasets-meteorology-101-2023.pdf",
+        "ESIG-Wide-Area-RA-report-2025.pdf",
+        "Why-Is-the-Smart-Grid-So-Dumb-Missing-Incentives-in-Regulatory-Policy-for-an-Active-Demand-Side-in-the-Electricity-Sector.pdf",
+        "esig-rpt-EV-Forecasting-3.26-11.pdf"
+      ],
+      "by_doc": {
+        "ESIG-Multi-Value-Transmission-Planning-report-2022.pdf": {
+          "doc_title": "Multi-Value",
+          "doc_year": "2022",
+          "total": 12,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 0,
+          "other": 11
+        },
+        "ESIG-Redefining-Resource-Adequacy-2021-b.pdf": {
+          "doc_title": "Redefining Resource Adequacy",
+          "doc_year": "2021",
+          "total": 8,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 8
+        },
+        "Why-Is-the-Smart-Grid-So-Dumb-Missing-Incentives-in-Regulatory-Policy-for-an-Active-Demand-Side-in-the-Electricity-Sector.pdf": {
+          "doc_title": "WHITE PAPER",
+          "doc_year": "",
+          "total": 24,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 0,
+          "other": 23
+        },
+        "ESIG-Weather-Datasets-full-report-2023b.pdf": {
+          "doc_title": "FULL REPORT",
+          "doc_year": "2023",
+          "total": 39,
+          "ieee_transactions": 0,
+          "other_journals": 24,
+          "conferences": 1,
+          "other": 14
+        },
+        "ESIG-Weather-Datasets-meteorology-101-2023.pdf": {
+          "doc_title": "METEOROLOGY 101",
+          "doc_year": "2023",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 0,
+          "other": 0
+        },
+        "ESIG-Grid-Planning-Vehicle-Electrification-report-2024.pdf": {
+          "doc_title": "Charging Ahead",
+          "doc_year": "2024",
+          "total": 41,
+          "ieee_transactions": 0,
+          "other_journals": 3,
+          "conferences": 0,
+          "other": 38
+        },
+        "ESIG-New-Criteria-Resource-Adequacy-report-2024.pdf": {
+          "doc_title": "New Resource Adequacy Criteria",
+          "doc_year": "2024",
+          "total": 12,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 3,
+          "other": 9
+        },
+        "ESIG-Interregional-Transmission-Resilience-methodology-report-2024.pdf": {
+          "doc_title": "Interregional Transmission",
+          "doc_year": "2024",
+          "total": 5,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 5
+        },
+        "ESIG-Grid-Planning-Building-Electrification-report-2024.pdf": {
+          "doc_title": "Grid Planning for",
+          "doc_year": "2024",
+          "total": 43,
+          "ieee_transactions": 0,
+          "other_journals": 3,
+          "conferences": 0,
+          "other": 40
+        },
+        "ESIG-IP-Guidebook-report-2025.pdf": {
+          "doc_title": "Integrated Planning Guidebook",
+          "doc_year": "2025",
+          "total": 28,
+          "ieee_transactions": 1,
+          "other_journals": 2,
+          "conferences": 0,
+          "other": 25
+        },
+        "ESIG-Market-Vision-white-paper-K-Joseph-2025.pdf": {
+          "doc_title": "WHITE PAPER",
+          "doc_year": "",
+          "total": 33,
+          "ieee_transactions": 0,
+          "other_journals": 7,
+          "conferences": 0,
+          "other": 26
+        },
+        "ESIG-Plannning-for-Ambitious-Targets-report-2025.pdf": {
+          "doc_title": "From Goals to Plans",
+          "doc_year": "2025",
+          "total": 6,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 0,
+          "other": 5
+        },
+        "ESIG-Wide-Area-RA-report-2025.pdf": {
+          "doc_title": "Wide-Area Resource",
+          "doc_year": "2025",
+          "total": 6,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 6
+        },
+        "ESIG-Integrating-Transmission-Silos-report-2025.pdf": {
+          "doc_title": "Modernizing",
+          "doc_year": "2025",
+          "total": 15,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 15
+        },
+        "ESIG-Large-Loads-Forecasting-report-2025.pdf": {
+          "doc_title": "ESIG",
+          "doc_year": "2025",
+          "total": 32,
+          "ieee_transactions": 0,
+          "other_journals": 2,
+          "conferences": 0,
+          "other": 30
+        },
+        "ESIG-Long-Term-Load-DER-Forecasting-report-2025.pdf": {
+          "doc_title": "Long-Term Load and",
+          "doc_year": "2025",
+          "total": 10,
+          "ieee_transactions": 0,
+          "other_journals": 2,
+          "conferences": 1,
+          "other": 7
+        },
+        "ESIG-Historical-vs-Modern-Large-Loads-white-paper-2026.pdf": {
+          "doc_title": "Historical and Modern Large Loads",
+          "doc_year": "",
+          "total": 17,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 17
+        },
+        "ESIG-Stress-Testing-Evaluating-Interregional-Transmission-report-2026.pdf": {
+          "doc_title": "Stress Testing Methods",
+          "doc_year": "2026",
+          "total": 4,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 0,
+          "other": 3
+        },
+        "esig-rpt-EV-Forecasting-3.26-11.pdf": {
+          "doc_title": "EV Load Forecasting Guide",
+          "doc_year": "2026",
+          "total": 11,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 11
+        }
+      }
+    }
+  }
+}

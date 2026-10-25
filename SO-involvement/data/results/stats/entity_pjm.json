@@ -1,0 +1,141 @@
+{
+  "entity": "PJM",
+  "region": "US",
+  "total_docs": 7,
+  "total_citations": 12,
+  "ref_type_counts": {
+    "report": 1,
+    "other": 10,
+    "journal": 1
+  },
+  "ieee_transactions": 1,
+  "by_gpst_area": {
+    "ibrs": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "stability": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "ders": {
+      "total": 3,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 3,
+      "docs": [
+        "20260508-item-09---2-manual-20a-periodic-review---redline.pdf",
+        "20260520-item-02b---3-manual-20a-revisions---redline.pdf",
+        "20260602-item-04---3-manual-20a-periodic-review---redline.pdf"
+      ],
+      "by_doc": {
+        "20260520-item-02b---3-manual-20a-revisions---redline.pdf": {
+          "doc_title": "PJM Manual 20A:",
+          "doc_year": "2026",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "20260508-item-09---2-manual-20a-periodic-review---redline.pdf": {
+          "doc_title": "PJM Manual 20A:",
+          "doc_year": "2026",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "20260602-item-04---3-manual-20a-periodic-review---redline.pdf": {
+          "doc_title": "PJM Manual 20A:",
+          "doc_year": "2026",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        }
+      }
+    },
+    "crof": {
+      "total": 6,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 6,
+      "docs": [
+        "20241113-insights-from-pjm-interconnections-exploration-of-artificial-ntelligence.pdf",
+        "air-disconnect-switches.pdf",
+        "m22-redline.pdf"
+      ],
+      "by_doc": {
+        "m22-redline.pdf": {
+          "doc_title": "PJM Manual 22:",
+          "doc_year": "2020",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "20241113-insights-from-pjm-interconnections-exploration-of-artificial-ntelligence.pdf": {
+          "doc_title": "CIGRE US National Committee",
+          "doc_year": "2024",
+          "total": 4,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 4
+        },
+        "air-disconnect-switches.pdf": {
+          "doc_title": "VI.D",
+          "doc_year": "2024",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        }
+      }
+    },
+    "services": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "planning": {
+      "total": 3,
+      "ieee_transactions": 1,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 2,
+      "docs": [
+        "line-traps.pdf"
+      ],
+      "by_doc": {
+        "line-traps.pdf": {
+          "doc_title": "VI.G",
+          "doc_year": "2025",
+          "total": 3,
+          "ieee_transactions": 1,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 2
+        }
+      }
+    }
+  }
+}

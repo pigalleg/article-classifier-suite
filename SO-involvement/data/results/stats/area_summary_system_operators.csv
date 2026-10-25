@@ -1,0 +1,8 @@
+area,label,total,ieee_transactions,ieee_pct,other_journals,other_journals_pct,conferences,conferences_pct,other,other_pct
+ibrs,IBRs,47,2,4.3,1,2.1,3,6.4,41,87.2
+stability,Stability,88,13,14.8,3,3.4,10,11.4,62,70.5
+ders,DER,191,0,0.0,2,1.0,6,3.1,183,95.8
+crof,CROF,65,2,3.1,7,10.8,2,3.1,54,83.1
+services,Services,29,0,0.0,1,3.4,2,6.9,26,89.7
+planning,Planning,254,7,2.8,9,3.5,5,2.0,233,91.7
+total,Total,674,24,3.6,23,3.4,28,4.2,599,88.9

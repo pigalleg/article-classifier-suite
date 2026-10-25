@@ -1,0 +1,37 @@
+# Conda environment for the SO-involvement pipeline.
+#
+#   conda env create -f environment.yml
+#   conda activate so-involvement
+#   playwright install chromium        # one-time: headless browser for JS-rendered sites
+#
+# Versions are pinned to those that produced the committed results in
+# data/results/. matplotlib is pinned exactly: a different version can change
+# PNG bytes (the numbers, CSV/JSON stats and .tex figures are unaffected).
+#
+# Not managed here: a TeX distribution with pdflatex + pgfplots + standalone
+# (TeX Live / MacTeX), needed only for scripts/compile_figures.sh.
+name: so-involvement
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+
+  # HTTP & scraping (fetch_documents.py, download_corpus.py)
+  - requests=2.34
+  - beautifulsoup4=4.14
+
+  # PDF text extraction (extract_citations.py)
+  - pdfplumber=0.11.9
+
+  # Analysis & figures (analyze_citations.py)
+  - matplotlib-base=3.11.0
+
+  # Progress bars
+  - tqdm=4.67
+
+  - pip:
+    # PDF → markdown triage in fetch_documents.py (called as the `markitdown` CLI)
+    - markitdown[pdf]==0.1.6
+    # Headless Chromium for crawl_pages marked `true` in organizations.toml
+    - playwright>=1.40,<2

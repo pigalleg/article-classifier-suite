@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Generate TPWRS PRP publication trend figures and supporting tables."""
 
 from __future__ import annotations
@@ -29,7 +28,6 @@ THRESHOLDS = {
 }
 ERA_BINS = [2014, 2017, 2020, 2023, 2026]
 ERA_LABELS = ["2015-17", "2018-20", "2021-23", "2024-26"]
-PARTIAL_YEARS = [2026]
 LEVEL_COLORS = {
     "Low": "#ffffd9",
     "Low+": "#d9f0a3",
@@ -49,8 +47,28 @@ FIGURE_DIM = (516, 310)
 PX_PER_PT = 96 / 72
 IEEE_COLUMN_WIDTH_PT = 252  # IEEE Transactions single column, 3.5 in
 FONT_FAMILY = "Arial"
+ARTICLE_FONT_SIZE_PT = 8
 # Figures saved without Kaleido's PDF page margins, so the page is exactly the figure.
-ZERO_MARGIN_PDF_FIGURES = {"article_ra_affinity_distribution"}
+ZERO_MARGIN_PDF_FIGURES = {"article_ra_affinity_distribution", "headline_agenda_reach"}
+HEADLINE_HEIGHT_PT = 200
+# Years and paper counts on the x axis; 8 pt "2015" is wider than the space per year.
+HEADLINE_YEAR_TICK_FONT_SIZE_PT = 7
+HEADLINE_COUNT_FONT_SIZE_PT = 6  # paper counts "(358)" under each year
+# Headline lines, in drawing order: the first is drawn at the back, the last on top.
+# "first"/"last": whether the first and last values sit above or below their markers
+# (chosen so labels of crossing lines do not collide). The line name goes at the right
+# edge, name_dy below the last value, or, if name_year is set, centred at that year,
+# name_dy from the line.
+HEADLINE_LINES = {
+    # Papers whose best programme reaches only Low or Low+ (none reaches Moderate).
+    "Low": dict(colour="#808080", first="above", last="below", name_year=None, name_dy=-10),
+    "Moderate-or-better": dict(
+        colour=LEVEL_COLORS["Moderate"], first="above", last="above", name_year=None, name_dy=-7
+    ),
+    "High-or-better": dict(
+        colour=LEVEL_COLORS["High"], first="below", last="above", name_year=None, name_dy=-15
+    ),
+}
 ARTICLE_RUN_ID = "tpwrs_2026_tpwrs_2026"
 ARTICLE_IGNORE_MODELS = [
     "smollm2-1.7b",
@@ -76,6 +94,20 @@ ARTICLE_PROGRAMME_COLOURS = {
     "Services": "#78ae68",
     "DER": "#d68a4a",
 }
+
+
+def ieee_column_layout(height_pt: float) -> dict:
+    """Shared paper style: one IEEE column at print size, Arial, black text, grey plot area.
+
+    Sizes are given in points and converted to Plotly's pixels, so fonts print at
+    ARTICLE_FONT_SIZE_PT when the PDF is included at column width.
+    """
+    return dict(
+        width=round(IEEE_COLUMN_WIDTH_PT * PX_PER_PT),
+        height=round(height_pt * PX_PER_PT),
+        font=dict(family=FONT_FAMILY, size=ARTICLE_FONT_SIZE_PT * PX_PER_PT, color="black"),
+        plot_bgcolor=ARTICLE_PLOT_BACKGROUND,
+    )
 
 
 def parse_args() -> argparse.Namespace:
@@ -164,74 +196,99 @@ def share_by(
     return share
 
 
+def add_low_share(reach_share: pd.DataFrame) -> pd.DataFrame:
+    """Add a "Low" series: papers whose best programme reaches only Low or Low+.
+
+    share_by counts papers with *any* programme in the given levels, which for Low would
+    include nearly every paper, so Low is computed as the complement of Moderate-or-better.
+    """
+    moderate = reach_share[reach_share["Threshold"] == "Moderate-or-better"]
+    low = moderate.assign(
+        Threshold="Low",
+        Papers_Reaching=moderate["Papers_Total"] - moderate["Papers_Reaching"],
+        Share=100 - moderate["Share"],
+    )
+    return pd.concat([reach_share, low], ignore_index=True)
+
+
 def build_headline_figure(
     reach_share: pd.DataFrame,
     years: list[int],
     year_ticktext: list[str],
 ) -> px.line:
     """Build the overall agenda reach figure."""
-    threshold_colors = {
-        "Moderate-or-better": LEVEL_COLORS["Moderate"],
-        "High-or-better": LEVEL_COLORS["High"],
-    }
     figure = px.line(
-        reach_share,
+        reach_share[reach_share["Threshold"].isin(HEADLINE_LINES)],
         x="Year",
         y="Share",
         color="Threshold",
-        color_discrete_map=threshold_colors,
+        color_discrete_map={name: line["colour"] for name, line in HEADLINE_LINES.items()},
         markers=True,
         line_shape="linear",
-        category_orders={"Threshold": list(THRESHOLDS)},
-        labels={"Share": "Share of papers (%)"},
+        category_orders={"Threshold": list(HEADLINE_LINES)},
     )
-    for threshold, color in threshold_colors.items():
-        series = reach_share[reach_share["Threshold"] == threshold]
-        first = series.iloc[0]
-        last = series.iloc[-1]
-        figure.add_annotation(
-            x=last["Year"] - 3.5,
-            y=last["Share"] - 7 - 10 * (threshold == "High-or-better"),
-            text=f"<b>{threshold}",
-            showarrow=False,
-            xanchor="left",
-            yanchor="middle",
-            font=dict(color=color, size=12),
-        )
-        figure.add_annotation(
-            x=first["Year"],
-            y=first["Share"] + 13,
-            text=f"2015 -> 2026: <b>{first['Share']:.1f}% -> {last['Share']:.1f}% ",
-            showarrow=False,
-            xanchor="left",
-            yanchor="middle",
-            font=dict(color=color, size=12),
-        )
+    figure.update_traces(line_width=1.5, marker_size=5)
+    for threshold, line in HEADLINE_LINES.items():
+        color = line["colour"]
+        series = reach_share[reach_share["Threshold"] == threshold].set_index("Year")["Share"]
+        first = dict(Year=series.index[0], Share=series.iloc[0])
+        last = dict(Year=series.index[-1], Share=series.iloc[-1])
+        name = dict(text=f"<b>{threshold}", showarrow=False, yanchor="middle", font=dict(color=color))
+        if line["name_year"] is None:
+            # Right-aligned at the plot edge, offset from the line's last value.
+            figure.add_annotation(
+                **name, x=1, xref="paper", xanchor="right", xshift=-3,
+                y=last["Share"] + line["name_dy"],
+            )
+        else:
+            figure.add_annotation(
+                **name, x=line["name_year"], xanchor="center",
+                y=series[line["name_year"]] + line["name_dy"],
+            )
+        # figure.add_annotation(
+        #     x=first["Year"],
+        #     y=first["Share"] + 13,
+        #     text=f"2015 -> 2026: <b>{first['Share']:.1f}% -> {last['Share']:.1f}% ",
+        #     showarrow=False,
+        #     xanchor="left",
+        #     yanchor="middle",
+        #     font=dict(color=color),
+        # )
+        # Values of the first and last points, just above or below their markers.
+        for point, side in ((first, line["first"]), (last, line["last"])):
+            figure.add_annotation(
+                x=point["Year"],
+                y=point["Share"],
+                yshift=5 if side == "above" else -5,
+                text=f"{point['Share']:.1f}%",
+                showarrow=False,
+                xanchor="center",
+                yanchor="bottom" if side == "above" else "top",
+                font=dict(color=color),
+            )
     figure.update_layout(
-        width=FIGURE_DIM[0],
-        height=FIGURE_DIM[1],
+        **ieee_column_layout(height_pt=HEADLINE_HEIGHT_PT),
         showlegend=False,
-        title=dict(text="TPWRS papers touching G-PST Research Agenda"),
-        margin=dict(l=4, r=34, t=34, b=64),
+        # The axes reserve their own space; the small top margin keeps "100%" on the page.
+        margin=dict(l=0, r=0, t=round(5 * PX_PER_PT), b=0),
     )
     figure.update_xaxes(
-        title=None,
+        title=None,  # the partial 2026 is explained in the caption
         tickmode="array",
         tickvals=years,
         ticktext=year_ticktext,
-        range=[years[0] - 0.4, years[-1] + 0.4],
+        tickfont_size=HEADLINE_YEAR_TICK_FONT_SIZE_PT * PX_PER_PT,
+        tickangle=0,  # never rotate the year labels
+        # 0.7 years either side leaves room for the values centred on the end markers.
+        range=[years[0] - 0.7, years[-1] + 0.7],
+        automargin=True,
     )
-    figure.update_yaxes(title=None, ticksuffix="%", range=[0, 100], dtick=20)
-    figure.add_annotation(
-        x=0,
-        y=-0.16,
-        xref="paper",
-        yref="paper",
-        text="*2026 partial (collected to July 2026).",
-        showarrow=False,
-        xanchor="left",
-        yanchor="top",
-        font=dict(color=INK_MUTED, size=10),
+    figure.update_yaxes(
+        title=dict(text="Share of papers, %", standoff=4),  # the unit is in the title
+        range=[0, 100],
+        dtick=20,
+        ticklabelstandoff=4,
+        automargin=True,
     )
     return figure
 
@@ -673,7 +730,9 @@ def build_article_ra_figure(
             xshift=-3,
             y=band_start + 10,
             yref="y",
-            text=band,
+            # Labels are right-aligned, so "High" gets an invisible "=" (as wide as "+" in
+            # Arial) to start exactly where "High+" starts.
+            text=band if band.endswith("+") else f"{band}<span style='color:rgba(0,0,0,0)'>=</span>",
             font=dict(color=ARTICLE_BAND_LABEL_COLOUR),
             showarrow=False,
         )
@@ -709,14 +768,10 @@ def build_article_ra_figure(
             showarrow=False,
         )
     figure.update_layout(
+        **ieee_column_layout(height_pt=200),
         showlegend=not ARTICLE_ONE_LINE_LEGEND,
         xaxis_title="G-PST Research Agenda question",
         yaxis_title="Affinity score",
-        # Single IEEE column at print size, so fonts stay 8-9 pt in the paper.
-        width=round(IEEE_COLUMN_WIDTH_PT * PX_PER_PT),
-        height=round(200 * PX_PER_PT),
-        font=dict(family=FONT_FAMILY, size=8 * PX_PER_PT, color="black"),
-        plot_bgcolor=ARTICLE_PLOT_BACKGROUND,
         # Each question belongs to one programme; "group" mode would offset each box
         # into its programme's slot, away from the question's x position and its mean marker.
         barmode="overlay",
@@ -819,12 +874,13 @@ def main() -> None:
         .rename("Papers_Total")
     )
     years = papers_per_year.index.tolist()
+    # Each tick label is one text with a line break; the span gives the count its own size.
+    count_font_px = HEADLINE_COUNT_FONT_SIZE_PT * PX_PER_PT
     year_ticktext = [
-        f"{year}<br><span style='font-size:9px'>{papers_per_year[year]}"
-        f"{'*' if year in PARTIAL_YEARS else ''}</span>"
+        f"{year}<br><span style='font-size:{count_font_px:.2f}px'>({papers_per_year[year]})</span>"
         for year in years
     ]
-    reach_share = share_by(assignments_df, papers_per_year, "Year")
+    reach_share = add_low_share(share_by(assignments_df, papers_per_year, "Year"))
     coverage_plot_data = build_coverage_data(assignments_df, papers_per_year)
     era_shift = build_era_shift_data(assignments_df, papers_per_era)
 

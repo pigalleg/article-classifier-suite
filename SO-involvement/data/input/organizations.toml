@@ -1,0 +1,624 @@
+# organizations.toml
+# ==================
+# Registry of power-system organizations whose publications are fetched and indexed.
+#
+# Each organization section:
+#   name         – full display name
+#   region       – US | Europe | Global | Australia
+#   crawl_pages  – list of [url, max_pages] pairs to paginate through.
+#                  Append a third element `true` to fetch that page with a
+#                  headless browser instead of a plain HTTP GET — needed for
+#                  JS-rendered SPA search/listing pages, and for URLs that
+#                  rely on a #fragment (a plain GET never sends the fragment
+#                  to the server at all, so a "search#q=..." URL is silently
+#                  a no-op without render=true).
+#   seed_pdfs    – direct PDF URLs (supplement / fallback if crawl is blocked)
+#
+# Last validated: 2026-08-29
+
+# ── US ISOs / RTOs ────────────────────────────────────────────────────────────
+
+
+[ercot]
+name = "ERCOT"
+region = "US"
+crawl_pages = [
+    ["https://www.ercot.com/search?q=ieee+transactions&year=10&size=100", 1],
+    ["https://www.ercot.com/gridinfo/resource", 1],
+    ["https://www.ercot.com/gridinfo/transmission", 1],
+    ["https://www.ercot.com/gridinfo/sysplan", 1],
+    ["https://www.ercot.com/gridinfo/modeling", 1],
+    # Transmission planning studies and constraint/need reports
+    ["https://www.ercot.com/gridinfo/planning", 1],
+    # Note: /mktrules/guides/methodology removed (404)
+]
+seed_pdfs = [
+    # CDR report path changed from /files/docs/YYYY/MM/DD/ pattern
+    "https://www.ercot.com/files/docs/2025/02/12/CapacityDemandandReservesReport_December2024.pdf",
+    "https://www.ercot.com/files/docs/2025/04/08/ERCOT-2025-Long-Term-Load-Forecast-Report.pdf",
+    # Note: SARA reports discontinued (replaced by Monthly Outlook for Resource Adequacy)
+    # Note: GIS Report and older CDR/LTLF paths all 404 – find current links via crawl
+]
+
+[iso-ne]
+name = "ISO-NE"
+region = "US"
+crawl_pages = [
+    # Note: /staticassets/documents/2024/ removed (404)
+    ["https://www.iso-ne.com/search?file-type=PDF&file-type=pdf&file-type=DOC&file-type=DOCX&file-type=doc&file-type=docx&query=ieee%20transactions", 1],
+    ["https://www.iso-ne.com/system-planning/system-plans-studies", 1],
+]
+seed_pdfs = [
+    # ISO-NE moved to document-ID-based paths under /static-assets/documents/<id>/
+    "https://www.iso-ne.com/static-assets/documents/100005/20231114_rsp_final.pdf",
+    "https://www.iso-ne.com/static-assets/documents/100030/final_2025_rsp.pdf",
+    # Note: CELT reports are now published as Excel (.xlsx), not PDF
+    # Note: SOA 2024 path not found – retrieve via crawl
+]
+
+[miso]
+name = "MISO"
+region = "US"
+crawl_pages = [
+    # misoenergy.org returns 403 to plain requests.get(); render=true uses a
+    # real headless browser, which also fixes the search query living in a
+    # #fragment (never reached the server as a plain GET). Worth trying
+    # since a genuine browser TLS/JS fingerprint often clears simpler WAFs —
+    # fall back to seed_pdfs if it still 403s.
+    ["https://www.misoenergy.org/search/#q=ieee%20transactions&t=500&p=0&s=&sd=&f=Type%3D%5B%22Document%22%5D", 1, true],
+    ["https://www.misoenergy.org/planning/resource-adequacy/", 1, true],
+    ["https://www.misoenergy.org/planning/transmission-planning/", 1, true],
+    ["https://www.misoenergy.org/planning/long-range-transmission-planning/", 1, true],
+]
+seed_pdfs = [
+    # CDN URLs updated – old filenames were wrong
+    "https://cdn.misoenergy.org/LOLE%20Study%20Report%20PY%202024-2025631112.pdf",
+    "https://cdn.misoenergy.org/PY%202023-2024%20LOLE%20Study%20Report626798.pdf",
+    "https://cdn.misoenergy.org/LRTP%20Tranche%202.1666573.pdf",
+]
+
+[pjm]
+name = "PJM"
+region = "US"
+crawl_pages = [
+    # Coveo search widget is JS-rendered AND the query lives in a #fragment,
+    # which a plain requests.get() never sends to the server — this crawl
+    # entry was silently hitting the bare search page with no query at all.
+    # render=true fixes both: a real browser executes the JS and reads the
+    # fragment via window.location.hash.
+    ["https://www.pjm.com/m/Search%20Results.aspx#q=ieee%20transactions&t=coveo4A2453FD&numberOfResults=100&f:ContentTypeFacet=[PDF]", 8, true],
+    ["https://www.pjm.com/library/reports-notices", 1],
+    ["https://www.pjm.com/library/manuals.aspx", 1],
+    # Transmission expansion planning studies and load forecasts
+    ["https://www.pjm.com/planning/transmission-expansion-planning", 1],
+    ["https://www.pjm.com/library/reports-notices/load-forecast", 1],
+]
+seed_pdfs = [
+    "https://www.pjm.com/-/media/library/reports-notices/load-forecast/2024-load-forecast-report.ashx",
+    "https://www.pjm.com/-/media/library/reports-notices/resource-adequacy/2024-rto-reserve-requirement-study.ashx",
+    "https://www.pjm.com/-/media/library/reports-notices/planning/2024-rtep-baseline-report.ashx",
+    "https://www.pjm.com/-/media/library/reports-notices/special-reports/2023/2023-pjm-reliability-assessment.ashx",
+]
+
+[caiso]
+name = "CAISO"
+region = "US"
+crawl_pages = [
+    ["http://www.caiso.com/documents/", 1],
+    # Transmission Planning page — confirmed working, links to board-approved annual plans
+    ["https://www.caiso.com/planning/Pages/TransmissionPlanning/Default.aspx", 1],
+    ["https://www.caiso.com/library/", 1],
+]
+seed_pdfs = [
+    # CAISO document filenames include a date suffix; old guessed names 404'd
+    "https://www.caiso.com/documents/2024-annual-report-on-market-issues-and-performance-aug-07-2025.pdf",
+    # 2024–2025 Board-Approved Transmission Plan (confirmed 200)
+    "https://www.caiso.com/documents/iso-board-approved-2024-2025-transmission-plan.pdf",
+    "https://www.caiso.com/documents/appendix-a-board-approved-2024-2025-transmission-plan.pdf",
+]
+
+[spp]
+name = "SPP"
+region = "US"
+crawl_pages = [
+    # Old /documents/ index page 404'd; resource-adequacy landing page works
+    ["https://www.spp.org/engineering/resource-adequacy/", 1],
+]
+seed_pdfs = [
+    # Document IDs updated (old IDs 69497, 68437, 67223 all 404)
+    "https://www.spp.org/documents/71804/2024%20spp%20june%20resource%20adequacy%20report.pdf",
+    "https://www.spp.org/documents/69529/2023%20spp%20june%20resource%20adequacy%20report.pdf",
+]
+
+[nyiso]
+name = "NYISO"
+region = "US"
+crawl_pages = [
+    # Old /documents/20142/ index 404'd; planning hub works
+    ["https://www.nyiso.com/planning", 1],
+    ["https://www.nyiso.com/search?sort=&q=ieee+transactions&expando__keyword__custom_fields__pubdate_sortable=&expando__keyword__custom_fields__contentcategory=Planning", 1],
+    ["https://www.nyiso.com/search?sort=&q=ieee+transactions&expando__keyword__custom_fields__pubdate_sortable=&expando__keyword__custom_fields__contentcategory=Reports", 1],
+    ["https://www.nyiso.com/search?sort=&q=ieee+transactions&expando__keyword__custom_fields__pubdate_sortable=&expando__keyword__custom_fields__contentcategory=Training", 1],
+
+
+]
+seed_pdfs = [
+    # Old document IDs (2232519/*) all 404; updated to correct IDs
+    "https://www.nyiso.com/documents/20142/2226333/2024-Gold-Book-Public.pdf",
+    "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf",
+    "https://www.nyiso.com/documents/20142/2248793/2024-RNA-Report.pdf",
+    "https://www.nyiso.com/documents/20142/2248481/2023-2032-Comprehensive-Reliability-Plan.pdf",
+    # STARS Phase 1 Final Report (2010) — manually verified: has references,
+    # 2 IEEE Transactions citations (IEEE Reliability Test System papers)
+    "https://www.nyiso.com/documents/20142/1398242/Phase_1_Final_Report_1_13_2010.pdf/9b1b6673-1be9-f7f9-6baa-cd3e1918347b",
+]
+
+# ── Canadian ISOs / Utilities ─────────────────────────────────────────────────
+
+[ieso]
+name = "IESO"
+region = "Canada"
+crawl_pages = [
+    ["https://www.ieso.ca/en/Sector-Participants/Planning-Processes/Annual-Planning-Outlook", 1],
+    ["https://www.ieso.ca/en/Power-Data/Supply-Overview/Transmission-Adequacy", 1],
+    ["https://www.ieso.ca/en/Sector-Participants/Planning-Processes/Reliability-Outlook", 1],
+    # Technical and white papers (confirmed working, PDFs linked directly on page)
+    ["https://www.ieso.ca/Get-Involved/Innovation/Research-and-Technical-Papers/Technical-papers", 1],
+    ["https://www.ieso.ca/Get-Involved/Innovation/Research-and-Technical-Papers/White-papers", 1],
+]
+seed_pdfs = [
+    # .ashx paths removed 2026-08-29: they download 200 OK but the content is
+    # a nav-shell/redirect page, not the real PDF (markitdown extracts just
+    # "[Skip Links](#maincontent ...)"). The crawl_pages entries above already
+    # discover the current Annual Planning Outlook directly (confirmed live —
+    # found 2026-Annual-Planning-Outlook.pdf at /planning-forecasts/apo/2026/,
+    # a different path pattern than the old /planning-forecasting/apo/<year>/ guess).
+    # Options to Enhance DER Participation (2020) — manually verified: has references,
+    # no IEEE Transactions citations (only IEEE 2030.5 standard mentions elsewhere).
+    "https://www.ieso.ca/-/media/Files/IESO/Document-Library/Technical-papers/Options-to-Enhance-DER-Participation-20201110.pdf",
+]
+
+[hydro-quebec]
+name = "Hydro-Québec"
+region = "Canada"
+crawl_pages = [
+    # hydroquebec.com previously blocked automated access at two levels —
+    #   1. TLS handshake failure (SSLV3_ALERT_HANDSHAKE_FAILURE) against Python's requests/ssl stack
+    #   2. Connection reset by peer after handshake (active bot detection)
+    # render=true (headless Chromium, its own TLS stack + real browser
+    # fingerprint) confirmed working 2026-08-29 — crawl completed with no
+    # connection errors.
+    ["https://www.hydroquebec.com/publications/en/index.html", 1, true],
+    ["https://www.hydroquebec.com/planning/", 1, true],
+]
+seed_pdfs = [
+    # development-plan.pdf and rapport-annuel.pdf (previously listed here as
+    # "best-guess" paths) removed 2026-08-29: both download 200 OK but
+    # contain a nav-shell page, not the report (markitdown extracts only
+    # "Passer au contenu principal" / empty text) — same failure pattern as
+    # IESO's dead .ashx seeds. The real, current annual report is already
+    # discovered by the crawl above under a different filename — kept as an
+    # explicit seed below as a safety net in case the crawl ever misses it.
+    "https://www.hydroquebec.com/data/documents-donnees/pdf/hq-rapport-annuel-2025-francais.pdf",
+]
+
+# ── US / North American Reliability & Research ────────────────────────────────
+
+[nerc]
+name = "NERC"
+region = "US"
+crawl_pages = [
+    ["https://www.nerc.com/pa/rapa/ra/Pages/default.aspx", 1],
+    ["https://www.nerc.com/pa/rrm/ea/Pages/Major-Event-Reports.aspx", 1],
+    ["https://www.nerc.com/search?q=ieee+transactions&pg=1&k=2", 20],
+    # Reliability Standards & Technology Committee (confirmed 200)
+    ["https://www.nerc.com/comm/RSTC/Pages/default.aspx", 1],
+    # Operations Committee documents (confirmed 200)
+    ["https://www.nerc.com/comm/oc/Pages/default.aspx", 1],
+]
+seed_pdfs = [
+    # NERC migrated older files from /pa/RAPA/ra/Reliability Assessments DL/ to /globalassets/
+    "https://www.nerc.com/globalassets/programs/rapa/ra/nerc_ltra_2023.pdf",
+    # LTRA 2024 kept long filename in old path
+    "https://www.nerc.com/pa/RAPA/ra/Reliability%20Assessments%20DL/NERC_Long%20Term%20Reliability%20Assessment_2024.pdf",
+    "https://www.nerc.com/pa/RAPA/ra/Reliability%20Assessments%20DL/NERC_SRA_2024.pdf",
+    # WRA moved to globalassets
+    "https://www.nerc.com/globalassets/programs/rapa/ra/nerc_wra_2024.pdf",
+    # ERO CMEP IBR guide relocated
+    "https://www.nerc.com/globalassets/programs/compliance/compliance-guidance/cmep-practice-guides/ero-enterprise-cmep-practice-guide-regarding-inverter-based-resources.pdf",
+    # 2023 August complex fires report not found; replaced with 2024 State of Reliability
+    "https://www.nerc.com/pa/RAPA/PA/Performance%20Analysis%20DL/NERC_SOR_2024_Technical_Assessment.pdf",
+]
+
+[g-pst]
+name = "G-PST"
+region = "Global"
+crawl_pages = [
+    ["https://globalpst.org/resources/", 1],
+    ["https://globalpst.org/category/resource-type/publications/", 1],
+    ["https://globalpst.org/resources/#peer-learning", 1]
+    # Note: /publications/ removed (404)
+]
+seed_pdfs = [
+    "https://globalpst.org/wp-content/uploads/G-PST_Research_Agenda_2025_FINAL.pdf",
+    # 2023 agenda not found; using inaugural 2021 agenda
+    "https://globalpst.org/wp-content/uploads/042921G-PST-Research-Agenda-Master-Document-FINAL_updated.pdf",
+    # System Needs & Services report renamed
+    "https://globalpst.org/wp-content/uploads/GPST-IBR-Research-Team-System-Services-and-Needs-for-High-IBR-Networks.pdf",
+    # IBR Stability Tools Inventory and Roadmap PDFs not found (404); retrieve via crawl
+]
+
+[esig]
+name = "ESIG"
+region = "US"
+crawl_pages = [
+    ["https://www.esig.energy/resources/reports-and-briefs/?cst", 4],
+    ["https://www.esig.energy/resources/presentations/?cst", 4],
+]
+seed_pdfs = [
+    "https://www.esig.energy/wp-content/uploads/2025/09/ESIG-GFM-Performance-Testing-report-2025.pdf",
+    "https://www.esig.energy/wp-content/uploads/2025/12/ESIG-Large-Loads-Forecasting-report-2025.pdf",
+    "https://www.esig.energy/wp-content/uploads/2025/07/ESIG-Grid-Enhancing-Technologies-report-2025.pdf",
+    "https://www.esig.energy/wp-content/uploads/2025/03/ESIG-Market-Vision-report-2025.pdf",
+    "https://www.esig.energy/wp-content/uploads/2025/06/ESIG-IP-Guidebook-report-2025.pdf",
+    "https://www.esig.energy/wp-content/uploads/2025/09/ESIG-Market-Vision-white-paper-J-Mays-2025a.pdf",
+    "https://www.esig.energy/wp-content/uploads/2025/05/LL-Forecasting-Framework-and-Methodology_v0.pdf",
+    "https://www.esig.energy/wp-content/uploads/2025/05/LL-Performance-Requirements-Framework-and-Methodology_v2.pdf",
+    "https://www.esig.energy/wp-content/uploads/2024/10/ESIG-Reliability-services-voltage-frequency-phase-I-2024.pdf",
+    "https://www.esig.energy/wp-content/uploads/2024/06/ESIG-Interregional-Transmission-Resilience-methodology-report-2024.pdf",
+    "https://www.esig.energy/wp-content/uploads/2024/10/ESIG-Grid-Planning-Building-Electrification-report-2024.pdf",
+    "https://www.esig.energy/wp-content/uploads/2024/10/ESIG-GFM-report-2022.pdf",
+    "https://www.esig.energy/wp-content/uploads/2023/09/ESIG-Long-term-load-forecasting-workshop-summary-2023.pdf",
+    "https://www.esig.energy/wp-content/uploads/2023/03/ESIG-Retail-Pricing-dynamic-rates-E3-wp-2023.pdf",
+    "https://www.esig.energy/wp-content/uploads/2022/03/ESIG-GFM-report-2022.pdf",
+    "https://www.esig.energy/wp-content/uploads/2022/01/ESIG-Industrial-Elec-Hydrogen-report-2022.pdf",
+    "https://www.esig.energy/wp-content/uploads/2022/12/ESIG-Redefining-Resource-Adequacy-2021-b.pdf",
+    "https://www.esig.energy/wp-content/uploads/2022/10/Joint-Generator-Workshop-Summary.pdf",
+    "https://www.esig.energy/wp-content/uploads/2021/02/solar-to-grid_technical_report.pdf",
+    "https://www.esig.energy/wp-content/uploads/2025/12/ESIG-Integrating-Transmission-Silos-report-2025.pdf",
+    "https://www.esig.energy/wp-content/uploads/2026/03/ESIG-Large-Loads-Modeling-for-Dynamic-Studies-report-2026c.pdf",
+    "https://www.esig.energy/wp-content/uploads/2024/08/ESIG-Oscillations-Guide-2024.pdf",
+    "https://www.esig.energy/wp-content/uploads/2025/10/ESIG-Wide-Area-RA-report-2025.pdf",
+    "https://www.esig.energy/wp-content/uploads/2024/03/ESIG-New-Criteria-Resource-Adequacy-report-2024.pdf",
+    "https://www.esig.energy/wp-content/uploads/2022/06/ESIG-Multi-Value-Transmission-Planning-report-2022.pdf",
+]
+
+# ── European TSOs / Bodies ────────────────────────────────────────────────────
+
+[entso-e]
+name = "ENTSO-E"
+region = "Europe"
+crawl_pages = [
+    ["https://www.entsoe.eu/publications/", 1],
+    # R&D publications page (confirmed 200, links to RDI roadmap PDFs)
+    ["https://www.entsoe.eu/publications/research-and-development/", 1],
+    # TYNDP 2024 hub (confirmed 200, links to infrastructure gaps, system needs, CBA PDFs)
+    ["https://www.entsoe.eu/outlooks/tyndp/2024/", 1],
+]
+seed_pdfs = [
+    # ENTSO-E restructured their CDN; old /clean-documents/Publications/ paths all 404
+    # Winter Outlook moved to sdc-documents/seasonal/
+    "https://eepublicdownloads.entsoe.eu/clean-documents/sdc-documents/seasonal/WOR2024/Winter%20Outlook%202024-2025_Report.pdf",
+    # ERAA 2023 moved to entsoe.eu/eraa/2023/report/
+    "https://www.entsoe.eu/eraa/2023/report/ERAA_2023_v2_Executive_Report.pdf",
+    # ERAA 2024 moved to blob.core.windows.net CDN
+    "https://eepublicdownloads.blob.core.windows.net/public-cdn-container/clean-documents/sdc-documents/ERAA/2024/report/ERAA_2024_Executive_Report.pdf",
+    # TYNDP 2024 reports (confirmed 200 via crawl of /outlooks/tyndp/2024/)
+    "https://eepublicdownloads.blob.core.windows.net/public-cdn-container/tyndp-documents/TYNDP2024/foropinion/Infrastructure_Gaps_Report.pdf",
+    "https://eepublicdownloads.blob.core.windows.net/public-cdn-container/tyndp-documents/TYNDP2024/foropinion/SystemNeedsMethodology.pdf",
+    # RDI Roadmap 2024–2034 (confirmed 200 via crawl of /publications/research-and-development/)
+    "https://eepublicdownloads.entsoe.eu/clean-documents/Publications/RDC%20publications/entso-e_RDI_roadmap_2024-2034_240710.pdf",
+    # Note: Summer Outlook 2025 and Grid Forming position paper PDFs not found
+]
+
+[national-grid-eso]
+name = "National Grid ESO"
+region = "Europe"
+crawl_pages = [
+    # Rebranded from nationalgrideso.com to neso.energy; old nationalgrid.com URL 404
+    ["https://www.neso.energy/publications/future-energy-scenarios-fes", 1],
+    # search results and the "#q=..." fragment are JS-rendered — render=true
+    # both executes the JS and lets the fragment reach it (a plain GET drops
+    # everything after "#" before it's even sent to the server).
+    ["https://www.neso.energy/publications-library#q=ieee%20transactions&sortCriteria=date%20descending", 1, true],
+]
+seed_pdfs = [
+    # Old nationalgrideso.com document IDs all return 403; migrated to neso.energy
+    "https://www.neso.energy/document/321041/download",
+    "https://www.neso.energy/document/321876/download",
+    "https://www.neso.energy/document/364541/download",
+]
+
+[aemo]
+name = "AEMO"
+region = "Australia"
+crawl_pages = [
+    # Old NEM forecasting page returns 403. ISP hub "works in browser" per
+    # earlier manual check, implying it's gated against non-browser clients —
+    # render=true uses a real headless browser instead of requests.
+    ["https://www.aemo.com.au/energy-systems/major-publications/integrated-system-plan-isp", 1, true],
+]
+seed_pdfs = [
+    # AEMO moved ISP files from /nem/planning_and_forecasting/isp/ to /major-publications/isp/
+    "https://aemo.com.au/-/media/files/major-publications/isp/2024/2024-integrated-system-plan-isp.pdf",
+    # ESOO path unchanged but nem_esoo (not nem-esoo) is correct
+    "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/nem_esoo/2024/2024-electricity-statement-of-opportunities.pdf",
+    # System strength report moved to system_security_planning/
+    "https://aemo.com.au/-/media/files/electricity/nem/security_and_reliability/system_security_planning/2024-system-strength-report.pdf",
+    # Note: Grid-forming inverters 2021 and ISP 2022 paths all 403; not found
+]
+
+[swissgrid]
+name = "Swissgrid"
+region = "Europe"
+crawl_pages = [
+    # Old /operation/publications.html and /operation/grid/grid-development.html both 404;
+    # publications moved to /newsroom/publications.html
+    ["https://www.swissgrid.ch/en/home/newsroom/publications.html", 1],
+    # Site search for "ieee transactions" — returns static HTML with direct PDF links
+    ["https://www.swissgrid.ch/en/home/search.html?q=ieee+transactions", 1],
+    # Broader search for "IEEE" (superset of above, catches grid-code docs citing IEEE standards)
+    ["https://www.swissgrid.ch/en/home/search.html?q=ieee", 1],
+]
+seed_pdfs = [
+    # Annual Reports — Swissgrid migrated from /dam/swissgrid/company/.../annual-report/<year>/
+    # to JCR content IDs (/dam/jcr:<uuid>/); year-based paths all return 404
+    "https://www.swissgrid.ch/dam/jcr:96d467f1-2dc9-4977-bf99-9dc8722c6149/swissgrid-annual-report-2025-en.pdf",
+    "https://www.swissgrid.ch/dam/jcr:b550f1f4-0754-4a2b-a3fc-b650ca49c120/swissgrid-annual-report-2024-en.pdf",
+    "https://www.swissgrid.ch/dam/jcr:9c91f585-da5d-4a99-a1c3-05989e55eac0/swissgrid-annual-report-2023-en.pdf",
+    # NEP 2040 path /dam/swissgrid/network/grid-development/... also 404; retrieve via crawl
+]
+
+[50hertz]
+name = "50Hertz"
+region = "Europe"
+crawl_pages = [
+    ["https://www.50hertz.com/en/Grid/Publications", 1],
+    ["https://www.50hertz.com/en/Transparency/Publications", 1],
+    ["https://www.50hertz.com/en/Grid/GridDevelopment", 1],
+    # Grid connection requirements — offshore and onshore technical annexes
+    ["https://www.50hertz.com/en/Grid/GridConnection/GeneratorConnections", 1],
+    ["https://www.50hertz.com/en/Grid/GridConnection/OffshoreConnections", 1],
+    # German federal NEP (Netzentwicklungsplan) — coordinated by all four TSOs;
+    # confirmed working and includes English-language NEP-compact editions
+    ["https://www.netzentwicklungsplan.de/en/", 1],
+    # 50Hertz site search (/en/search#q=...) is JavaScript-rendered (SPA hash
+    # routing) and was previously uncrawlable with BeautifulSoup alone.
+    # render=true now executes the JS and reads the #fragment query.
+    ["https://www.50hertz.com/en/search#q=ieee%20transactions", 1, true],
+]
+seed_pdfs = [
+    # Annual Report
+    "https://www.50hertz.com/Portals/1/Dokumente/Unternehmen/Investor-Relations/Annual-Report/50hertz-annual-report-2024.pdf",
+    # NEP 2037/2045 V2025 (2nd draft, confirmed 200 via netzentwicklungsplan.de crawl)
+    "https://www.netzentwicklungsplan.de/sites/default/files/2026-03/NEP_2037_2045_V2025_2_Entwurf_3.pdf",
+    "https://www.netzentwicklungsplan.de/sites/default/files/2026-04/EN_NDP-compact_2037_2045_V2025_2nd_draft_0.pdf",
+    # Offshore grid connection requirements — technical annex with simulation model specs
+    # (add confirmed working URL once retrieved from site search)
+]
+
+[fingrid]
+name = "Fingrid"
+region = "Europe"
+crawl_pages = [
+    # Old /electricity-market/publications/ and /grid/development-of-the-grid/ both 404;
+    # publications moved to /news/publications2/, grid dev to /grid/development/
+    ["https://www.fingrid.fi/en/news/publications2/", 1],
+    ["https://www.fingrid.fi/en/grid/development/", 1],
+    # Main grid development plan sub-page (confirmed 200, links to 2026–2035 plan PDF)
+    ["https://www.fingrid.fi/en/grid/development/Main-grid-development-plan/", 1],
+    # Investor financial reports page (confirmed 200, links to annual reviews and statements)
+    ["https://www.fingrid.fi/en/investors/financial-reports-and-presentations/", 1],
+]
+seed_pdfs = [
+    # Annual Reviews — confirmed 200
+    "https://www.fingrid.fi/globalassets/dokumentit/en/annual-report/2025/fingrid_oyj_annual_review_2025.pdf",
+    "https://www.fingrid.fi/globalassets/dokumentit/en/annual-report/2024/fingrid_oyj_annual_report_2024.pdf",
+    # Main Grid Development Plan 2026–2035 (confirmed 200; supersedes 2022–2031 plan)
+    "https://www.fingrid.fi/globalassets/dokumentit/en/publications/main-grid-development-plan/fingrid_main-grid-development-plan-2026-2035.pdf",
+    # 2022–2031 plan kept as historical reference
+    "https://www.fingrid.fi/globalassets/dokumentit/en/customers/grid-connection/fingrid-main-grid-development-plan-2022-2031.pdf",
+]
+
+[elia]
+name = "ELIA (Belgium)"
+region = "Europe"
+crawl_pages = [
+    # elia.be returns 403 to plain requests.get(); the search page also
+    # relies on a #fragment. render=true addresses both.
+    ["https://www.elia.be/en/publications", 1, true],
+    ["https://www.elia.be/en/search#s13_e=0&s13_q=ieee%20transactions", 1, true],
+]
+seed_pdfs = [
+    # Note: All elia.be PDF paths return 403 to automated requests.
+    # Elia's adequacy studies are available at:
+    #   https://www.elia.be/en/electricity-market-and-system/adequacy/adequacy-studies
+    # The full 2024-2034 study PDF must be downloaded manually or via browser automation.
+]
+
+[rte]
+name = "RTE (France)"
+region = "Europe"
+crawl_pages = [
+    # Fixed URL (old /bilan-electrique path 404; correct is /bilans-electriques-nationaux-et-regionaux)
+    ["https://www.rte-france.com/analyses-tendances-et-prospectives/bilans-electriques-nationaux-et-regionaux", 1],
+]
+seed_pdfs = [
+    # RTE restructured asset paths; old /prod/public/YYYY-MM/ paths return 403
+    # Bilan électrique 2023 full report (published Feb 2024)
+    "https://assets.rte-france.com/analyse-et-donnees/2024-03/Bilan%20%C3%A9lectrique%202023%20rapport%20complet_29fev24.pdf",
+    # Bilan électrique 2024 full report (published Apr 2025)
+    "https://assets.rte-france.com/prod/public/2025-04/2025-04-09-bilan-electrique-2024-rapport-complet.pdf",
+    # Futurs énergétiques 2050 main results (Oct 2021 – the primary public PDF)
+    "https://assets.rte-france.com/prod/public/2021-10/Futurs-Energetiques-2050-principaux-resultats_0.pdf",
+    # Note: Adequacy Report 2024-2039 and 2023-2037 not resolvable via direct URL;
+    #       retrieve via crawl or the analysesetdonnees.rte-france.com portal
+]
+
+# ── Gap-2 operators ───────────────────────────────────────────────────────────
+# TSOs with significant technical research output that cite IEEE Transactions.
+# Sites that return 403 to crawlers use seed_pdfs only; JS-rendered search
+# pages are noted and must be supplemented with seed_pdfs from manual search.
+
+[tennet]
+name = "TenneT"
+region = "Europe"
+crawl_pages = [
+    # TenneT returns 403 to most automated crawlers; render=true tries a
+    # real headless browser instead of requests. Falls back to seed_pdfs
+    # below for confirmed documents if it still fails.
+    # /knowledge/publications 404'd (verified via render) — corrected path below.
+    ["https://www.tennet.eu/about-tennet/publications", 1, true],
+    ["https://www.tennet.eu/knowledge/grid-development-plans", 1, true],
+]
+seed_pdfs = [
+    # Both URLs below confirmed 404 via live fetch run 2026-08-29 — kept as
+    # placeholders pending correct current URLs (see docs_to_manually_check.json).
+    # Vision 2045 — TenneT's long-term grid development plan (Netherlands)
+    "https://www.tennet.eu/fileadmin/user_upload/Our_Grid/Grid_Development_Netherlands/Neteontwikkelingsplan/Netontwikkelingsplan_2024_EN.pdf",
+    # Grid Connection Requirements for offshore wind (EN)
+    "https://www.tennet.eu/fileadmin/user_upload/Our_Grid/Offshore/Grid_connection_requirements_offshore_wind_EN.pdf",
+    # Note: Add confirmed URLs from site search for "IEEE Transactions" via seed_pdfs
+]
+
+[eirgrid]
+name = "EirGrid"
+region = "Europe"
+crawl_pages = [
+    # Publications index — content is JavaScript-rendered (dynamic search);
+    # render=true executes the JS instead of a static GET.
+    ["https://www.eirgrid.ie/publications", 1, true],
+    # Shaping Our Electricity Future — technical programme documents
+    ["https://www.eirgrid.ie/shaping-our-electricity-future", 1, true],
+]
+seed_pdfs = [
+    # All-Island Generation Capacity Statement 2024–2033
+    "https://www.eirgrid.ie/sites/default/files/documents/All-Island-GCS-2024-2033.pdf",
+    # Power System Stability in a High Renewables Ireland — key IEEE-citing report
+    "https://www.eirgrid.ie/sites/default/files/documents/DS3-System-Services-Review-2024.pdf",
+    # Tomorrow's Energy Scenarios 2023
+    "https://www.eirgrid.ie/sites/default/files/documents/Tomorrows-Energy-Scenarios-2023.pdf",
+    # Note: Verify URLs and add confirmed IEEE-citing docs from site search
+]
+
+[energinet]
+name = "Energinet"
+region = "Europe"
+crawl_pages = [
+    # Publications page — JS-rendered; render=true executes it instead of
+    # relying solely on seed_pdfs.
+    ["https://en.energinet.dk/electricity/reports-and-analyses/", 1, true],
+    ["https://en.energinet.dk/electricity/technical-regulations/", 1, true],
+]
+seed_pdfs = [
+    # Ancillary Services — technical document citing IEEE standards
+    "https://en.energinet.dk/media/lxfpswof/ancillary-services-to-be-delivered-in-denmark-tender-conditions.pdf",
+    # Frequency-based Emergency Disconnection Policy Review — already in ENTSO-E nordic docs
+    "https://www.entsoe.eu/Documents/Network%20codes%20documents/Implementation/nordics/170614_-_Frequency_Based_Emergency_Disconnection_Policy_Review_for_the_Nordic_Region_V1.0.pdf",
+    # Note: Energinet publishes many IEEE-citing reports on inertia and frequency stability;
+    #       add confirmed URLs from site search for "IEEE Transactions"
+]
+
+[ree]
+name = "REE"
+region = "Europe"
+crawl_pages = [
+    # Red Eléctrica (Spain) publications — site has search but results are
+    # JS-rendered; render=true executes it.
+    ["https://www.ree.es/en/publications", 1, true],
+    ["https://www.ree.es/en/datos/publications/technical-information", 1, true],
+]
+seed_pdfs = [
+    # Annual Report on the Spanish Power System (El sistema eléctrico español)
+    "https://www.ree.es/sites/default/files/publication/2025/03/downloadable/inf_sis_elec_ree_2024_0.pdf",
+    # Note: REE publishes technical stability and planning studies; add confirmed
+    #       IEEE-citing documents from site search via seed_pdfs
+]
+
+# ── Industry / OEM ────────────────────────────────────────────────────────────
+
+[hitachi-energy]
+name = "Hitachi Energy"
+region = "Global"
+crawl_pages = [
+    # "Confirmed working, not JS-gated" note was stale — verified 2026-08-29
+    # both static AND rendered crawls return 0 PDFs. The rendered page loads
+    # real content (title, 206 links) but no report-detail links — the
+    # listing is very likely populated via a separate API call our crawler
+    # doesn't reach, not plain anchor tags. render=true kept on in case a
+    # future site change makes it discoverable; needs manual seed_pdfs for now.
+    ["https://www.hitachienergy.com/news-and-events/digital-publications/papers", 1, true],
+    # HVDC product page — may have downloadable technical documents
+    ["https://www.hitachienergy.com/us/en/products-and-solutions/hvdc", 1, true],
+    # Note: /knowledge-hub and /knowledge-hub/white-papers return 404
+]
+seed_pdfs = [
+    # Note: Hitachi Energy (formerly ABB Power Grids) publishes extensively on HVDC,
+    # FACTS, and grid integration — most technical whitepapers are behind a portal.
+    # Add confirmed IEEE-citing document PDFs as seed_pdfs after finding via site search.
+]
+
+[siemens-energy]
+name = "Siemens Energy"
+region = "Global"
+crawl_pages = [
+    # HVDC PLUS product page — confirmed to have PDF links (brochures/flyers)
+    ["https://www.siemens-energy.com/global/en/home/products-services/product-offerings/high-voltage-direct-current-transmission-solutions.html", 1],
+    # FACTS / Grid Stabilization page — confirmed to have PDF links
+    ["https://www.siemens-energy.com/global/en/home/products-services/product-offerings/flexible-ac-transmission-systems.html", 1],
+    # Publications hub — dynamically loaded (JS-rendered); render=true
+    # executes it instead of the static GET that previously yielded little.
+    ["https://www.siemens-energy.com/global/en/home/publications.html", 1, true],
+]
+seed_pdfs = [
+    # HVDC PLUS brochure (13 MB) — technical overview, may contain references
+    "https://assets.siemens-energy.com/dam/06d5dc32-1572-4874-bdc0-b0810130c24c/2022-03-11-HVDC-PLUS-pdf_Original%20file.pdf",
+    # Grid stabilization brochure
+    "https://assets.siemens-energy.com/dam/b4fbea3c-a69a-4b6b-88d3-b1a300c0779d/2023_12_21_P1383-005_b_Grid_Stability_Digital_Final-pdf_Original%20file.pdf",
+    # Note: Siemens Energy publishes white papers on HVDC, FACTS, and grid stability;
+    # the publications hub is JS-rendered — add confirmed IEEE-citing documents as seed_pdfs.
+]
+
+[ge-vernova]
+name = "GE Vernova"
+region = "Global"
+crawl_pages = [
+    # Grid Solutions resources — returns 503 for plain requests.get() (JS-rendered).
+    # render=true tries a real headless browser; falls back to seed_pdfs if
+    # the 503 is a WAF block rather than pure JS-rendering.
+    ["https://www.gevernova.com/grid-solutions/resources", 1, true],
+]
+seed_pdfs = [
+    # Note: GE Vernova (formerly GE Grid Solutions) publishes papers on FACTS,
+    # PSS/E software, and power system stability.
+    # Their website returns 503 to crawlers; add confirmed IEEE-citing PDF URLs below.
+]
+
+[abb]
+name = "ABB"
+region = "Global"
+crawl_pages = [
+    # ABB Library — JS-rendered, static crawl returned an empty body;
+    # render=true executes the JS instead.
+    ["https://library.abb.com/r?ctype=whitepapers&dsp_lang=en", 1, true],
+]
+seed_pdfs = [
+    # Note: ABB publishes technical papers through library.abb.com;
+    # the site is JS-rendered and requires JavaScript to load content.
+    # Add confirmed IEEE-citing PDF URLs directly below.
+]
+
+[prysmian]
+name = "Prysmian"
+region = "Global"
+crawl_pages = [
+    # Technical resources — power cable systems, HVDC cables. Never yielded
+    # any documents under the static crawler; render=true is untested here,
+    # so verify results manually (see docs_to_manually_check.json).
+    ["https://www.prysmiangroup.com/en/knowledge-hub", 1, true],
+    ["https://www.prysmiangroup.com/en/knowledge-hub/white-papers", 1, true],
+]
+seed_pdfs = [
+    # Note: Prysmian publishes white papers on HVDC cable systems and power cables;
+    # add confirmed IEEE-citing documents as seed_pdfs.
+]

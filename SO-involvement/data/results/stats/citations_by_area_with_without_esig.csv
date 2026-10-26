@@ -1,0 +1,8 @@
+area,label,with_esig_total,with_esig_ieee,without_esig_total,without_esig_ieee,esig_only_total,esig_only_ieee
+ibrs,IBRs,151,20,105,17,46,3
+stability,Stability,155,33,88,13,67,20
+ders,DER,321,1,200,0,121,1
+crof,CROF,94,2,65,2,29,0
+services,Services,73,1,29,0,44,1
+planning,Planning,605,8,258,7,347,1
+total,Total,1399,65,745,39,654,26

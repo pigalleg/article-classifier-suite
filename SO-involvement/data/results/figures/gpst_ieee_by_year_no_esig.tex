@@ -1,0 +1,66 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{ieeecolor}{HTML}{042C53}
+\definecolor{jrnlcolor}{HTML}{378ADD}
+\definecolor{othercolor}{HTML}{B4B2A9}
+\definecolor{confcolor}{HTML}{D98B3F}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    ybar, bar width=12pt,
+    width=9cm, height=5cm,
+    symbolic x coords={pre-1970,1970--1979,1980--1989,1990--1999,2000--2009,2010--2019,2020--present},
+    xtick=data,
+    x tick label style={rotate=30, anchor=east, font=\footnotesize},
+    axis y line*=left,
+    ylabel={Journal articles},
+    ylabel style={color=jrnlcolor},
+    y tick style={color=jrnlcolor},
+    y tick label style={color=jrnlcolor},
+    ymin=0, ymax=19,
+    axis line style={color=black!40},
+    enlarge x limits=0.1,
+    legend style={font=\tiny, draw=none, at={(0,1)}, anchor=north west},
+    title={Excluding ESIG},
+]
+\addplot[fill=jrnlcolor] coordinates {(pre-1970,1) (1970--1979,1) (1980--1989,2) (1990--1999,8) (2000--2009,9) (2010--2019,14) (2020--present,4)};
+\addlegendentry{Journal articles}
+\node[font=\tiny, anchor=south, text=black] at (axis cs:pre-1970,1) {1};
+\node[font=\tiny, anchor=south, text=black] at (axis cs:1970--1979,1) {1};
+\node[font=\tiny, anchor=south, text=black] at (axis cs:1980--1989,2) {2};
+\node[font=\tiny, anchor=south, text=black] at (axis cs:1990--1999,8) {8};
+\node[font=\tiny, anchor=south, text=black] at (axis cs:2000--2009,9) {9};
+\node[font=\tiny, anchor=south, text=black] at (axis cs:2010--2019,14) {14};
+\node[font=\tiny, anchor=south, text=black] at (axis cs:2020--present,4) {4};
+\end{axis}
+\begin{axis}[
+    width=9cm, height=5cm,
+    symbolic x coords={pre-1970,1970--1979,1980--1989,1990--1999,2000--2009,2010--2019,2020--present},
+    xtick=data,
+    hide x axis,
+    axis y line*=right,
+    ylabel={Citations},
+    ylabel style={color=ieeecolor},
+    y tick style={color=ieeecolor},
+    y tick label style={color=ieeecolor},
+    ymin=0, ymax=19,
+    axis line style={color=black!40},
+    enlarge x limits=0.1,
+    legend style={font=\tiny, draw=none, at={(0,0.85)}, anchor=north west},
+]
+\addplot[color=ieeecolor, mark=*, mark size=1.5pt, thick] coordinates {(pre-1970,1) (1970--1979,1) (1980--1989,2) (1990--1999,8) (2000--2009,9) (2010--2019,14) (2020--present,4)};
+\addlegendentry{Citations}
+\node[font=\tiny, anchor=south, text=ieeecolor, yshift=6pt] at (axis cs:pre-1970,1) {1};
+\node[font=\tiny, anchor=south, text=ieeecolor, yshift=6pt] at (axis cs:1970--1979,1) {1};
+\node[font=\tiny, anchor=south, text=ieeecolor, yshift=6pt] at (axis cs:1980--1989,2) {2};
+\node[font=\tiny, anchor=south, text=ieeecolor, yshift=6pt] at (axis cs:1990--1999,8) {8};
+\node[font=\tiny, anchor=south, text=ieeecolor, yshift=6pt] at (axis cs:2000--2009,9) {9};
+\node[font=\tiny, anchor=south, text=ieeecolor, yshift=6pt] at (axis cs:2010--2019,14) {14};
+\node[font=\tiny, anchor=south, text=ieeecolor, yshift=6pt] at (axis cs:2020--present,4) {4};
+\end{axis}
+\end{tikzpicture}
+\end{document}

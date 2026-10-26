@@ -1,0 +1,86 @@
+{
+  "entity": "50Hertz",
+  "region": "Europe",
+  "total_docs": 2,
+  "total_citations": 69,
+  "ref_type_counts": {
+    "other": 62,
+    "standard": 3,
+    "book": 3,
+    "website": 1
+  },
+  "ieee_transactions": 0,
+  "by_gpst_area": {
+    "ibrs": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "stability": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "ders": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "crof": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "services": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "planning": {
+      "total": 69,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 69,
+      "docs": [
+        "Szenariorahmen_zum_NEP_2040_2045_Version-2027_.pdf",
+        "Zwischenbericht_Projektion_Regionalisierung_Waermebedarfe_Waermeerzeugung_2.pdf"
+      ],
+      "by_doc": {
+        "Zwischenbericht_Projektion_Regionalisierung_Waermebedarfe_Waermeerzeugung_2.pdf": {
+          "doc_title": "Zwischenbericht Projektion Regionalisierung Waermebedarfe Waermeerzeugung",
+          "doc_year": "2026",
+          "total": 23,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 23
+        },
+        "Szenariorahmen_zum_NEP_2040_2045_Version-2027_.pdf": {
+          "doc_title": "Szenariorahmen zum Netzentwicklungsplan 2040/2045",
+          "doc_year": "2026",
+          "total": 46,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 46
+        }
+      }
+    }
+  }
+}

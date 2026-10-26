@@ -1,0 +1,14 @@
+entity,ibrs,stability,ders,crof,services,planning,docs,citations,journal_publications,ieee_transactions
+50Hertz,0,0,0,0,0,2,2,69,0,0
+ENTSO-E,3,10,15,2,4,19,53,351,22,7
+ERCOT,1,0,0,3,0,6,10,80,10,5
+ESIG,3,3,11,2,2,19,40,654,112,26
+G-PST,1,0,0,0,0,0,1,58,31,15
+GE Vernova,0,0,0,0,0,1,1,4,1,0
+IESO,0,0,4,0,0,0,4,83,1,0
+NYISO,0,0,0,0,0,1,1,2,2,2
+PJM,0,0,3,3,0,1,7,12,1,1
+RTE (France),0,0,1,0,0,0,1,1,0,0
+SPP,1,0,0,0,0,2,3,48,1,0
+Siemens Energy,0,0,2,0,0,0,2,9,0,0
+Swissgrid,1,1,0,0,0,1,3,28,10,9

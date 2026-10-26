@@ -1,0 +1,39 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{ieeecolor}{HTML}{042C53}
+\definecolor{jrnlcolor}{HTML}{378ADD}
+\definecolor{othercolor}{HTML}{B4B2A9}
+\definecolor{confcolor}{HTML}{D98B3F}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    xbar, bar width=10pt, bar shift=0pt,
+    width=15cm, height=3.4cm,
+    symbolic y coords={IEEE Transactions on Power Systems,IEEE Transactions on Power Delivery,IEEE Transactions on Power Apparatus And Systems,IEEE Transactions on Smart Grid,IEEE Transactions on Sustainable Energy,IEEE Transactions on Energy Conversion},
+    ytick=data,
+    y dir=reverse,
+    y tick label style={font=\footnotesize},
+    xlabel={Citations},
+    xmin=0, xmax=22,
+    axis line style={color=black!40},
+    tick style={color=black!40},
+    enlarge y limits=0.08,
+    title={Excluding ESIG},
+]
+\addplot[fill=ieeecolor, draw=none] coordinates {(16,IEEE Transactions on Power Systems) (15,IEEE Transactions on Power Delivery) (3,IEEE Transactions on Power Apparatus And Systems) (3,IEEE Transactions on Smart Grid) (1,IEEE Transactions on Sustainable Energy) (1,IEEE Transactions on Energy Conversion)};
+\node[anchor=west, font=\footnotesize] at (axis cs:16,IEEE Transactions on Power Systems) {16 (41.0\%)};
+\node[anchor=west, font=\footnotesize] at (axis cs:15,IEEE Transactions on Power Delivery) {15 (38.5\%)};
+\node[anchor=west, font=\footnotesize] at (axis cs:3,IEEE Transactions on Power Apparatus And Systems) {3 (7.7\%)};
+\node[anchor=west, font=\footnotesize] at (axis cs:3,IEEE Transactions on Smart Grid) {3 (7.7\%)};
+\node[anchor=west, font=\footnotesize] at (axis cs:1,IEEE Transactions on Sustainable Energy) {1 (2.6\%)};
+\node[anchor=west, font=\footnotesize] at (axis cs:1,IEEE Transactions on Energy Conversion) {1 (2.6\%)};
+\end{axis}
+\begin{scope}[shift={(5,4.0)}]
+\node[fill=ieeecolor, minimum width=10pt, minimum height=8pt, anchor=west] (legbox0) at (0,0) {}; \node[anchor=west, font=\small, right=3pt of legbox0] (legtxt0) {IEEE PES Transactions};
+\end{scope}
+\end{tikzpicture}
+\end{document}

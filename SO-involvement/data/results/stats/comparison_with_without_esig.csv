@@ -1,0 +1,17 @@
+metric,with,without,excluded_only
+Total documents,128,88,40
+Total citations,1399,745,654
+IEEE PES Transactions citations,65,39,26
+IEEE PES Transactions % of citations,4.6,5.2,
+IBRs: citations,151,105,46
+IBRs: IEEE PES Transactions,20,17,3
+Stability: citations,155,88,67
+Stability: IEEE PES Transactions,33,13,20
+DER: citations,321,200,121
+DER: IEEE PES Transactions,1,0,1
+CROF: citations,94,65,29
+CROF: IEEE PES Transactions,2,2,0
+Services: citations,73,29,44
+Services: IEEE PES Transactions,1,0,1
+Planning: citations,605,258,347
+Planning: IEEE PES Transactions,8,7,1

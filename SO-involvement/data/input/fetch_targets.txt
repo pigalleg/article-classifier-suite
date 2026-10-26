@@ -1,0 +1,26 @@
+# fetch_targets.txt
+# =================
+# One organization key per line (must match keys in organizations.toml).
+# Lines starting with # and blank lines are ignored.
+#
+# Usage:
+#   python src/fetch_documents.py --entities-file input/fetch_targets.txt
+#
+# Equivalent CLI form:
+#   python src/fetch_documents.py --entities ercot iso-ne pjm nerc esig g-pst
+
+ercot
+iso-ne
+miso
+pjm
+caiso
+spp
+nyiso
+nerc
+g-pst
+esig
+entso-e
+national-grid-eso
+aemo
+elia
+rte

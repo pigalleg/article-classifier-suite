@@ -53,6 +53,7 @@ ZERO_MARGIN_PDF_FIGURES = {
     "article_ra_affinity_distribution",
     "headline_agenda_reach",
     "programme_coverage_by_year",
+    "programme_coverage_era_shift",
 }
 COVERAGE_HEIGHT_PT = 330  # six panels, 3 rows x 2
 COVERAGE_SUMMARY_FONT_SIZE_PT = 5.5  # summary text in each panel
@@ -63,6 +64,8 @@ COVERAGE_CHANGE_COLOURS = {"up": "#1a9641", "down": "#d7191c", "small": "#808080
 COVERAGE_SMALL_CHANGE_PP = 2  # changes smaller than this, in percentage points, are grey
 # Low in grey rather than LEVEL_COLORS' pale yellow; darker than the plot background.
 COVERAGE_LEVEL_COLORS = {**LEVEL_COLORS, "Low": "#d9d9d9"}
+ERA_SHIFT_HEIGHT_PT = 300  # two panels, one per threshold
+ERA_SHIFT_LABEL_FONT_SIZE_PT = 7  # the "+10.9 pp" change labels
 HEADLINE_HEIGHT_PT = 200
 # Years and paper counts on the x axis; 8 pt "2015" is wider than the space per year.
 HEADLINE_YEAR_TICK_FONT_SIZE_PT = 7
@@ -487,49 +490,44 @@ def build_era_shift_figure(era_shift: pd.DataFrame) -> px.line:
             "PRP_Name": PROGRAMME_ORDER,
         },
     )
-    figure.update_traces(marker=dict(symbol="circle"))
+    figure.update_traces(marker=dict(symbol="circle", size=5), line_width=1)
     figure.update_xaxes(
         matches=None,
         showticklabels=True,
-        ticksuffix="%",
         nticks=8,
         title=None,
+        automargin=True,
     )
     figure.update_yaxes(
         title=None,
         tickmode="array",
         tickvals=PROGRAMME_ORDER,
+        ticklabelstandoff=4,
+        automargin=True,
     )
     figure.update_layout(
-        width=FIGURE_DIM[0],
-        height=FIGURE_DIM[1] * 2,
-        title=dict(text=f"Programme coverage shift, {ERA_LABELS[0]} to {ERA_LABELS[-1]}"),
+        **ieee_column_layout(height_pt=ERA_SHIFT_HEIGHT_PT),
         showlegend=False,
-        margin=dict(l=4, r=34, t=54, b=54),
-    )
-    figure.add_annotation(
-        x=-0.05,
-        y=-0.05,
-        xref="paper",
-        yref="paper",
-        text="Three-year pools (≈1,400-1,700 papers each) for clearing single-year sampling noise.",
-        showarrow=False,
-        xanchor="left",
-        yanchor="top",
-        font=dict(color=INK_MUTED, size=10),
+        # The axes reserve their own space; the top panel's title, an annotation, does not.
+        margin=dict(l=0, r=0, t=round(12 * PX_PER_PT), b=0),
     )
 
     facet_axes = {}
     for trace in figure.data:
         threshold = trace.hovertemplate.split("Threshold=", 1)[1].split("<br>", 1)[0]
         facet_axes.setdefault(threshold, (trace.xaxis, trace.yaxis))
+    # One x title, under the bottom panel.
+    bottom_xaxis = facet_axes[list(THRESHOLDS)[-1]][0]
+    figure.layout["xaxis" + bottom_xaxis[1:]].title = dict(
+        text="Share of papers, %", standoff=4
+    )
 
     for annotation in figure.layout.annotations:
         if annotation.text.startswith("Threshold="):
             threshold = annotation.text.split("=", 1)[-1]
             xaxis, yaxis = facet_axes[threshold]
             annotation.update(
-                text=threshold,
+                text=f"<b>{threshold}</b>",
                 x=0.5,
                 y=1.0,
                 xref=f"{xaxis} domain",
@@ -555,8 +553,8 @@ def build_era_shift_figure(era_shift: pd.DataFrame) -> px.line:
                 ayref=yaxis,
                 showarrow=True,
                 arrowhead=2,
-                arrowsize=1.2,
-                arrowwidth=2,
+                arrowsize=1,
+                arrowwidth=1.5,
                 arrowcolor=colour,
             )
             midpoint = (row[ERA_LABELS[0]] + row[ERA_LABELS[-1]]) / 2
@@ -566,11 +564,11 @@ def build_era_shift_figure(era_shift: pd.DataFrame) -> px.line:
                 xref=xaxis,
                 yref=yaxis,
                 text=f"<b>{change:+.1f} pp</b>",
-                yshift=10,
+                yshift=3,
                 xanchor="center",
                 yanchor="bottom",
                 showarrow=False,
-                font=dict(color=colour, size=10),
+                font=dict(color=colour, size=ERA_SHIFT_LABEL_FONT_SIZE_PT * PX_PER_PT),
             )
     return figure
 

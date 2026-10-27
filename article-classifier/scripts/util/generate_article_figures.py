@@ -49,7 +49,20 @@ IEEE_COLUMN_WIDTH_PT = 252  # IEEE Transactions single column, 3.5 in
 FONT_FAMILY = "Arial"
 ARTICLE_FONT_SIZE_PT = 8
 # Figures saved without Kaleido's PDF page margins, so the page is exactly the figure.
-ZERO_MARGIN_PDF_FIGURES = {"article_ra_affinity_distribution", "headline_agenda_reach"}
+ZERO_MARGIN_PDF_FIGURES = {
+    "article_ra_affinity_distribution",
+    "headline_agenda_reach",
+    "programme_coverage_by_year",
+}
+COVERAGE_HEIGHT_PT = 330  # six panels, 3 rows x 2
+COVERAGE_SUMMARY_FONT_SIZE_PT = 5.5  # summary text in each panel
+# Change from the first to the last era (ERA_LABELS), after each 2015-2026 share.
+COVERAGE_SHOW_CHANGE = True
+COVERAGE_COLOUR_CHANGE = False  # False: arrows and numbers in black
+COVERAGE_CHANGE_COLOURS = {"up": "#1a9641", "down": "#d7191c", "small": "#808080"}
+COVERAGE_SMALL_CHANGE_PP = 2  # changes smaller than this, in percentage points, are grey
+# Low in grey rather than LEVEL_COLORS' pale yellow; darker than the plot background.
+COVERAGE_LEVEL_COLORS = {**LEVEL_COLORS, "Low": "#d9d9d9"}
 HEADLINE_HEIGHT_PT = 200
 # Years and paper counts on the x axis; 8 pt "2015" is wider than the space per year.
 HEADLINE_YEAR_TICK_FONT_SIZE_PT = 7
@@ -315,8 +328,23 @@ def build_coverage_data(assignments_df: pd.DataFrame, papers_per_year: pd.Series
     )
 
 
-def build_coverage_figure(coverage_plot_data: pd.DataFrame) -> px.area:
+def change_text(change: float) -> str:
+    """Format an era change as an arrow and size, e.g. (▲10.9 pp)."""
+    arrow = "▲" if change > 0 else "▼"
+    if not COVERAGE_COLOUR_CHANGE:
+        return f"({arrow}{abs(change):.1f} pp)"
+    if abs(change) < COVERAGE_SMALL_CHANGE_PP:
+        colour = COVERAGE_CHANGE_COLOURS["small"]
+    else:
+        colour = COVERAGE_CHANGE_COLOURS["up" if change > 0 else "down"]
+    return f"(<span style='color:{colour}'>{arrow}{abs(change):.1f}</span> pp)"
+
+
+def build_coverage_figure(
+    coverage_plot_data: pd.DataFrame, era_shift: pd.DataFrame
+) -> px.area:
     """Build the faceted six-band programme coverage figure."""
+    era_change = era_shift.set_index(["PRP_Name", "Threshold"])["Change"]
     all_year_coverage = (
         coverage_plot_data.groupby(
             ["PRP_Name", "Affinity_Level"], observed=True
@@ -350,50 +378,72 @@ def build_coverage_figure(coverage_plot_data: pd.DataFrame) -> px.area:
         x="Year",
         y="Share",
         color="Affinity_Level",
-        color_discrete_map=LEVEL_COLORS,
+        color_discrete_map=COVERAGE_LEVEL_COLORS,
         facet_col="PRP_Name",
         facet_col_wrap=2,
-        facet_row_spacing=0.08,
+        facet_row_spacing=0.07,
+        facet_col_spacing=0.04,
         category_orders={
             "PRP_Name": PROGRAMME_ORDER,
             "Affinity_Level": PLOT_LEVEL_ORDER,
         },
-        labels={"Affinity_Level": "", "Share": "Share of papers (%)"},
+        labels={"Affinity_Level": ""},
     )
+    figure.update_traces(line_width=1)
     figure.update_layout(
-        width=FIGURE_DIM[0],
-        height=FIGURE_DIM[1] * 2,
-        title=dict(text="TPWRS affinity-level distribution by programme"),
-        legend=dict(title_text="", orientation="h", yanchor="bottom", y=-0.15, xanchor="left", x=0),
-        margin=dict(l=4, r=34, t=54, b=84),
+        **ieee_column_layout(height_pt=COVERAGE_HEIGHT_PT),
+        legend=dict(
+            title_text="",
+            orientation="h",
+            yanchor="bottom",
+            y=1.03,
+            xanchor="left",
+            x=0,
+            itemwidth=30,
+        ),
+        # The axes and legend reserve their own space.
+        margin=dict(l=0, r=0, t=0, b=0),
     )
-    figure.update_yaxes(title=None, range=[0, 100], ticksuffix="%", dtick=20)
-    figure.update_xaxes(title=None, dtick=3)
+    figure.update_yaxes(
+        title=None,
+        range=[0, 100],
+        dtick=20,
+        ticklabelstandoff=4,
+        automargin=True,
+    )
+    # One y title for all panels, on the middle row so it is centred.
+    figure.update_yaxes(title=dict(text="Share of papers, %", standoff=4), row=2, col=1)
+    figure.update_xaxes(title=None, dtick=3, automargin=True)
     facet_axes = {}
     for trace in figure.data:
         programme = trace.hovertemplate.split("PRP_Name=", 1)[1].split("<br>", 1)[0]
         facet_axes.setdefault(programme, (trace.xaxis, trace.yaxis))
+    # Rename all panel titles before adding the summaries: add_annotation replaces the
+    # annotation list, so titles edited after it would not reach the figure.
+    programmes = []
     for annotation in figure.layout.annotations:
-        annotation.text = annotation.text.split("=", 1)[-1]
-    for annotation in list(figure.layout.annotations):
-        programme = annotation.text
-        moderate = overall_shares.loc[(programme, "Moderate-or-better"), "Share"]
-        high = overall_shares.loc[(programme, "High-or-better"), "Share"]
+        programme = annotation.text.split("=", 1)[-1]
+        programmes.append(programme)
+        annotation.text = f"<b>{programme}</b>"
+    for programme in programmes:
+        lines = []
+        for threshold in THRESHOLDS:
+            line = f"{threshold}: {overall_shares.loc[(programme, threshold), 'Share']:.1f}%"
+            if COVERAGE_SHOW_CHANGE:
+                line += " " + change_text(era_change[(programme, threshold)])
+            lines.append(line)
         xaxis, yaxis = facet_axes[programme]
         figure.add_annotation(
             x=0.02,
             y=0.96,
             xref=f"{xaxis} domain",
             yref=f"{yaxis} domain",
-            text=(
-                f"<b>2015-2026</b><br>Moderate-or-better: {moderate:.1f}%<br>"
-                f"High-or-better: {high:.1f}%"
-            ),
+            text="<br>".join(lines),
             showarrow=False,
             xanchor="left",
             yanchor="top",
             align="left",
-            font=dict(color=INK_SECONDARY, size=9),
+            font=dict(size=COVERAGE_SUMMARY_FONT_SIZE_PT * PX_PER_PT),
         )
     return figure
 
@@ -890,7 +940,7 @@ def main() -> None:
     )
     figures = {
         "headline_agenda_reach": build_headline_figure(reach_share, years, year_ticktext),
-        "programme_coverage_by_year": build_coverage_figure(coverage_plot_data),
+        "programme_coverage_by_year": build_coverage_figure(coverage_plot_data, era_shift),
         "programme_coverage_era_shift": build_era_shift_figure(era_shift),
         "article_ra_affinity_distribution": build_article_ra_figure(
             article_benchmark_rows, article_final_rows, selected_abstract

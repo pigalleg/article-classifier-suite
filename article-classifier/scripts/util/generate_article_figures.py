@@ -46,6 +46,7 @@ FIGURE_DIM = (516, 310)
 # Kaleido writes PDFs at 96 px per inch; print sizes are in points (72 per inch).
 PX_PER_PT = 96 / 72
 IEEE_COLUMN_WIDTH_PT = 252  # IEEE Transactions single column, 3.5 in
+IEEE_DOUBLE_COLUMN_WIDTH_PT = 516  # IEEE Transactions full text width, 7.16 in
 FONT_FAMILY = "Arial"
 ARTICLE_FONT_SIZE_PT = 8
 # Figures saved without Kaleido's PDF page margins, so the page is exactly the figure.
@@ -54,6 +55,7 @@ ZERO_MARGIN_PDF_FIGURES = {
     "headline_agenda_reach",
     "programme_coverage_by_year",
     "programme_coverage_era_shift",
+    "programme_reach_bubbles",
 }
 COVERAGE_HEIGHT_PT = 330  # six panels, 3 rows x 2
 COVERAGE_SUMMARY_FONT_SIZE_PT = 5.5  # summary text in each panel
@@ -66,6 +68,27 @@ COVERAGE_SMALL_CHANGE_PP = 2  # changes smaller than this, in percentage points,
 COVERAGE_LEVEL_COLORS = {**LEVEL_COLORS, "Low": "#d9d9d9"}
 ERA_SHIFT_HEIGHT_PT = 300  # two panels, one per threshold
 ERA_SHIFT_LABEL_FONT_SIZE_PT = 7  # the "+10.9 pp" change labels
+# Bubble chart of paper counts per year and programme, two columns wide.
+BUBBLE_HEIGHT_PT = 250
+BUBBLE_MAX_DIAMETER_PT = 20  # the largest count in the figure; bubble areas scale with counts
+BUBBLE_SHOW_COUNTS = True  # counts above each bubble: "173/60" = 173 Moderate-or-better, 60 High
+BUBBLE_COUNT_FONT_SIZE_PT = 5.0
+BUBBLE_COUNT_GAP_PT = 0.0  # counts sit this far above the row's largest bubble
+BUBBLE_COLOUR_COUNTS = True  # each count in its bubble's colour; False: all black
+BUBBLE_PLAIN_AXES = True  # white background, no grid, black year axis; False: grey plot area
+BUBBLE_CONNECT_ROWS = True  # a line behind each row, from the first bubble to the last
+BUBBLE_ROW_LINE_WIDTH = 1
+BUBBLE_KEY_GAP_PT = 4  # space between the size key's largest circle and the plot
+BUBBLE_LOW_ROW = "Low relevance"  # top row: papers with no programme at Moderate or better
+BUBBLE_LOW_ROW_LABEL = "Low<br>relevance"  # its y-axis label; <br> starts a new line
+BUBBLE_COLOURS = {
+    "Low": "#a6a6a6",
+    # Muted green: LEVEL_COLORS' Moderate (#4ab68c) looks too bright as large opaque bubbles.
+    "Moderate-or-better": "#7fbfa0",
+    "High-or-better": LEVEL_COLORS["High"],
+}
+BUBBLE_KEY_PAPERS = (100, 200, 400)  # bubble sizes shown in the key, in papers
+BUBBLE_SEPARATE_LOW_ROW = False  # grey line between the low-relevance row and the programmes
 HEADLINE_HEIGHT_PT = 200
 # Years and paper counts on the x axis; 8 pt "2015" is wider than the space per year.
 HEADLINE_YEAR_TICK_FONT_SIZE_PT = 7
@@ -112,14 +135,15 @@ ARTICLE_PROGRAMME_COLOURS = {
 }
 
 
-def ieee_column_layout(height_pt: float) -> dict:
+def ieee_column_layout(height_pt: float, width_pt: float = IEEE_COLUMN_WIDTH_PT) -> dict:
     """Shared paper style: one IEEE column at print size, Arial, black text, grey plot area.
 
     Sizes are given in points and converted to Plotly's pixels, so fonts print at
-    ARTICLE_FONT_SIZE_PT when the PDF is included at column width.
+    ARTICLE_FONT_SIZE_PT when the PDF is included at column width (or, with
+    width_pt=IEEE_DOUBLE_COLUMN_WIDTH_PT, at full text width).
     """
     return dict(
-        width=round(IEEE_COLUMN_WIDTH_PT * PX_PER_PT),
+        width=round(width_pt * PX_PER_PT),
         height=round(height_pt * PX_PER_PT),
         font=dict(family=FONT_FAMILY, size=ARTICLE_FONT_SIZE_PT * PX_PER_PT, color="black"),
         plot_bgcolor=ARTICLE_PLOT_BACKGROUND,
@@ -573,6 +597,192 @@ def build_era_shift_figure(era_shift: pd.DataFrame) -> px.line:
     return figure
 
 
+def build_bubble_data(
+    assignments_df: pd.DataFrame, papers_per_year: pd.Series, reach_share: pd.DataFrame
+) -> pd.DataFrame:
+    """Papers per year reaching each threshold in each programme, plus the low-relevance row."""
+    programmes = share_by(assignments_df, papers_per_year, "Year", "PRP_Name").rename(
+        columns={"PRP_Name": "Row"}
+    )
+    low = reach_share[reach_share["Threshold"] == "Low"].assign(Row=BUBBLE_LOW_ROW)
+    return pd.concat([low, programmes], ignore_index=True)[
+        ["Year", "Row", "Threshold", "Papers_Reaching", "Papers_Total", "Share"]
+    ]
+
+
+def build_bubble_figure(bubble_data: pd.DataFrame, years: list[int]) -> go.Figure:
+    """Build the bubble chart of paper counts by year and programme.
+
+    Each programme has a Moderate-or-better bubble with its High-or-better bubble inside;
+    the top row has one grey bubble for papers that reach Moderate in no programme.
+    """
+    rows = [BUBBLE_LOW_ROW, *PROGRAMME_ORDER]
+    max_papers = bubble_data["Papers_Reaching"].max()
+
+    def diameter(papers) -> np.ndarray:
+        # Plotly marker sizes are diameters in px; the square root makes areas match counts.
+        return BUBBLE_MAX_DIAMETER_PT * PX_PER_PT * np.sqrt(np.asarray(papers) / max_papers)
+
+    # The outer bubble of each row: grey Low for the top row, Moderate-or-better for programmes.
+    outer = bubble_data[
+        (bubble_data["Threshold"] == "Low") | (bubble_data["Row"] != BUBBLE_LOW_ROW)
+    ]
+    outer = outer[outer["Threshold"] != "High-or-better"]
+
+    figure = go.Figure()
+    if BUBBLE_CONNECT_ROWS:
+        # Drawn first, so the lines sit behind the bubbles.
+        for row in rows:
+            row_years = outer.loc[outer["Row"] == row, "Year"]
+            figure.add_trace(
+                go.Scatter(
+                    x=[row_years.min(), row_years.max()],
+                    y=[rows.index(row)] * 2,
+                    mode="lines",
+                    line=dict(
+                        color=BUBBLE_COLOURS["Low" if row == BUBBLE_LOW_ROW else "Moderate-or-better"],
+                        width=BUBBLE_ROW_LINE_WIDTH,
+                    ),
+                    showlegend=False,
+                    hoverinfo="skip",
+                )
+            )
+    # Drawing order: the High-or-better bubbles go on top of the Moderate-or-better ones.
+    for threshold in ("Low", "Moderate-or-better", "High-or-better"):
+        series = bubble_data[bubble_data["Threshold"] == threshold]
+        figure.add_trace(
+            go.Scatter(
+                x=series["Year"],
+                y=series["Row"].map(rows.index),
+                mode="markers",
+                name=threshold,
+                # Legend order: Moderate-or-better, High-or-better, then Low (drawn first).
+                legendrank=1001 if threshold == "Low" else 1000,
+                marker=dict(
+                    size=diameter(series["Papers_Reaching"]),
+                    color=BUBBLE_COLOURS[threshold],
+                    line_width=0,
+                    opacity=1,
+                ),
+                customdata=series["Papers_Reaching"],
+                hovertemplate=f"%{{x}}: %{{customdata}} papers ({threshold})<extra></extra>",
+            )
+        )
+    if BUBBLE_SHOW_COUNTS:
+        # "Moderate/High" for programmes, one count for the low-relevance row. All counts in
+        # a row share one height: each label gets an invisible marker sized so the text sits
+        # BUBBLE_COUNT_GAP_PT above the row's largest bubble. Plotly puts "top center" text
+        # radius / 0.8 + 1 px above a marker's centre, so the invisible radius is
+        # 0.8 * (wanted offset - 1 px).
+        high_papers = bubble_data[bubble_data["Threshold"] == "High-or-better"].set_index(
+            ["Year", "Row"]
+        )["Papers_Reaching"]
+        def count_text(papers: float, threshold: str) -> str:
+            if not BUBBLE_COLOUR_COUNTS:
+                return f"{papers:.0f}"
+            return f"<span style='color:{BUBBLE_COLOURS[threshold]}'>{papers:.0f}</span>"
+
+        labels = [
+            count_text(papers, threshold)
+            + (" " if BUBBLE_COLOUR_COUNTS else "/")  # the colours already tell them apart
+            + count_text(high_papers.get((year, row), 0), "High-or-better")
+            if threshold == "Moderate-or-better"
+            else count_text(papers, threshold)
+            for year, row, threshold, papers in outer[
+                ["Year", "Row", "Threshold", "Papers_Reaching"]
+            ].itertuples(index=False)
+        ]
+        row_max = outer.groupby("Row")["Papers_Reaching"].transform("max")
+        label_offset = diameter(row_max) / 2 + BUBBLE_COUNT_GAP_PT * PX_PER_PT
+        label_marker_size = np.maximum(2 * 0.8 * (label_offset - 1), 0)
+        figure.add_trace(
+            go.Scatter(
+                x=outer["Year"],
+                y=outer["Row"].map(rows.index),
+                mode="markers+text",
+                text=labels,
+                textposition="top center",
+                textfont=dict(size=BUBBLE_COUNT_FONT_SIZE_PT * PX_PER_PT),
+                marker=dict(
+                    size=label_marker_size,
+                    opacity=0,
+                ),
+                showlegend=False,
+                hoverinfo="skip",
+            )
+        )
+    if BUBBLE_SEPARATE_LOW_ROW:
+        figure.add_hline(y=0.5, line_width=0.75, line_color="#808080")
+
+    # Size key at the top right, in line with the legend: outlined circles with their counts,
+    # placed right to left in px from the plot's top-right corner.
+    font_px = ARTICLE_FONT_SIZE_PT * PX_PER_PT
+    key_diameters = diameter(BUBBLE_KEY_PAPERS)
+    centre_y = key_diameters.max() / 2 + BUBBLE_KEY_GAP_PT * PX_PER_PT
+    x = 0.0
+    for papers, d in reversed(list(zip(BUBBLE_KEY_PAPERS, key_diameters))):
+        x -= len(str(papers)) * 0.556 * font_px + 2  # Arial digits are 0.556 em wide
+        figure.add_annotation(
+            text=str(papers), x=1, y=1, xref="paper", yref="paper", xshift=x, yshift=centre_y,
+            xanchor="left", yanchor="middle", showarrow=False,
+        )
+        x -= 2
+        figure.add_shape(
+            type="circle", xref="paper", yref="paper", xsizemode="pixel", ysizemode="pixel",
+            xanchor=1, yanchor=1, x0=x - d, x1=x, y0=centre_y - d / 2, y1=centre_y + d / 2,
+            line=dict(color="black", width=0.75),
+        )
+        x -= d + 8
+    figure.add_annotation(
+        text="Papers:", x=1, y=1, xref="paper", yref="paper", xshift=x + 4, yshift=centre_y,
+        xanchor="right", yanchor="middle", showarrow=False,
+    )
+
+    # The size key, made of shapes and annotations, needs the top margin. The legend is
+    # centred on the key's row; its y is a fraction of the plot height, which is estimated
+    # here (an error of a few px in the height moves the legend by well under 1 px).
+    top_margin = round(centre_y + key_diameters.max() / 2 + 2)
+    plot_height = BUBBLE_HEIGHT_PT * PX_PER_PT - top_margin - 2 * font_px
+    figure.update_layout(
+        **ieee_column_layout(height_pt=BUBBLE_HEIGHT_PT, width_pt=IEEE_DOUBLE_COLUMN_WIDTH_PT),
+        legend=dict(
+            orientation="h",
+            x=0,
+            xanchor="left",
+            y=1 + centre_y / plot_height,
+            yanchor="middle",
+            itemsizing="constant",
+        ),
+        margin=dict(l=0, r=0, t=top_margin, b=0),
+    )
+    if BUBBLE_PLAIN_AXES:
+        figure.update_layout(plot_bgcolor="white")
+        figure.update_xaxes(showline=True, linecolor="black", linewidth=1, ticks="outside",
+                            tickcolor="black", ticklen=4)
+        figure.update_xaxes(showgrid=False)
+        figure.update_yaxes(showgrid=False)
+    figure.update_xaxes(
+        title=None,
+        tickmode="array",
+        tickvals=years,
+        tickangle=0,
+        range=[years[0] - 0.6, years[-1] + 0.6],
+        zeroline=False,
+        automargin=True,
+    )
+    figure.update_yaxes(
+        title=None,
+        tickmode="array",
+        tickvals=list(range(len(rows))),
+        ticktext=[BUBBLE_LOW_ROW_LABEL, *rows[1:]],
+        range=[len(rows) - 0.5, -0.5],  # first row at the top
+        zeroline=False,
+        ticklabelstandoff=4,
+        automargin=True,
+    )
+    return figure
+
+
 # Figure 4: selected-article RA affinity distribution
 def build_article_ra_plot_data(
     benchmark_root: Path, article_run_id: str
@@ -931,6 +1141,7 @@ def main() -> None:
     reach_share = add_low_share(share_by(assignments_df, papers_per_year, "Year"))
     coverage_plot_data = build_coverage_data(assignments_df, papers_per_year)
     era_shift = build_era_shift_data(assignments_df, papers_per_era)
+    bubble_data = build_bubble_data(assignments_df, papers_per_year, reach_share)
 
     # Figure 4: selected high-disagreement article's RA score distribution.
     article_benchmark_rows, article_final_rows, selected_abstract = build_article_ra_plot_data(
@@ -940,6 +1151,7 @@ def main() -> None:
         "headline_agenda_reach": build_headline_figure(reach_share, years, year_ticktext),
         "programme_coverage_by_year": build_coverage_figure(coverage_plot_data, era_shift),
         "programme_coverage_era_shift": build_era_shift_figure(era_shift),
+        "programme_reach_bubbles": build_bubble_figure(bubble_data, years),
         "article_ra_affinity_distribution": build_article_ra_figure(
             article_benchmark_rows, article_final_rows, selected_abstract
         ),
@@ -948,6 +1160,7 @@ def main() -> None:
         "headline_agenda_reach": reach_share,
         "programme_coverage_by_year": coverage_plot_data,
         "programme_coverage_era_shift": era_shift,
+        "programme_reach_bubbles": bubble_data,
         "article_ra_affinity_distribution": pd.concat(
             [article_benchmark_rows, article_final_rows], ignore_index=True
         ),

@@ -1,0 +1,38 @@
+institute,pattern,notes
+LTE Shawinigan (Hydro-Quebec),Laboratoire des Technologies|\bLTEE?\b|Shawinigan,Hydro-Quebec's energy technology laboratory
+IREQ (Hydro-Quebec),"\bIREQ\b|Institut\w* de Recherches?\W{0,3}(d\W{0,3})?Hydro|Hydro[- ]?Qu[ée]?bec\W{0,3}s?\W{0,3}(Research|Institute of Research|Res\.)|Research Institute of Hydro|Centre de Recherche d.{1,3}Hydro|Hydro[- ]?Qu[ée]?bec.{0,120}Varennes",Spellings of Hydro-Quebec's research institute at Varennes
+North China EPRI (State Grid),North China Electric Power Research Institute,State Grid North China branch research institute
+Regional China EPRI (State Grid),(East|Central|Northwest|Northeast|Southwest) China Electric Power Research Institute,State Grid regional-branch research institutes
+GEIRI North America (State Grid),GEIRI ?North America|GEIRINA|Global Energy Interconnection Research Institute North America,
+GEIRI / Smart Grid Research Institute (State Grid),Global Energy Interconnection Research|\bGEIRI\b|State Grid Smart Grid Research|(?<!Tsinghua )Smart Grid Research Institute|State Key Laboratory of Advanced (Power )?Transmission Technology(?!.*(CEPRI|China Electric Power Research|C-?EPRI)),State Grid Smart Grid Research Institute was renamed GEIRI in 2016
+NARI Group / SGEPRI (State Grid),\bNARI\b|Nanjing Automation Research|State Grid Electric Power Research Institute(?! of)|\bSGEPRI\b,NARI Group is also called State Grid Electric Power Research Institute
+CEPRI (State Grid),"China Electric(al)? Power,? Research|\bCEPRI\b|C-?EPRI|China[- ]EPRI|State Key Laborator(y|ies) of Power Grid (Environmental Protection|Safety)|China National Key Laboratory of Power Grid Security|National Key Laboratory of Renewable Energy Grid|Wuhan High Voltage Research Institute",China Electric Power Research Institute and its subsidiaries and labs
+State Grid Energy Research Institute (SGERI),State Grid Energy (Research )?Institute|\bSGERI\b,
+State Grid Economic and Technological Research Institute,State Power Economic Research|State Grid Economic and Technolog,
+Global Energy Interconnection Group (State Grid),Global Energy Interconnection Group,
+CSG Digital Grid Research Institute,Digital Grid Research Institute,
+CSG Electric Power Research Institute,"(China )?South(ern)? (China )?(Power )?Grid.{0,60}Research|Research.{0,60}(China )?South(ern)? (China )?Power Grid|\bCSG\b.{0,40}Research|Research.{0,40}\bCSG\b|Southern Electric Power Research Institute|China South Power Grid|China Southern Grid|South Grid of China|Source Grid of China|State Key Laboratory of HVDC Transmission Technology|New Power System \(Beijing\) Research Institute",China Southern Power Grid's central research institute
+CEPEL (Eletrobras),\bCEPEL\b|Centro de Pesquisas de Energ|(Electric(al)?|Brazilian) (Energy|Power|Electric(al)? Power|Electric Energy) Research Cent,
+KEPCO Research Institute (KEPRI),KEPRI|KEPCO Research|Research Institute of Korea Electric|Korean? (and )?Electric Power,
+Powertech Labs (BC Hydro),Powertech,
+Manitoba HVDC Research Centre (Manitoba Hydro),Manitoba HVDC|Manitoba Hydro International,
+Ontario Hydro Technologies,Ontario Hydro Technologies,
+Niroo Research Institute (Iran),Niroo|\bNRI\b,
+National HVDC Centre (SSEN Transmission),National HVDC Cent,
+Taipower Research Institute,Taiwan Power|Taipower,
+TNB Research (Malaysia),TNB Research|Tenaga Nasional,
+Eskom Research and Innovation Centre,Eskom,
+CLP Research Institute (Hong Kong),\bCLP\b,
+DEWA R&D Centre (Dubai),Dubai Electricity|\bDEWA\b,
+EDF R&D,\bEDF\b|[ÉE]lectricit[ée]? de France,
+Vattenfall R&D,Vattenfall,
+Enel research,\bE[Nn][Ee][Ll]\b,
+Iberdrola R&D and innovation,Iberdrola,
+Endesa R&D,Endesa,
+E.ON research,E\.ON,
+TEPCO R&D (Tokyo Electric Power),Tokyo Electric Power|TEPCO,
+Kansai Electric Power R&D,Kansai Electric Power,
+Chubu Electric Power R&D,Chubu Electric Power,
+Tohoku Electric Power R&D,Tohoku Electric Power,
+Kyushu Electric Power R&D,Kyushu Electric Power,
+Hokkaido / Hokuriku Electric Power R&D,Hokkaido Electric|Hokuriku Electric,

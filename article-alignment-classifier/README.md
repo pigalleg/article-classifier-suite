@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo_v1.png" alt="article_classifier_logo" width="200"/>
+  <img src="../logo_v1.png" alt="article_classifier_logo" width="200"/>
 </p>
 
 # IEEE Classifier

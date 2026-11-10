@@ -2,7 +2,7 @@
   <img src="../logo_v1.png" alt="article_classifier_logo" width="200"/>
 </p>
 
-# SO-involvement
+# Uptake of IEEE Research by System Operators
 
 How often do power-system organizations — system operators (TSOs/ISOs/RTOs),
 research consortia (ESIG, G-PST) and vendors — cite IEEE PES Transactions in

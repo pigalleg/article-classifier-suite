@@ -22,6 +22,10 @@ Names are merged in two ways:
   postcodes and bracketed acronyms ignored) and shown under its most common spelling. Names
   that differ in more than that (e.g. an abbreviation) can still be listed twice further down
   the table.
+An affiliation counts as academic if a part of it names a university, college, polytechnic or
+institute of technology (UNIVERSITY), or, failing that, an academic institution named otherwise
+(MORE_ACADEMIC: Skoltech, IISc, KAIST, Supelec, ...); a named university takes precedence over
+its school or institute.
 Single-organisation entries of so_organisations.csv are reported by name (research institutes
 by their parent, e.g. all State Grid institutes as State Grid). Provincial State Grid and CSG
 institutes not in research_institute_names.csv are named by province; the rest fall back to
@@ -68,6 +72,21 @@ GROUP_ENTRY = re.compile(r"companies|utilities|operators|groups|agencies|coopera
                          r"|Ministries|distributors|DSOs|divisions|unnamed", re.IGNORECASE)
 UNIVERSITY = re.compile(r"univ|universit|college|polytechn|politec|hochschule|institute of technology"
                         r"|\b(ETH|EPFL|KTH|DTU|NTNU|MIT|IIT|UPC)\b|Tsinghua|Technion", re.IGNORECASE)
+# Academic institutions whose names lack the words above (Skoltech, IISc, KAIST, Supelec,
+# Instituto Superior Tecnico, ...). Used only when no part of the affiliation matches
+# UNIVERSITY, and not in affiliations that match NOT_ACADEMIC. Names such as "Moscow Power
+# Engineering Institute" are left to university_names.csv, because "Engineering Institute"
+# alone also names design companies and research institutes.
+MORE_ACADEMIC = re.compile(
+    r"institute of science|institute of engineering|"
+    r"instituto (superior|tecnol|polit)|institut (teknologi|polytechnique|national polytechnique|sup)|"
+    r"[ée]cole (centrale|sup[ée]rieure|nationale|des mines|normale)|centrale ?sup|sup[ée]lec|centrale (lille|nantes|lyon|marseille)|"
+    r"\b(KAIST|Skoltech|MPEI|INSA|IISc)\b|grenoble inp", re.IGNORECASE)
+# Design and planning institutes (companies), academies of sciences and public research bodies.
+NOT_ACADEMIC = re.compile(r"planning|design|academy of sciences|Luxembourg Institute of Science", re.IGNORECASE)
+# Generic qualifiers that are not the institution's name, e.g. in "Moscow Power Engineering
+# Institute, National Research University".
+QUALIFIER = re.compile(r"^(the )?(National )?Research University$", re.IGNORECASE)
 
 
 def fix_mojibake(text: str) -> str:
@@ -124,6 +143,9 @@ class NameCounter:
         rows = [(names[key], *self.extra.get(key, blank), n) for key, n in self.papers.items()]
         table = pd.DataFrame(rows, columns=["organisation", *extra_columns, "papers"])
         table = table.sort_values(["papers", "organisation"], ascending=[False, True], ignore_index=True)
+        duplicated = sorted(set(table.loc[table["organisation"].duplicated(), "organisation"]))
+        if duplicated:  # a spelling outside an alias shown under the alias's name
+            raise ValueError(f"Names listed twice; extend the alias list: {duplicated}")
         rank = {name: i for i, name in enumerate(table["organisation"])}
         variants = pd.DataFrame(
             sorted(((names[key], spelling, n) for (key, spelling), n in self.variant_papers.items()),
@@ -157,11 +179,14 @@ def institute_label(unit: str, hit: dict) -> tuple[str, str]:
 
 def university_part(unit: str) -> str | None:
     """The comma-separated part of an affiliation that names the university."""
-    for part in (p.strip() for p in unit.split(",")):
-        if UNIVERSITY.search(part) and not re.match(r"(Department|Dept|School|Faculty|College of)\b", part, re.I):
-            part = re.sub(r"^the\s+", "", part, flags=re.I)
-            part = re.sub(r"\bUniv\.?(?=\s|$)", "University", part)
-            return re.sub(r"\s+", " ", part)
+    parts = [p.strip() for p in unit.split(",") if not QUALIFIER.match(p.strip())]
+    patterns = [UNIVERSITY] + ([] if NOT_ACADEMIC.search(unit) else [MORE_ACADEMIC])
+    for pattern in patterns:  # a university name wins over a school or institute name
+        for part in parts:
+            if pattern.search(part) and not re.match(r"(Department|Dept|School|Faculty|College of)\b", part, re.I):
+                part = re.sub(r"^the\s+", "", part, flags=re.I)
+                part = re.sub(r"\bUniv\.?(?=\s|$)", "University", part)
+                return re.sub(r"\s+", " ", part)
     return None
 
 
@@ -178,10 +203,17 @@ def direct_name(hit: dict, unit: str) -> tuple[str, str, str]:
 
 
 def university_name(unit: str) -> tuple[str, str] | None:
-    """(key, spelling) of the university named in an affiliation, if any."""
+    """(key, spelling) of the university named in an affiliation, if any. An alias for a
+    school or institute without "university" in its name (Instituto Superior Tecnico, Masdar
+    Institute, ...) gives way when the affiliation also names a university, e.g. "Instituto
+    Superior Tecnico, Universidade de Lisboa" counts for the University of Lisbon."""
     unit = fix_mojibake(unit)
     part = university_part(unit)
     alias = first_alias(unit, UNIVERSITY_ALIASES)
+    if (alias and not UNIVERSITY.search(alias) and part and UNIVERSITY.search(part)
+            and first_alias(part, UNIVERSITY_ALIASES) != alias):  # "Virginia Polytechnic Institute and
+        # State University" is Virginia Tech itself, not a university that Virginia Tech belongs to
+        alias = first_alias(part, [(n, p) for n, p in UNIVERSITY_ALIASES if UNIVERSITY.search(n)])
     if alias:
         return f"alias:{alias}", part or unit
     if part:

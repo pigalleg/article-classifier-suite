@@ -1,4 +1,19 @@
 university,pattern,notes
+Technical University of Lisbon (until 2013),Techn\w* Univ\w*\b\.? of Lisbo|Universidade T[ée]cnica de Lisboa,Merged into the University of Lisbon in 2013; kept separate
+University of Lisbon,(?<!NOVA )Univ\w*\b\.?( de| of)? Lisbo[an],Includes Instituto Superior Tecnico when the affiliation names the university
+Universite Paris-Sud (until 2019),Paris\W?Sud|Paris\W?(XI|11)\b,Merged into Universite Paris-Saclay in 2020; kept separate
+Universite Paris-Saclay,Paris\W?Saclay,
+Khalifa University,(?<!Bin )Khalifa Univ,Includes Masdar Institute when the affiliation names Khalifa University
+Skolkovo Institute of Science and Technology (Skoltech),Skolkovo Inst|\bSkoltech\b,
+Moscow Power Engineering Institute (MPEI),Moscow Power (Eng|State Inst)|Moscow Energy Inst|\bMPEI\b,
+Indian Institute of Science (IISc),Indian Inst\w*\b\.? of Science\b(?!\s+(Education|and))|\bIISc\b,Bangalore; not IISER or IIEST
+Korea Advanced Institute of Science and Technology (KAIST),Korea Advanced Inst|\bKAIST\b,
+Masdar Institute of Science and Technology,Masdar Inst,"Kept separate from Khalifa University, into which it merged in 2017"
+Gwangju Institute of Science and Technology (GIST),Gwangju Inst,
+Ulsan National Institute of Science and Technology (UNIST),Ulsan National Inst|\bUNIST\b,
+CentraleSupelec,Centrale\W?Sup,Formed in 2015 from Supelec and Ecole Centrale Paris
+Supelec,Sup[ée]lec|Ecole Sup\w* d.?Electricit,"Kept separate from CentraleSupelec, which it became part of in 2015"
+Instituto Superior Tecnico (Lisbon),Instituto Superior T[ée]cnico,
 National Tsing Hua University (Taiwan),National Tsing ?Hua,"Hsinchu, Taiwan; not Tsinghua University"
 Tsinghua-Berkeley Shenzhen Institute,Tsinghua.?Berkeley|\bTBSI\b,Joint institute of Tsinghua and UC Berkeley; kept separate
 Tsinghua University,Tsinghua|Tsing ?Hua Univ,Includes the Shenzhen International Graduate School and the Sichuan Energy Internet Research Institute
@@ -66,6 +81,8 @@ Southwest Jiaotong University,South ?west Jiao\W?tong,
 KTH Royal Institute of Technology,(?-i:\bKTH\b)|Royal Inst\w*\b\.? of Tech,
 University of Connecticut,Univ\w*\b\.? of Connecticut|\bUConn\b,
 Harbin Institute of Technology,Harbin Inst\w*\b\.? of Tech,
+University of Washington Tacoma,"Univ\w*\b\.? of Washington\W{0,5}(at )?Tacoma",
+University of Washington Bothell,"Univ\w*\b\.? of Washington\W{0,5}(at )?Bothell",
 University of Washington,"Univ\w*\b\.? of Washington(?!\W{0,5}(at )?(Tacoma|Bothell))",Seattle; not Washington University in St. Louis
 University of Macau,(?<!City )Univ\w*\b\.? of Maca[ou]|Macau Univ\w*\b(?!\.? of),
 University of Sheffield,Univ\w*\b\.? of Sheffield|Sheffield Univ,

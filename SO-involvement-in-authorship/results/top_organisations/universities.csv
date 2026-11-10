@@ -64,6 +64,7 @@ National University of Singapore,144
 University of Bath,144
 University of Queensland,143
 Amirkabir University of Technology,139
+Khalifa University,139
 North Carolina State University,139
 Southern Methodist University,138
 Tsinghua-Berkeley Shenzhen Institute,137
@@ -85,7 +86,6 @@ University of Electronic Science and Technology of China,107
 University of Western Australia,106
 Ohio State University,104
 Politecnico di Milano,103
-Khalifa University,102
 Hefei University of Technology,101
 Nanjing University of Aeronautics and Astronautics,101
 Rensselaer Polytechnic Institute,101
@@ -124,8 +124,11 @@ Northeastern University (USA),78
 University of Western Ontario,78
 University of Denver,77
 Cairo University,76
+Indian Institute of Science (IISc),76
+Masdar Institute of Science and Technology,75
 University of Campinas,75
 Guangxi University,74
+University of Lisbon,74
 University of Newcastle (Australia),74
 University of Wollongong,74
 Islamic Azad University,73
@@ -203,10 +206,8 @@ California Institute of Technology,46
 Karlsruhe Institute of Technology,46
 Pontificia Universidad Católica de Chile,46
 University of Cyprus,45
-University of Lisbon,45
 Ferdowsi University of Mashhad,44
 University of Leeds,44
-Khalifa University of Science and Technology,43
 Luleå University of Technology,43
 Universidad Pontificia Comillas,43
 Wayne State University,43
@@ -250,6 +251,7 @@ Yanshan University,36
 McMaster University,35
 Oregon State University,35
 Pontifical Catholic University of Rio de Janeiro,35
+Skolkovo Institute of Science and Technology (Skoltech),35
 Southern University of Science and Technology,35
 São Paulo State University,35
 Universidad Michoacana de San Nicolás de Hidalgo,35
@@ -337,10 +339,9 @@ Jinan University,24
 Konkuk University,24
 National Yunlin University of Science and Technology,24
 Simon Fraser University,24
-Technical University of Lisbon,24
+Technical University of Lisbon (until 2013),24
 Universidad Nacional de San Juan,24
 Universidad de Sevilla,24
-Universidade de Lisboa,24
 University Lille,24
 University of Coimbra,24
 University of Michigan-Dearborn,24
@@ -401,6 +402,7 @@ Helsinki University of Technology,19
 I-Shou University,19
 IIT Ropar,19
 Institute for Research in Technology (IIT),19
+Instituto Tecnológico de Morelia,19
 King Abdullah University of Science and Technology,19
 Middle East Technical University,19
 South Dakota State University,19
@@ -415,6 +417,7 @@ Case Western Reserve University,18
 ETSEIB-UPC,18
 Instituto de Investigación Tecnológica (IIT),18
 Kyoto University,18
+Supelec,18
 Swansea University,18
 Universidad Nacional de Colombia,18
 Universidad de Chile,18
@@ -450,6 +453,7 @@ Shandong University of Technology,16
 Sultan Qaboos University,16
 Tarbiat Moalem University,16
 Universidad Andres Bello,16
+Universite Paris-Sud (until 2019),16
 University of Akron,16
 "University of California, Santa Cruz",16
 University of Cantabria,16
@@ -460,6 +464,7 @@ American University of Sharjah,15
 Bu-Ali Sina University,15
 Federal University of Paraná (UFPR),15
 Federal University of Rio Grande do Norte,15
+Instituto Politécnico Nacional (IPN),15
 Istanbul Technical University,15
 Northwestern University,15
 Queen Mary University of London,15
@@ -487,6 +492,7 @@ Shanghai Maritime University,14
 Southern Illinois University,14
 Technische Universität München,14
 Universidade Federal de Santa Catarina,14
+Universite Paris-Saclay,14
 University of Guilan,14
 University of Ottawa,14
 University of Shanghai for Science and Technology,14
@@ -522,9 +528,11 @@ Escola Politécnica da Universidade de São Paulo,12
 Feng Chia University,12
 Graz University of Technology,12
 Guizhou University,12
+Gwangju Institute of Science and Technology (GIST),12
 Hokkaido University,12
 Itajuba Federal University,12
 Kao-Yuan Institute of Technology,12
+Korea Advanced Institute of Science and Technology (KAIST),12
 Kun Shan University,12
 Menoufia University,12
 National Institute of Technology Calicut,12
@@ -560,6 +568,7 @@ Guangzhou Maritime University,11
 Guangzhou University,11
 Heriot-Watt University,11
 IIT (BHU) Varanasi,11
+Instituto Superior Tecnico (Lisbon),11
 Kiel University,11
 Nanjing University of Information Science and Technology,11
 National Institute of Technology Rourkela,11
@@ -624,6 +633,7 @@ China Jiliang University,9
 Chungbuk National University,9
 Chungnam National University,9
 Delhi Technological University,9
+Ecole Centrale de Lille,9
 Ecole Polytechnique,9
 Federal University of Rio Grande do Sul,9
 Gachon University,9
@@ -727,6 +737,7 @@ Federal University of ABC,7
 Fudan University,7
 Hamedan University of Technology,7
 Hong Kong Baptist University,7
+Hunan Institute of Science and Technology,7
 IIT (ISM) Dhanbad,7
 IIT Indore,7
 Jamia Millia Islamia University,7
@@ -756,7 +767,6 @@ Universidad del Valle,7
 Universidade Federal do Rio Grande do Sul,7
 Universidade do Porto,7
 University Carlos III de Madrid,7
-University Paris-Sud,7
 University of Alaska Fairbanks,7
 University of Chinese Academy of Sciences,7
 University of Concepción,7
@@ -778,6 +788,7 @@ Babol Noshirvani University of Technology,6
 Ben-Gurion University of the Negev,6
 California State University,6
 Calvin College,6
+CentraleSupelec,6
 Changzhou Institute of Technology,6
 Chongqing Normal University,6
 Chongqing University of Posts and Telecommunications,6
@@ -794,6 +805,7 @@ Graduate University of Advanced Technology,6
 Hunan University of Science and Technology,6
 IIT Goa,6
 Indian Institute of Technology (campus not given),6
+Instituto Superior de Engenharia de Lisboa,6
 Jiangnan University,6
 Kunsan National University,6
 Kuwait University,6
@@ -875,6 +887,7 @@ Federal University of Itajubá—UNIFEI,5
 Federation University Australia,5
 Flinders University,5
 George Mason University,5
+Ghulam Ishaq Khan Institute of Engineering Sciences and Technology,5
 Gonbad Kavous University,5
 Hanbat National University,5
 Hanoi University of Science and Technology,5
@@ -897,6 +910,7 @@ Meiji University,5
 Ming-Chi University of Technology,5
 Ministry of Education (Northeast Electric Power University),5
 Mokpo National Maritime University,5
+Moscow Power Engineering Institute (MPEI),5
 Motilal Nehru National Institute of Technology,5
 Nanjing Forestry University,5
 National Institute of Technology Silchar,5
@@ -971,7 +985,6 @@ University of the Basque Country UPV/EHU,5
 Università di Genova,5
 Università di Padova,5
 Università di Udine,5
-Université Paris-Saclay,5
 Université de Toulouse,5
 Vienna University of Technology,5
 Villanova University,5
@@ -1015,6 +1028,7 @@ Hunan University of Technology,4
 Inderprastha Engineering College,4
 Inner Mongolia University of Technology,4
 Institut National Polytechnique de Lorraine,4
+Institute of Science and Technology,4
 KIIT University,4
 Kamla Nehru Institute of Technology,4
 Karadeniz Technical University,4
@@ -1111,7 +1125,6 @@ University of Mohaghegh Ardabili,4
 University of Nagoya,4
 University of Nantes,4
 University of Oklahama,4
-University of Paris-Saclay,4
 University of Porto and INESC TEC,4
 University of St. Thomas,4
 University of West Florida,4
@@ -1160,6 +1173,8 @@ Dongeui University,3
 Dresden University of Technology,3
 Duzce University,3
 East China Normal University,3
+Ecole Normale Superieure de Rennes,3
+Ecole Normale Supérieure de Cachan,3
 Edith Cowan University,3
 Ewha Womans University,3
 FAU University Erlangen-Nuremberg,3
@@ -1172,6 +1187,7 @@ Foshan University,3
 Friedrich-Alexander-University Erlangen-Nürnberg,3
 G. H. Patel College of Engineering and Technology,3
 Gdansk University of Technology,3
+Grenoble INP,3
 Grenoble Institute of Technology,3
 Hacettepe University,3
 Heilongjiang University of Science and Technology,3
@@ -1181,8 +1197,10 @@ Hwa-Hsia College of Technology and Commerce,3
 IIT Dharwad,3
 ITMO University,3
 Ilmenau University of Technology,3
+Indian Institute of Engineering Science and Technology,3
 Inje University,3
-Instituto Superior Técnico – Universidade de Lisboa,3
+Institut Teknologi Brunei (ITB),3
+Instituto Tecnologico de La Laguna,3
 International Energy College,3
 Istanbul Arel University,3
 Jackson State University,3
@@ -1193,7 +1211,6 @@ Kanazawa University,3
 Keele University,3
 Kerman University,3
 Kermanshah University of Technology,3
-Khalifa University of Science,3
 Kumamoto University,3
 Kyungil University,3
 LUT University,3
@@ -1309,7 +1326,6 @@ University of Naples Parthenope,3
 University of Nevada Reno,3
 University of Niš,3
 University of Osijek,3
-University of Paris XI,3
 University of Parma,3
 University of Puerto Rico,3
 University of Roma Tor Vergata,3
@@ -1341,12 +1357,14 @@ Western Paraná State University,3
 Wrocław University of Science and Technology,3
 Xi'an Polytechnic University,3
 Xidian University,3
+Xinjiang Institute of Engineering,3
 Xi’an University of Science and Technology,3
 Yarmouk University,3
 Yung Ta College of Technology and Commerce,3
 Zhejiang Sci-Tech University,3
 Zhenjiang College,3
 d'Electrotechnique et d'Automatique (CREA) of the University of Picardie—Jules Verne at Amiens,3
+École Normale Supérieure,3
 École polytechnique de Bruxelles,3
 2nd University of Naples,2
 A. D. Patel Institute of Technology,2
@@ -1387,6 +1405,7 @@ Campus Université de Montréal,2
 Carlos III Technical University of Madrid,2
 Cassino University,2
 Central China Normal University,2
+Centrale Lille,2
 Centre d'Innovacio Tecnologica en Convertidors Estatics I Accionaments - UPC,2
 Changwon NatE28099l University,2
 Chiba Institute of Technology,2
@@ -1407,9 +1426,14 @@ Department of Electrical Engineering of the Pontifical Catholic University of Ri
 Dongguk University,2
 Dublin Institute of Technology,2
 Eastern Washington University,2
+Ecole Centrale Nantes-LS2N-CNRS,2
+Ecole Centrale de Nantes,2
 Ecole Militaire Polytechnique,2
 Ecole Nationale Polytechnique,2
 Ecole Polytechnique de Tunisie,2
+Ecole Supérieure d''Electricité,2
+Ecole Supérieure des Techniques Aéronautiques et de Construction Automobile,2
+Ecole des Mines de Paris,2
 Electrical Engineering Department of Federal University of Rio de Janeiro (COPPE/UFRJ),2
 Electrical and Information Engineering College,2
 Engineering and Architecture Department of the University of Trieste,2
@@ -1463,12 +1487,16 @@ HongKong Polytechnic University,2
 Horus University Egypt,2
 Howard University,2
 Huaqiao University,2
+Hunan Institute of Engineering,2
 IIT Gandhinagar,2
 INESC TEC and the Faculty of Engineering of the University of Porto,2
 Indira Gandhi Delhi Technical University for Women,2
 Information and Electrical Engineering College,2
 Inner Mongolia University,2
+Institut Teknologi Sepuluh Nopember,2
 Institute for Technical Physics at Karlsruhe Institute of Technology,2
+Instituto Tecnologico Superior de Irapuato,2
+Instituto Tecnologico Superior de Zapopan,2
 Instituto de Fisica da Universidade de Sao Paulo,2
 Instituto de Investigación Tecnológica (IIT) of Universidad Pontificia Comillas,2
 International Hellenic University,2
@@ -1550,7 +1578,6 @@ Ozyegin University,2
 PES University,2
 PLA University of Science and Technology,2
 Pace University,2
-Paris-Saclay University,2
 Penn State University Park,2
 People’s Education Society (PES) University,2
 Peter the Great Saint Petersburg Polytechnic University,2
@@ -1593,6 +1620,7 @@ Shamoon College of Engineering,2
 Shandong Vocational College of Science and Technology,2
 Shangdong University,2
 Sharjah University,2
+Shenyang Institute of Engineering,2
 Shenzhen Campus of Sun Yat-sen University,2
 Shenzhen Polytechnic University,2
 Shimane University,2
@@ -1619,6 +1647,7 @@ Technische Universität Wien,2
 Technological Research Institute (IIT),2
 Tennessee University,2
 Texas State University,2
+Thapar Institute of Engineering and Technology,2
 Tohoku University,2
 Tokyo City University,2
 Tokyo Metropolitan University,2
@@ -1632,6 +1661,7 @@ UNESP – São Paulo State University,2
 UNESP—Universidade Estadual Paulista,2
 UNICAMP – University of Campinas,2
 Uiduk University,2
+Ulsan National Institute of Science and Technology (UNIST),2
 Union College,2
 Universidad Autonoma de Queretaro,2
 Universidad Autónoma de Guadalajara,2
@@ -1747,7 +1777,7 @@ University of Tongji,2
 University of Trinidad and Tobago,2
 University of Udine,2
 University of Utrecht,2
-University of Washington,2
+University of Washington Tacoma,2
 University of West Attica,2
 University of West Indies,2
 University of Western Brittany,2
@@ -1764,7 +1794,6 @@ Università di Cagliari,2
 Università di Pisa,2
 Universität Bayreuth,2
 Université Henri Poincaré,2
-Université Paris-Sud,2
 Université Paul Sabatier-Toulouse,2
 Université d''Artois,2
 Université de Montréal,2
@@ -1903,7 +1932,6 @@ CEATEC—Pontifical Catholic University of Campinas,1
 CEIT-Basque Research and Technology Alliance (BRTA) and the School of Engineering of University of Navarra,1
 CEMSE Division at King Abdullah University of Science and Technology,1
 CITCEA-UPC and the Serra Húnter Programme,1
-CNRS-CentraleSupélec-Université Paris-Sud-UPMC,1
 CONICET and the Instituto de Energı´a Eléctrica—Universidad Nacional de San Juan,1
 CONICET and the Universidad Nacional de Quilmes,1
 CONICET-National University of San Juan,1
@@ -1912,7 +1940,6 @@ COPPE—Federal University of Rio de Janeiro,1
 CQUniversity,1
 CRF-University of Padova,1
 CUCEI—University of Guadalajara,1
-CY Cergy Paris University University of Paris-Saclay,1
 CY Cergy Paris Université,1
 Cadi Ayyad University,1
 California State University Long Beach,1
@@ -1941,8 +1968,6 @@ Center for Energy Systems and Control (CESaC) Howard University,1
 Center of Excellence for Power System Automation and Operation Iran University of Science and Technology,1
 Central South University and with Hunan Provincial Key Laboratory of Power Electronics Equipment and Grid,1
 Central University of Las Villas,1
-CentraleSupélec CNRS Université Paris Saclay,1
-CentraleSupélec-CNRS-Université Paris-Sud,1
 Centre d’Innovacio Tecnologica en Convertidors Estatics I Accionaments - UPC,1
 Centre d’Innovacioó Tecnològica en Convertidors Estàtics i Accionaments (CITCEA-UPC),1
 Centro Universitario de la Defensa —(General Military Academy),1
@@ -1968,6 +1993,7 @@ Cheongyang Provincial College,1
 Chiang Mai Univerisity,1
 Chien Kuo Institute of Technology,1
 Chihlee Institute of Technology,1
+China Electric Equipment Group Research Institute of Science and Technology Company Ltd.,1
 China University of Ming and Technology,1
 China University of Mining and Technology - Xuzhou Campus,1
 China University of Mining and Technology-Beijing,1
@@ -2029,6 +2055,7 @@ Deemed University,1
 Departamento de Matemática of Universidade Federal de Minas Gerais,1
 Dipartimento Politecnico di Ingegneria e Architettura,1
 Division of Electricity at Uppsala University,1
+División de Estudios de Posgrado e Investigación of the Instituto Tecnológico de la Laguna,1
 Djillali Liabes University,1
 Dnipro National University,1
 Dnipropetrovsk National University,1
@@ -2049,6 +2076,7 @@ Dunãrea de Jos Galati University,1
 Duy Tan University,1
 EE Department of Aalto University,1
 EESC University of São Paulo,1
+ENSIETA (Ecole Nationale Supérieure dIngénieurs des Etudes et Techniques d''Armement),1
 ETSEIAT-UPC,1
 ETSETB-Universitat Politecnica de Catalunya,1
 ETSIDI Technical University of Madrid,1
@@ -2058,8 +2086,17 @@ East China University of Political Science and Law,1
 Eastern Kentucky University,1
 Eastern Mediterranean University,1
 Eberhard Karls Universität Tübingen,1
+Ecole Centrale,1
+Ecole Centrale de Lyon,1
+Ecole Centrale de Nantes - Laboratoire des Sciences du Numérique de Nantes (LS2N),1
 Ecole Nationale Polytechnique d'Alger,1
+Ecole Nationale Superieure d'Arts et Métiers,1
+Ecole Nationale Supérieure des Arts et Industrie,1
+Ecole Nationale d''Ingenieurs de Metz,1
+Ecole Nationale d''Ingénieurs de Tarbes,1
 Ecole Polytechnique de l'Université de Nantes,1
+Ecole Supérieure d''Ingénieurs en Electronique et Electrotechnique,1
+Ecole nationale d’ingenieurs de Brest,1
 Edinburgh Napier University,1
 Electric Power College,1
 Electric Power University,1
@@ -2170,7 +2207,6 @@ Govt. College of Management Sciences,1
 Graduate School of Kansai University,1
 Graduate University of Advance Technology,1
 Grenoble Alpes University,1
-Grenoble INP (Institute of Engineering University Grenoble Alpes),1
 Group on Numerical Optimization and Modeling (GNOM) in Universitat Politcnica de Catalunya—BarcelonaTech,1
 Guang'an Institute of Technology,1
 Guangdong Provincial Key Laboratory of Human-Augmentation and Rehabilitation Robotics in Universities,1
@@ -2210,6 +2246,7 @@ Hefei University of Technology at Hefei,1
 Hefei University of Techonology,1
 Heifei University of Technology,1
 Heinz College of Information Systems and Public Policy,1
+Henan Institute of Science and Technology,1
 Henan University,1
 Higher Polytechnic School of Algeciras,1
 Hirosaki University,1
@@ -2267,15 +2304,24 @@ Institute for Integrated Energy Systems University of Victoria,1
 Institute for Research in Technology [Instituto de Investigación Tecnológica (IIT)],1
 Institute of Electric Energy Systems and High-Voltage Technology at Karlsruhe Institute of Technology,1
 Institute of Engineering Universit&#x00E9,1
+Institute of Engineering and Technology,1
 Institute of Rail Transportation and International Energy College,1
 Institute of Technical Physics at Karlsruhe Institute of Technology,1
 Institute of Technology Sepuluh Nopember,1
 Institute of Technology for Development (LACTEC),1
-Instituto Politecnico Nacional,1
 Instituto Politecnico do Porto,1
 Instituto Politecnico do Porto Instituto Superior de Engenharia do Porto,1
-Instituto Superior Técnico University of Lisbon,1
-Instituto Superior Técnico—Universidade de Lisboa,1
+Instituto Politécnico da Guarda,1
+Instituto Politécnico de Castelo Branco,1
+Instituto Politécnico de Lisboa,1
+Instituto Politécnico de Setúbal,1
+Instituto Tecnologico y de Estudios Superiores,1
+Instituto Tecnologico y de Estudios Superiores de Monterrey,1
+Instituto Tecnológico de Apizaco,1
+Instituto Tecnológico de Buenos Aires,1
+Instituto Tecnológico de Costa Rica,1
+Instituto Tecnológico de la Energía,1
+Instituto Tecnológico del Valle del Guadiana,1
 Instituto Universitario SIANI. Universidad de Las Palmas de Gran Canaria,1
 Instituto de Energía Eléctrica Universidad,1
 Instituto de Investigaciones Tecnológicas para Redes y Equipos Eléctricos (IITREE-LAT) of the Universidad Nacional de La Plata,1
@@ -2328,8 +2374,6 @@ Kexas A and M University,1
 Key Lab of Universal Wireless Communications,1
 Key Laboratory of Modern Power System Simulation and Control & Renewable Energy Technology (Northeast Electric Power University),1
 Key Laboratory of More Electric Aircraft Technology of Zhejiang Province and University of Nottingham Ningbo Campus (UNNC),1
-Khalifa University of Science Technology - Abu Dhabi Campus,1
-Khalifa University of Science and Technology - Masdar City Campus,1
 Kharazmi University,1
 Khatam University,1
 Khwaja Fareed University of Engineering and Information technology,1
@@ -2365,6 +2409,8 @@ LSEE-Université d'Artois,1
 LSIIT-Louis Pasteur University-CNRS,1
 LSIS UMR 7296 Aix-Marseille University,1
 Laboratoire CITI (a joint laboratory between the Université de Lyon,1
+Laboratoire dElectricité Signaux Robotique of the Ecole Normale Supérieure,1
+Laboratory of Ecole Normale Supérieure de Cachan,1
 Labplan Federal University of Santa Catarina,1
 Landshut University of Applied Sciences,1
 Lavras Federal University,1
@@ -2447,6 +2493,7 @@ Nankai University of Technology,1
 Nanning Vocational and Technical University,1
 Nantes Université,1
 Nanyang Polytechnic,1
+Nara Institute of Science and Technology,1
 Nat. Cheng Kung University,1
 National Changhua University of Education,1
 National Chen Kung University,1
@@ -2457,6 +2504,7 @@ National Formosa University of Science and Technology,1
 National Higher Polytechnic School of Douala,1
 National Huwei Institute of Technology,1
 National I-Lan University,1
+National Institute of Engineering,1
 National Institute of Technology Delhi,1
 National Institute of Technology Karnataka Surathkal,1
 National Institute of Technology Niihama College,1
@@ -2471,7 +2519,6 @@ National Lien Ho Institute of Technology,1
 National Lien Ho University,1
 National Polytechnic Institute of Lorraine,1
 National Quemoy University,1
-National Research University,1
 National Taiwan University of Science and Tech.,1
 National Technical University of Ukraine “Igor Sikorsky Kyiv Polytechnic Institute”,1
 National United University,1
@@ -2497,6 +2544,7 @@ Norges Teknisk-Naturvitenskaplige Universitet,1
 North Chiang-Mai College,1
 North China Elctric Power University,1
 North Dakota State Univesity,1
+North Eastern Regional Institute of Science and Technology,1
 North Eastern University,1
 North State University,1
 North-Chiang Mai University,1
@@ -2528,10 +2576,10 @@ PUC/CAMPINAS – Pontifical Catholic University of Campinas,1
 Pabna University of Science and Technology,1
 Paderborn University,1
 Padova University,1
+Pakistan Institute of Engineering and Applied Sciences (PIEAS),1
 Pakistan Navy Engineering College,1
 Palestine Technical University-Kadoorie,1
 Pandit Deendayal Energy University,1
-Paris-Saclay and Sorbonne Universities,1
 Paulista State University-FEIS-UNESP,1
 Paulista State University-UNESP,1
 Payame Noor University,1
@@ -2606,10 +2654,10 @@ Rose Hulman Institute of Technology,1
 Royal College Building,1
 Royal Holloway University of London,1
 Ruhr-Universität Bochum,1
-SATIE Laboratory Université Paris Est Créteil,1
 SRM University,1
 SRM-AP University,1
 SUNY Buffalo State College,1
+SYSU-CMU Joint Institute of Engineering,1
 Sacramento State University,1
 Sai Gon University,1
 Saimaa University of Applied Science,1
@@ -2711,6 +2759,7 @@ Sung Kyun Kwan University,1
 Suranaree University of Technology,1
 Suzhou Vocational University,1
 Swinburne University of Technology Sarawak,1
+Systèmes et Applications des Technologies de l'Information et de l'Energie Ecole Normale Supérieure de Cachan,1
 São Paulo State University (UNESP)/FEIS,1
 São Paulo State University—UNESP,1
 TOBB University,1
@@ -2750,12 +2799,14 @@ Technische Universität Graz,1
 Technological Research Institute (IIT) at ICAI School of Engineering Comillas Pontifical University,1
 Technological Research Institute [Instituto de Investigación Tecnológica (IIT)],1
 Technological University of Belfort-Montbéliard,1
+Tecnológico Nacional de México/Instituto Tecnológico de Morelia (ITM),1
 Telemark University College,1
 Temasek Polytechnic,1
 Texas A&M University-Commerce,1
 Texas Southern University,1
 Texas University,1
 Tezpur University,1
+Thapar Institute of Engineering,1
 Tian Jin University,1
 Tian University,1
 Tianjin Chengjian University,1
@@ -2890,7 +2941,6 @@ Universidade do Estado de Mato Grosso – UNEMAT,1
 Universit degli Studi dellAquila,1
 Universit degli Studi di Genova,1
 Universit di Pisa,1
-Universit? Paris-Sud,1
 Universita degli Studi di Catania,1
 Universitas Gadjah Mada,1
 Universitas Indonesia,1
@@ -2942,7 +2992,6 @@ University Lyon,1
 University Nacional de Rio Cuarto,1
 University Niccolò Cusano of Rome,1
 University Pablo de Olavide,1
-University Paris-Sud Orsay,1
 University Park,1
 University Politecnica de Catalyuna,1
 University Pontificia Comillas de Madrid,1
@@ -2952,7 +3001,6 @@ University Rey Juan Carlos,1
 University Saint Kliment Ohridski,1
 University Sv. Kiril i Metodij Skopje,1
 University Vrije Universiteit Brussel,1
-University de Lisboa,1
 University degli studi della Basilicata,1
 University do Porto,1
 University du Littoral Côte dOpale,1
@@ -2996,6 +3044,7 @@ University of Bejaia,1
 University of Beograd,1
 University of Berkeley,1
 University of Bisha,1
+University of Blacksburg,1
 University of Bolton,1
 University of Bonn-Rhein-Sieg,1
 University of Bradford,1
@@ -3177,7 +3226,7 @@ University of Tunis El Manar,1
 University of Tunku Abdul Rahman,1
 University of Tübingen,1
 University of Valenci-ennes,1
-University of Washington Tacoma,1
+University of Washington Bothell,1
 University of Western São Paulo,1
 University of Wisconsin–Platteville,1
 University of Zabol,1
@@ -3208,7 +3257,6 @@ Universität Passau,1
 Universität Ulm,1
 Université Gustave Eiffel,1
 Université Joseph Fourier,1
-Université Paris XI,1
 Université Paul Sabatier,1
 Université Savoie-Mont-Blanc,1
 Université Sorbonne Paris Nord,1
@@ -3246,6 +3294,7 @@ Uttar Pradesh Technical University,1
 V. D. R. Institute of Technology,1
 VIT Bhopal University,1
 Valencia Polytechnic University,1
+Valley High Institute of Engineering and Technology,1
 Varendra University,1
 Veer Surendra Sai University of Technology,1
 Veer Surendra Sain University of Technology,1
@@ -3324,6 +3373,7 @@ sk University of Technology,1
 universidade do oeste do Paraná (UNIOESTE),1
 with the Faculty of Engineering of the University of Porto,1
 Çukurova University,1
+École Centrale Paris,1
 École Nationale Supérieure Polytechnique,1
 Čačak College of Engineering,1
 İstanbul Ticaret University,1

@@ -1,13 +1,15 @@
-# DVC and Google Drive Setup
+# DVC Setup
 
-This project uses DVC for selected generated result folders. Payloads are stored
-in a private Google Drive remote named `gdrive`; DVC metadata is committed to
-Git. Canonical calibration exports remain ordinary Git files.
+This project uses DVC for selected input datasets and generated result folders.
+Payloads are stored in a private Google Drive remote named `gdrive`; DVC metadata
+is committed to Git. Canonical calibration exports remain ordinary Git files.
+Run these commands from the project root, `article-alignment-classifier/`.
 
 ## What Is Tracked
 
 DVC tracks:
 
+- `data/processed/abstracts_cleaned.csv`;
 - selected run folders in `data/results/affinity_benchmark/`, each with its own
   `.dvc` manifest;
 - `data/results/ensemble_weight_optimizer/`.
@@ -19,92 +21,81 @@ is not DVC-tracked.
 
 ## Install DVC
 
-Use the project analysis environment:
+Use an isolated Python environment, such as the project virtual environment
+or `pipx`. With your virtual environment activated, install DVC with Google
+Drive support and the compatible dependencies:
 
 ```bash
-~/.virtualenvs/classifier/bin/python -m pip install "dvc[gdrive]"
-~/.virtualenvs/classifier/bin/dvc version
+python -m pip install "dvc[gdrive]"
+python -m pip install "PyDrive2==1.21.2" "pyOpenSSL==24.2.1" "cryptography==43.0.3" "asyncssh==2.23.1"
+python -m pip check
+dvc version
 ```
 
-## Remote Configuration
+If using `pipx` instead, install `dvc[gdrive]` with `pipx install` and inject
+the four pinned dependencies above with `pipx inject dvc`.
 
-The shared configuration in `.dvc/config` defines the default remote. It must
-use the Google Drive scheme:
+## Configure Your Profile
+
+Use your own Google Drive OAuth client credentials and a profile name unique
+to your local setup. Replace the placeholders below; do not commit or share
+your client secret or personal authorization token.
 
 ```bash
-~/.virtualenvs/classifier/bin/dvc remote list
+dvc remote modify --local gdrive gdrive_client_id "YOUR_CLIENT_ID"
+dvc remote modify --local gdrive gdrive_client_secret "YOUR_CLIENT_SECRET"
+dvc remote modify --local gdrive profile article_alignment_profile
 ```
 
-Expected form:
+After authentication, authorization credentials are stored in a JSON file
+named after your profile:
+
+- Linux: `~/.cache/pydrive2fs/<your-client-id>/article_alignment_profile.json`
+- macOS: `~/Library/Caches/pydrive2fs/<your-client-id>/article_alignment_profile.json`
+- Windows: `%LOCALAPPDATA%\pydrive2fs\<your-client-id>\article_alignment_profile.json`
+
+Keep this file private. An explicit `gdrive_user_credentials_file` setting
+overrides these default locations.
+
+These settings are local to your checkout. `.dvc/config.local` is ignored by
+`.dvc/.gitignore`. The remote URL and `core.remote` are already configured by
+the repository; keep the existing Google Drive destination:
 
 ```text
-gdrive    gdrive://FOLDER_ID
+remote.gdrive.url=gdrive://1_ak4jZMU9t6bQzpcz61xsRzAdX0xgo8h
+core.remote=gdrive
 ```
 
-Never commit private OAuth values. `.dvc/config.local` is ignored by
-`.dvc/.gitignore`.
-
-If the remote needs to be changed:
+Inspect the effective configuration locally:
 
 ```bash
-~/.virtualenvs/classifier/bin/dvc remote modify gdrive url "gdrive://FOLDER_ID"
+dvc config -l
 ```
 
-## Google OAuth
-
-If Google reports that the application is blocked, create a Desktop OAuth
-client in Google Cloud, enable the Google Drive API, and add the Google account
-as a test user while the consent screen is in Testing. Configure the client
-locally:
-
-```bash
-~/.virtualenvs/classifier/bin/dvc remote modify --local gdrive gdrive_client_id "YOUR_CLIENT_ID"
-~/.virtualenvs/classifier/bin/dvc remote modify --local gdrive gdrive_client_secret "YOUR_CLIENT_SECRET"
-```
-
-In every repository checkout, before its first `dvc push` or `dvc pull`, point
-the local DVC configuration at a credential file outside the repository:
-
-```bash
-mkdir -p "$HOME/.config/dvc/article-classifier" && chmod 700 "$HOME/.config/dvc/article-classifier"
-~/.virtualenvs/classifier/bin/dvc remote modify --local gdrive gdrive_user_credentials_file "$HOME/.config/dvc/article-classifier/gdrive-auth.json"
-```
-
-The first remote operation may print an OAuth URL. Open it manually if the
-terminal cannot launch a browser. After authentication:
-
-```bash
-chmod 600 "$HOME/.config/dvc/article-classifier/gdrive-auth.json"
-```
+The output includes your local credentials; do not share it without redacting
+secrets.
 
 ## Push and Pull
 
-Push selected result targets:
+The committed `.dvc/config` already sets `gdrive` as the default remote;
+no `-r` option is needed.
 
-```bash
-~/.virtualenvs/classifier/bin/dvc push -r gdrive
-```
-
-Verify the local cache and remote agree:
-
-```bash
-~/.virtualenvs/classifier/bin/dvc status -c
-```
-
-On another machine or in a fresh clone, Git first needs to supply the committed
-`.dvc` manifests and shared remote configuration. OAuth client values and the
-credential-file setting are local-only, so repeat the Google OAuth setup above
-in that checkout before pulling. Checkouts using the same Linux user may point
-to the same `$HOME/.config/dvc/article-classifier/gdrive-auth.json` file:
+On a fresh checkout, complete **Configure Your Profile** first. Git supplies
+the `.dvc` manifests; DVC transfers the datasets:
 
 ```bash
 git pull
-~/.virtualenvs/classifier/bin/dvc pull -r gdrive
+dvc pull       # Download tracked datasets
+dvc push       # Upload tracked datasets
+dvc status -c  # Compare local data with the remote
 ```
 
-If `dvc pull` says that everything is up to date in a fresh clone but no result
-folders appear, check that the clone includes the committed `.dvc` manifests.
-Without manifests, DVC has no targets to download.
+The first remote operation that requires authentication will print an OAuth
+URL. Open it manually if the terminal cannot launch a browser, then sign in
+with your Google account and authorize access.
+
+If datasets are missing despite an "up to date" message, check that the
+checkout includes their committed `.dvc` manifests.
 
 ## Updating a Result Target
 
@@ -112,10 +103,10 @@ After changing a tracked result folder, refresh its individual manifest, commit
 only metadata, then push:
 
 ```bash
-~/.virtualenvs/classifier/bin/dvc add data/results/affinity_benchmark/RUN_ID
+dvc add data/results/affinity_benchmark/RUN_ID
 git add data/results/affinity_benchmark/RUN_ID.dvc data/results/affinity_benchmark/.gitignore
 git commit -m "Update benchmark run RUN_ID"
-~/.virtualenvs/classifier/bin/dvc push -r gdrive
+dvc push
 ```
 
 Do not run `git add data/results/affinity_benchmark/RUN_ID/`; the actual result
@@ -124,26 +115,12 @@ payload is DVC-managed.
 ## Compatibility Issue
 
 If a remote operation fails with `module 'lib' has no attribute 'GEN_EMAIL'`,
-the Python OpenSSL packages are incompatible. In the classifier environment,
-the compatible package set is:
-
-```bash
-~/.virtualenvs/classifier/bin/python -m pip install "PyDrive2==1.21.2" "pyOpenSSL==24.2.1" "cryptography==43.0.3" "asyncssh==2.23.1"
-```
+the Python OpenSSL packages are incompatible. Reinstall the compatible package
+set from **Install DVC** in the environment where DVC is installed.
 
 Then check the environment and remote:
 
 ```bash
-~/.virtualenvs/classifier/bin/python -m pip check
-~/.virtualenvs/classifier/bin/dvc status -c
+python -m pip check
+dvc status -c
 ```
-
-## Security Checks
-
-Before committing DVC metadata:
-
-```bash
-git status
-```
-
-Do not stage `.dvc/config.local` or `$HOME/.config/dvc/article-classifier/gdrive-auth.json`.

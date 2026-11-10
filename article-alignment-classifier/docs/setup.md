@@ -17,6 +17,13 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
+For Plotly/Kaleido static plotting, Chrome must be installed. On Ubuntu/Debian
+Linux, also install its required system libraries (not needed on macOS):
+
+```bash
+sudo apt-get install libnspr4 libnss3
+```
+
 ### Windows Command Prompt
 
 ```cmd

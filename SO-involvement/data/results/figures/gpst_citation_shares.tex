@@ -1,0 +1,35 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{ieeecolor}{HTML}{042C53}
+\definecolor{jrnlcolor}{HTML}{378ADD}
+\definecolor{othercolor}{HTML}{B4B2A9}
+\definecolor{confcolor}{HTML}{D98B3F}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    width=14cm, height=2.6cm,
+    hide y axis,
+    xmin=0, xmax=1342,
+    ymin=-0.6, ymax=0.9,
+    axis x line=bottom,
+    xlabel={Citations},
+    every axis x label/.style={at={(axis description cs:0.5,-0.15)}, anchor=north},
+    axis line style={color=black!40},
+    tick style={color=black!40},
+]
+\draw[fill=ieeecolor, draw=white] (axis cs:0,-0.25) rectangle (axis cs:65,0.25);
+\node[font=\footnotesize, anchor=south] at (axis cs:32.5,0.28) {65 (4.8\%)};
+\draw[fill=jrnlcolor, draw=white] (axis cs:65,-0.25) rectangle (axis cs:191,0.25);
+\node[font=\small\bfseries, text=white] at (axis cs:128.0,0) {126 (9.4\%)};
+\draw[fill=othercolor, draw=white] (axis cs:191,-0.25) rectangle (axis cs:1342,0.25);
+\node[font=\small\bfseries, text=black] at (axis cs:766.5,0) {1151 (85.8\%)};
+\end{axis}
+\begin{scope}[shift={(1.5,2.6)}]
+\node[fill=ieeecolor, minimum width=10pt, minimum height=8pt, anchor=west] (legbox0) at (0,0) {}; \node[anchor=west, font=\small, right=3pt of legbox0] (legtxt0) {IEEE PES Transactions}; \node[fill=jrnlcolor, minimum width=10pt, minimum height=8pt, anchor=west, right=16pt of legtxt0] (legbox1) {}; \node[anchor=west, font=\small, right=3pt of legbox1] (legtxt1) {Other journals}; \node[fill=othercolor, minimum width=10pt, minimum height=8pt, anchor=west, right=16pt of legtxt1] (legbox2) {}; \node[anchor=west, font=\small, right=3pt of legbox2] (legtxt2) {Other};
+\end{scope}
+\end{tikzpicture}
+\end{document}

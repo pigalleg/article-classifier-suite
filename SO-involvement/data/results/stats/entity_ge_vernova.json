@@ -1,0 +1,76 @@
+{
+  "entity": "GE Vernova",
+  "region": "Global",
+  "total_docs": 1,
+  "total_citations": 4,
+  "ref_type_counts": {
+    "other": 1,
+    "magazine": 1,
+    "conference": 1,
+    "journal": 1
+  },
+  "ieee_transactions": 0,
+  "by_gpst_area": {
+    "ibrs": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "stability": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "ders": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "crof": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "services": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "planning": {
+      "total": 4,
+      "ieee_transactions": 0,
+      "other_journals": 1,
+      "conferences": 1,
+      "other": 2,
+      "docs": [
+        "GEA34919_WP_MMC-for-Hydro_EN_20230814.pdf"
+      ],
+      "by_doc": {
+        "GEA34919_WP_MMC-for-Hydro_EN_20230814.pdf": {
+          "doc_title": "| PHSP              | FFSM                  | UPGRADES        |",
+          "doc_year": "",
+          "total": 4,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 1,
+          "other": 2
+        }
+      }
+    }
+  }
+}

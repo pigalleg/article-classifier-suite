@@ -1,0 +1,615 @@
+{
+  "entity": "ENTSO-E",
+  "region": "Europe",
+  "total_docs": 53,
+  "total_citations": 351,
+  "ref_type_counts": {
+    "conference": 24,
+    "report": 32,
+    "journal": 22,
+    "other": 251,
+    "book": 2,
+    "standard": 17,
+    "website": 1,
+    "thesis": 2
+  },
+  "ieee_transactions": 7,
+  "by_gpst_area": {
+    "ibrs": {
+      "total": 20,
+      "ieee_transactions": 2,
+      "other_journals": 0,
+      "conferences": 2,
+      "other": 16,
+      "docs": [
+        "190304_SOC_TOP_7.4_Short%20Circuit%20Contribution%20of%20Power%20Electronics%20Connecting%20Generators%20and%20Protection%20report.pdf",
+        "High_Penetration_of_Power_Electronic_Interfaced_Power_Sources_and_the_Potential_Contribution_of_Grid_Forming_Converters.pdf",
+        "future-system-inertia-phase-2.pdf"
+      ],
+      "by_doc": {
+        "future-system-inertia-phase-2.pdf": {
+          "doc_title": "REPORT",
+          "doc_year": "2017",
+          "total": 10,
+          "ieee_transactions": 1,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 9
+        },
+        "High_Penetration_of_Power_Electronic_Interfaced_Power_Sources_and_the_Potential_Contribution_of_Grid_Forming_Converters.pdf": {
+          "doc_title": "High Penetration of Power Electronic",
+          "doc_year": "2020",
+          "total": 2,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 2,
+          "other": 0
+        },
+        "190304_SOC_TOP_7.4_Short%20Circuit%20Contribution%20of%20Power%20Electronics%20Connecting%20Generators%20and%20Protection%20report.pdf": {
+          "doc_title": "PAN EUROPEAN SUB GROUP ON PROTECTION EQUIPMENT",
+          "doc_year": "2019",
+          "total": 8,
+          "ieee_transactions": 1,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 7
+        }
+      }
+    },
+    "stability": {
+      "total": 67,
+      "ieee_transactions": 4,
+      "other_journals": 3,
+      "conferences": 10,
+      "other": 50,
+      "docs": [
+        "170614_-_Frequency_Based_Emergency_Disconnection_Policy_Review_for_the_Nordic_Region_V1.0.pdf",
+        "20191203_HVDC%20links%20in%20system%20operations.pdf",
+        "2019_-_Requirement_for_minimum_inertia_in_the_Nordic_power_system.pdf",
+        "2025_-_Requirements_for_minimum_inertia_in_the_Nordic_power_system.pdf",
+        "210331_Grid%20Forming%20Capabilities.pdf",
+        "Best_protection_practices_for_HV_EHV_AC_transmission_system.pdf",
+        "Public_report_DYNAMIC_MODEL_OF_CONTINENTAL_EUROPE_V2.pdf",
+        "RG_CE_ENTSO-E_Defence_Plan_final_2011_public.pdf",
+        "Report_Deterministic_Frequency_Deviations_final_version.pdf",
+        "SPD_FCT-BestPractices_website.pdf"
+      ],
+      "by_doc": {
+        "170614_-_Frequency_Based_Emergency_Disconnection_Policy_Review_for_the_Nordic_Region_V1.0.pdf": {
+          "doc_title": "Frequency Based Emergency Disconnection Policy",
+          "doc_year": "2017",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "2019_-_Requirement_for_minimum_inertia_in_the_Nordic_power_system.pdf": {
+          "doc_title": "Requirement for minimum inertia",
+          "doc_year": "2019",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "2025_-_Requirements_for_minimum_inertia_in_the_Nordic_power_system.pdf": {
+          "doc_title": "REQUIREMENTS FOR MINIMUM INERTIA",
+          "doc_year": "2025",
+          "total": 2,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 2
+        },
+        "Report_Deterministic_Frequency_Deviations_final_version.pdf": {
+          "doc_title": "REPORT ON DETERMINISTIC FREQUENCY",
+          "doc_year": "2020",
+          "total": 11,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 11
+        },
+        "210331_Grid%20Forming%20Capabilities.pdf": {
+          "doc_title": "Grid-Forming Capabilities:",
+          "doc_year": "2021",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 1,
+          "other": 0
+        },
+        "Public_report_DYNAMIC_MODEL_OF_CONTINENTAL_EUROPE_V2.pdf": {
+          "doc_title": "DYNAMIC MODEL OF CONTINENTAL EUROPE V2",
+          "doc_year": "2024",
+          "total": 3,
+          "ieee_transactions": 1,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 2
+        },
+        "RG_CE_ENTSO-E_Defence_Plan_final_2011_public.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2010",
+          "total": 8,
+          "ieee_transactions": 1,
+          "other_journals": 1,
+          "conferences": 2,
+          "other": 4
+        },
+        "Best_protection_practices_for_HV_EHV_AC_transmission_system.pdf": {
+          "doc_title": "181010_SOC_TOP_09.2_Best protection practices for HV EHV AC transmission system.docx",
+          "doc_year": "2018",
+          "total": 24,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 5,
+          "other": 18
+        },
+        "SPD_FCT-BestPractices_website.pdf": {
+          "doc_title": "Determining generator fault",
+          "doc_year": "2017",
+          "total": 7,
+          "ieee_transactions": 2,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 5
+        },
+        "20191203_HVDC%20links%20in%20system%20operations.pdf": {
+          "doc_title": "HVDC Links in System Operations",
+          "doc_year": "2019",
+          "total": 9,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 2,
+          "other": 6
+        }
+      }
+    },
+    "ders": {
+      "total": 104,
+      "ieee_transactions": 0,
+      "other_journals": 1,
+      "conferences": 6,
+      "other": 97,
+      "docs": [
+        "130507-NC_HVDC_-_Call_for_Stakeholder_Input.pdf",
+        "150113_ENTSO-E_Position_Paper_Dispersed_Generation_Impact_on_CE_Security.pdf",
+        "20100909_Wind_report.pdf",
+        "2015_frequency-quality-phase-1-v2.0.pdf",
+        "220215_RGCE_TOP_03.2_D.1_System%20Defence%20Plan_v8_final.pdf",
+        "231006_ENTSO-E_Position Paper_Deployment of Heavy-Duty EVs and Impact on the Power System.pdf",
+        "Annex_I_-_Gateway_security_profile.pdf",
+        "CONTROLLED_SWITCHING_DEVICE_APPLICATION__USE_AND_MAINTENANCE_PROBLEMS.pdf",
+        "ENTSO-E_Bus_Bar_Differential_Protection_Report_191204.pdf",
+        "ENTSOE_HVDC_Utilisation_and_Unavailability_Statistics_2019.pdf",
+        "Investigation_on_Default_Frequency_Support_Settings_of_New_Flexibilities_in_CE.pdf",
+        "Operational_Limits_and_Conditions_for_Mutual_Frequency_Support_over_HVDC_Report.pdf",
+        "Supporting_document_substation_recommendation_.pdf",
+        "USE_OF_TRAVELLING_WAVES_PRINCIPLE_IN_PROTECTION_SYSTEMS_AND_RELATED_AUTOMATIONS.pdf",
+        "entsoe_EMF_report_web.pdf"
+      ],
+      "by_doc": {
+        "ENTSOE_HVDC_Utilisation_and_Unavailability_Statistics_2019.pdf": {
+          "doc_title": "ENTSO-E",
+          "doc_year": "2019",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "Investigation_on_Default_Frequency_Support_Settings_of_New_Flexibilities_in_CE.pdf": {
+          "doc_title": "Investigation on Default",
+          "doc_year": "2024",
+          "total": 5,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 5
+        },
+        "220215_RGCE_TOP_03.2_D.1_System%20Defence%20Plan_v8_final.pdf": {
+          "doc_title": "SYSTEM DEFENCE PLAN",
+          "doc_year": "2022",
+          "total": 2,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 2
+        },
+        "Annex_I_-_Gateway_security_profile.pdf": {
+          "doc_title": "ANNEX I: SUBSTATION GATEWAY",
+          "doc_year": "2024",
+          "total": 13,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 13
+        },
+        "Supporting_document_substation_recommendation_.pdf": {
+          "doc_title": "Supporting document",
+          "doc_year": "2026",
+          "total": 7,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 7
+        },
+        "231006_ENTSO-E_Position Paper_Deployment of Heavy-Duty EVs and Impact on the Power System.pdf": {
+          "doc_title": "ENTSO-E Position Paper",
+          "doc_year": "2023",
+          "total": 31,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 31
+        },
+        "2015_frequency-quality-phase-1-v2.0.pdf": {
+          "doc_title": "FREQUENCY QUALITY REPORT - NAG",
+          "doc_year": "2015",
+          "total": 2,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 2
+        },
+        "150113_ENTSO-E_Position_Paper_Dispersed_Generation_Impact_on_CE_Security.pdf": {
+          "doc_title": "DISPERSED GENERATION",
+          "doc_year": "2014",
+          "total": 4,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 4
+        },
+        "entsoe_EMF_report_web.pdf": {
+          "doc_title": "GUIDE FOR IMPLEMENTING",
+          "doc_year": "2013",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "CONTROLLED_SWITCHING_DEVICE_APPLICATION__USE_AND_MAINTENANCE_PROBLEMS.pdf": {
+          "doc_title": "Data open within ENTSO-E",
+          "doc_year": "2022",
+          "total": 4,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 1,
+          "other": 3
+        },
+        "ENTSO-E_Bus_Bar_Differential_Protection_Report_191204.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2019",
+          "total": 9,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 2,
+          "other": 7
+        },
+        "Operational_Limits_and_Conditions_for_Mutual_Frequency_Support_over_HVDC_Report.pdf": {
+          "doc_title": "Operational Limits and",
+          "doc_year": "2021",
+          "total": 10,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 1,
+          "other": 9
+        },
+        "USE_OF_TRAVELLING_WAVES_PRINCIPLE_IN_PROTECTION_SYSTEMS_AND_RELATED_AUTOMATIONS.pdf": {
+          "doc_title": "U",
+          "doc_year": "2021",
+          "total": 3,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 1,
+          "other": 2
+        },
+        "20100909_Wind_report.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2010",
+          "total": 2,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 2
+        },
+        "130507-NC_HVDC_-_Call_for_Stakeholder_Input.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2013",
+          "total": 10,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 1,
+          "other": 8
+        }
+      }
+    },
+    "crof": {
+      "total": 36,
+      "ieee_transactions": 0,
+      "other_journals": 5,
+      "conferences": 1,
+      "other": 30,
+      "docs": [
+        "260130_JTF_TSO-DSO_Technical_Report_Use_cases_digital_twin_solutions_v3.pdf",
+        "DESAP_joint_report_on_common_TSO-DSO_challenges___opportunities_v1.1.pdf"
+      ],
+      "by_doc": {
+        "DESAP_joint_report_on_common_TSO-DSO_challenges___opportunities_v1.1.pdf": {
+          "doc_title": "TSO-DSO Challenges &",
+          "doc_year": "2025",
+          "total": 15,
+          "ieee_transactions": 0,
+          "other_journals": 2,
+          "conferences": 0,
+          "other": 13
+        },
+        "260130_JTF_TSO-DSO_Technical_Report_Use_cases_digital_twin_solutions_v3.pdf": {
+          "doc_title": "Use Cases &",
+          "doc_year": "2026",
+          "total": 21,
+          "ieee_transactions": 0,
+          "other_journals": 3,
+          "conferences": 1,
+          "other": 17
+        }
+      }
+    },
+    "services": {
+      "total": 29,
+      "ieee_transactions": 0,
+      "other_journals": 1,
+      "conferences": 2,
+      "other": 26,
+      "docs": [
+        "1c_-_FFR_Design_Requirements_v1.0_-_external_document.pdf",
+        "FCR-Design_Project_Summary_report_external.pdf",
+        "Inertia%20and%20RoCoF_v17_clean.pdf",
+        "clarifying_questions_MARI_Algo_N-SIDE_20181010_v2.pdf"
+      ],
+      "by_doc": {
+        "1c_-_FFR_Design_Requirements_v1.0_-_external_document.pdf": {
+          "doc_title": "FFR Design of Requirements \u2013",
+          "doc_year": "2020",
+          "total": 5,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 5
+        },
+        "FCR-Design_Project_Summary_report_external.pdf": {
+          "doc_title": "EXTERNAL",
+          "doc_year": "2019",
+          "total": 10,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 10
+        },
+        "clarifying_questions_MARI_Algo_N-SIDE_20181010_v2.pdf": {
+          "doc_title": "MARI: Algorithm Design Principles",
+          "doc_year": "2018",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 0,
+          "other": 0
+        },
+        "Inertia%20and%20RoCoF_v17_clean.pdf": {
+          "doc_title": "Inertia and Rate of Change of",
+          "doc_year": "2020",
+          "total": 13,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 2,
+          "other": 11
+        }
+      }
+    },
+    "planning": {
+      "total": 95,
+      "ieee_transactions": 1,
+      "other_journals": 5,
+      "conferences": 3,
+      "other": 86,
+      "docs": [
+        "110831_NORDIC_GRID_DISTURBANCE_AND_FAULT_STATISTICS_2010.pdf",
+        "130627_Nordic_Grid_Disturbance_and_Fault_Statistics_2011.pdf",
+        "140430-NC%20HVDC%20Explanatory%20Note.pdf",
+        "2012_ENTSOE_HVDC_2013_11_22.pdf",
+        "2013_ENTSOE_HVAC_2014_11_06.pdf",
+        "2021_Nordic_and_Baltic_Grid_Disturbance_Statistics_FOR_PUBLISHING.pdf",
+        "2022_Nordic_and_Baltic_Grid_Disturbance_Statistics_FOR_PUBLISHING_corrected.pdf",
+        "220120-Technologies%20Report%20Usage%20of%20Drones-vFinal.pdf",
+        "ENTSOs%20-%20Interlinkages%20Focus%20Study%20-%20Final%20report.pdf",
+        "HVAC2014_DISTAC_2015_10_21.pdf",
+        "HVAC2015_2025_01_02.pdf",
+        "HVAC2016.pdf",
+        "HVAC_NORDIC_AND_BALTIC_GRID_DISTURBANCE_STATISTICS_2023.pdf",
+        "HVAC_guidelines_2018.pdf",
+        "Nordic-and-Blatic-HVAC-Disturbance-Statistics-2017.pdf",
+        "Nordic-and-Blatic-HVDC-Disturbance-Statistics-2017.pdf",
+        "Nordic_and_Baltic_Grid_Disturbance_Statistics_2019_22.10.2020.pdf",
+        "Nordic_and_Baltic_Grid_Disturbance_Statistics_2020.pdf",
+        "adequacy%20report%202006.pdf"
+      ],
+      "by_doc": {
+        "220120-Technologies%20Report%20Usage%20of%20Drones-vFinal.pdf": {
+          "doc_title": "USAGE OF DRONES",
+          "doc_year": "2022",
+          "total": 3,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 2,
+          "other": 1
+        },
+        "Nordic_and_Baltic_Grid_Disturbance_Statistics_2019_22.10.2020.pdf": {
+          "doc_title": "| Nordic | and | Baltic |",
+          "doc_year": "2019",
+          "total": 4,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 4
+        },
+        "2021_Nordic_and_Baltic_Grid_Disturbance_Statistics_FOR_PUBLISHING.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2021",
+          "total": 4,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 4
+        },
+        "2022_Nordic_and_Baltic_Grid_Disturbance_Statistics_FOR_PUBLISHING_corrected.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2022",
+          "total": 2,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 2
+        },
+        "HVAC_NORDIC_AND_BALTIC_GRID_DISTURBANCE_STATISTICS_2023.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2023",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "Nordic_and_Baltic_Grid_Disturbance_Statistics_2020.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2020",
+          "total": 2,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 2
+        },
+        "HVAC_guidelines_2018.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2018",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "140430-NC%20HVDC%20Explanatory%20Note.pdf": {
+          "doc_title": "Network Code for HVDC",
+          "doc_year": "2014",
+          "total": 12,
+          "ieee_transactions": 1,
+          "other_journals": 2,
+          "conferences": 1,
+          "other": 8
+        },
+        "ENTSOs%20-%20Interlinkages%20Focus%20Study%20-%20Final%20report.pdf": {
+          "doc_title": "Investigation on the interlinkage between",
+          "doc_year": "2019",
+          "total": 17,
+          "ieee_transactions": 0,
+          "other_journals": 3,
+          "conferences": 0,
+          "other": 14
+        },
+        "2012_ENTSOE_HVDC_2013_11_22.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2012",
+          "total": 14,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 14
+        },
+        "2013_ENTSOE_HVAC_2014_11_06.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2013",
+          "total": 7,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 7
+        },
+        "HVAC2014_DISTAC_2015_10_21.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2014",
+          "total": 4,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 4
+        },
+        "HVAC2016.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2016",
+          "total": 4,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 4
+        },
+        "Nordic-and-Blatic-HVDC-Disturbance-Statistics-2017.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2017",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        },
+        "HVAC2015_2025_01_02.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2015",
+          "total": 2,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 2
+        },
+        "110831_NORDIC_GRID_DISTURBANCE_AND_FAULT_STATISTICS_2010.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2010",
+          "total": 6,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 6
+        },
+        "adequacy%20report%202006.pdf": {
+          "doc_title": "GENERATION ADEQUACY",
+          "doc_year": "2008",
+          "total": 3,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 3
+        },
+        "130627_Nordic_Grid_Disturbance_and_Fault_Statistics_2011.pdf": {
+          "doc_title": "European Network of",
+          "doc_year": "2011",
+          "total": 4,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 4
+        },
+        "Nordic-and-Blatic-HVAC-Disturbance-Statistics-2017.pdf": {
+          "doc_title": "| Nordic |     |             | and | Baltic |",
+          "doc_year": "2017",
+          "total": 4,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 4
+        }
+      }
+    }
+  }
+}

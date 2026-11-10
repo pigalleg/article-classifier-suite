@@ -1,0 +1,98 @@
+% Requires \usepackage{longtable}, \usepackage{booktabs},
+% \usepackage{array}, and \usepackage{url} in the including
+% document. longtable needs
+% a single-column layout to paginate itself, so in a twocolumn class
+% (e.g. \documentclass[conference]{IEEEtran}) wrap this \input with
+% \onecolumn ... \twocolumn, e.g.:
+%   \onecolumn
+%   \input{journal_citations_by_document_system_operators}
+%   \twocolumn
+% Omitting that wrapper in a twocolumn document raises
+% \"Package longtable Error: longtable not in -1 column mode\".
+% \tiny, \tabcolsep and \arraystretch are scoped to the {...}
+% group below so they don't leak into the rest of the including
+% document — neither table nor longtable opens its own group for
+% font-size commands. Column widths are fractions of \linewidth so
+% the table always fits the text block, whatever the page layout.
+{\tiny
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.0}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\begin{longtable}{c L{0.065\linewidth} L{0.12\linewidth} L{0.06\linewidth} L{0.17\linewidth} L{0.11\linewidth} c L{0.13\linewidth} L{0.11\linewidth} L{0.07\linewidth}}
+\caption{Journal citations traced to their citing document, system operators only.}
+\label{tab:journal_citations_by_document_system_operators}\\
+\toprule
+No. & Entity & Document Title & Research Area & Article Title & Authors & Year & DOI & Journal & Publisher \\
+\midrule
+\endhead
+1 & ENTSO-E & Best Protection Practices for HV and EHV AC-Transmission Systems of ENTSO-E Electrical Grids & Stability & 1. Transmission line protection systems with aided communication channels--Part I: Performance analysis methodology & A. dos Santos, M. T. Correia de Barros, P. F. Correia & 2015 & \url{10.1016/j.epsr.2015.05.028} & Electric Power Systems Research & Elsevier \\
+\midrule
+2 & ENTSO-E & Determining generator fault clearing time for the synchronous zone of Continental Europe & Stability & 2. A BCU Method for Direct Analysis of Power System Transient Stability & H.-D. Chiang, F. F. Wu, P. P. Varaiya & 1994 & \url{10.1109/59.336079} & IEEE Transactions on Power Systems & IEEE \\
+ & & & & 3. PMU-Based Wide-Area Security Assessment: Concept, Method, and Implementation & Y. V. Makarov et al. & 2012 & \url{10.1109/tsg.2012.2193145} & IEEE Transactions on Smart Grid & IEEE \\
+\midrule
+3 & ENTSO-E & Dynamic Model of Continental Europe V2 & Stability & 4. Definition and Classification of Power System Stability - Revisited \& Extended & N. Hatziargyriou et al. & 2021 & \url{10.1109/tpwrs.2020.3041774} & IEEE Transactions on Power Systems & IEEE \\
+\midrule
+4 & ERCOT & ERCOT CREZ Reactive Power Compensation Study & Planning & 5. Terms, Definitions and Symbols for Subsynchronous Oscillations & IEEE SSR Working Group & 1985 & \url{10.1109/tpas.1985.319152} & IEEE Transactions on Power Apparatus And Systems & IEEE \\
+ & & & & 6. Modeling and Application Studies for a Modern Static VAr System Installation & P. Pourbeik, A. Boström, B. Ray & 2006 & \url{10.1109/tpwrd.2005.852382} & IEEE Transactions on Power Delivery & IEEE \\
+ & & & & 7. Control System Design and Performance Verification for the Chester, Maine Static VAR Compensator & D. Dickmander et al. & 1992 & \url{10.1109/61.141869} & IEEE Transactions on Power Delivery & IEEE \\
+ & & & & 8. Analysis of Series Capacitor Application Problems & J. W. Butler, C. Concordia & 1937 & \url{10.1109/t-aiee.1937.5057677} & Transactions of the American Institute of Electrical Engineers & IEEE \\
+ & & & & 9. Self-excitation of Induction Motors With Series Capacitors & C. F. Wagner & 1941 & \url{10.1109/t-aiee.1941.5058259} & Transactions of the American Institute of Electrical Engineers & IEEE \\
+\midrule
+5 & ERCOT & Estimating the Value of Lost Load & Planning & 10. The value of supply security: The costs of power outages to Austrian households, firms and the public sector & J. Reichl, M. Schmidthaler, F. Schneider & 2013 & \url{10.1016/j.eneco.2012.08.044} & Energy Economics & Elsevier \\
+\midrule
+6 & ENTSO-E & Future System Inertia 2 & IBRs & 11. Definition and classification of power system stability IEEE/CIGRE joint task force on stability terms and definitions & P. Kundur et al. & 2004 & \url{10.1109/tpwrs.2004.825981} & IEEE Transactions on Power Systems & IEEE \\
+\midrule
+7 & ERCOT & Grid Research, Innovation, and Transformation & CROF & 12. Review of learning-assisted power system optimization & G. Ruan et al. & 2020 & \url{10.17775/cseejpes.2020.03070} & CSEE Journal of Power and Energy Systems & CSEE / IEEE \\
+ & & & & 13. State-of-the-art, challenges, and future trends in security constrained optimal power flow & F. Capitanescu et al. & 2011 & \url{10.1016/j.epsr.2011.04.003} & Electric Power Systems Research & Elsevier \\
+ & & & & 14. Security-Constrained Unit Commitment for Electricity Market: Modeling, Solution Methods, and Future Challenges & Y. Chen et al. & 2023 & \url{10.1109/tpwrs.2022.3213001} & IEEE Transactions on Power Systems & IEEE \\
+ & & & & 15. Self-Supervised Learning for Large-Scale Preventive Security Constrained DC Optimal Power Flow & S. Park, P. Van Hentenryck & 2025 & \url{10.1109/tpwrs.2024.3498705} & IEEE Transactions on Power Systems & IEEE \\
+\midrule
+8 & PJM & Guide for Determination of the Line Trap Ratings & Planning & 16. Transient Thermal Performance of Line Traps & D. E. Hall, W. Z. Black, T. J. Parker & 1996 & \url{10.1109/61.484017} & IEEE Transactions on Power Delivery & IEEE \\
+\midrule
+9 & ENTSO-E & HVDC Links in System Operations & Stability & 17. VSC-Based HVDC Power Transmission Systems: An Overview & N. Flourentzou, V. G. Agelidis, G. D. Demetriades & 2009 & \url{10.1109/tpel.2008.2008441} & IEEE Transactions on Power Electronics & IEEE \\
+\midrule
+10 & IESO & Innovation and Sector Evolution White Paper Series & DER & 18. Capacity Market Fundamentals & P. Cramton, A. Ockenfels, S. Stoft & 2013 & \url{10.5547/2160-5890.2.2.2} & Economics of Energy \& Environmental Policy & International Association for Energy Economics (IAEE) \\
+\midrule
+11 & ENTSO-E & Investigation on the Interlinkage Between Gas and Electricity Scenarios and Infrastructure Projects Assessment & Planning & 19. An integrated gas and electricity model of the EU energy system to examine supply interruptions & J. P. Deane, M. Ó Ciaráin, B. P. Ó Gallachóir & 2017 & \url{10.1016/j.apenergy.2017.02.039} & Applied Energy & Elsevier \\
+ & & & & 20. Multi-time period combined gas and electricity network optimisation & M. Chaudry, N. Jenkins, G. Strbac & 2008 & \url{10.1016/j.epsr.2007.11.002} & Electric Power Systems Research & Elsevier \\
+ & & & & 21. Coordinated expansion co-planning of integrated gas and power systems & D. Wang et al. & 2017 & \url{10.1007/s40565-017-0286-z} & Journal of Modern Power Systems and Clean Energy & IEEE \\
+\midrule
+12 & ENTSO-E & MARI: Algorithm Design Principles & Services & 22. Computationally efficient MIP formulation and algorithms for European day-ahead electricity market auctions & M. Madani, M. Van Vyve & 2015 & \url{10.1016/j.ejor.2014.09.060} & European Journal of Operational Research & Elsevier \\
+\midrule
+13 & ENTSO-E & NC HVDC – Call for Stakeholder Input & DER & 23. Smart Regulation for Smart Grids & L. Meeus, M. Saguan & 2011 & -- & Renewable Energy & Elsevier \\
+\midrule
+14 & ENTSO-E & Network Code for HVDC Connections and DC-Connected Power Park Modules (Explanatory Note) & Planning & 24. Coping with limits for very high penetrations of renewable energy & J. O'Sullivan et al. & 2013 & -- & CIGRE JWG & CIGRE \\
+ & & & & 25. Synchronverters: Inverters That Mimic Synchronous Generators & Q.-C. Zhong, G. Weiss & 2011 & \url{10.1109/tie.2010.2048839} & IEEE Transactions on Industrial Electronics & IEEE \\
+ & & & & 26. Inertia Emulation Control Strategy for VSC-HVDC Transmission Systems & J. Zhu et al. & 2013 & \url{10.1109/tpwrs.2012.2213101} & IEEE Transactions on Power Systems & IEEE \\
+\midrule
+15 & NYISO & New York State Transmission Assessment and Reliability Study (STARS) Phase 1 Study Report & Planning & 27. IEEE Reliability Test System & IEEE RTS Task Force & 1979 & \url{10.1109/tpas.1979.319398} & IEEE Transactions on Power Apparatus And Systems & IEEE \\
+ & & & & 28. The IEEE Reliability Test System - Extensions to and Evaluation of the Generating System & IEEE RTS Task Force & 1986 & \url{10.1109/tpwrs.1986.4335006} & IEEE Transactions on Power Systems & IEEE \\
+\midrule
+16 & ENTSO-E & Short Circuit Contribution of New Generating Units Connected With Power Electronics and Protection Behaviour & IBRs & 29. Short-Circuit Current of Wind Turbines With Doubly Fed Induction Generator & J. Morren, S. W. H. de Haan & 2007 & \url{10.1109/tec.2006.889615} & IEEE Transactions on Energy Conversion & IEEE \\
+\midrule
+17 & Swissgrid & Swiss cable study, summarised version & Stability & 30. Development of Equivalent Pi and T Matrix Circuits for Long Un- transposed Transmission Lines & W. I. Bowman, J. M. McNamee & 1964 & \url{10.1109/tpas.1964.4766048} & IEEE Transactions on Power Apparatus And Systems & IEEE \\
+ & & & & 31. A universal model for accurate calculation of electromagnetic transients on overhead lines and underground cables & A. Morched, B. Gustavsen, M. Tartibi & 1999 & \url{10.1109/61.772350} & IEEE Transactions on Power Delivery & IEEE \\
+ & & & & 32. Accurate Frequency Dependent Cable Model for Electromagnetic Transi- ents & I. Kocar, J. Mahseredjian & 2016 & \url{10.1109/tpwrd.2015.2453335} & IEEE Transactions on Power Delivery & IEEE \\
+ & & & & 33. Partitioned Fitting and DC Correction for the Simu- lation of Electromagnetic Transients in Transmission Lines & M. Cervantes et al. & 2018 & \url{10.1109/tpwrd.2018.2849854} & IEEE Transactions on Power Delivery & IEEE \\
+ & & & & 34. Rational approximation of frequency domain responses by vector fitting & B. Gustavsen, A. Semlyen & 1999 & \url{10.1109/61.772353} & IEEE Transactions on Power Delivery & IEEE \\
+ & & & & 35. Weighting Method for Transient Analysis of Underground Cables & I. Kocar, J. Mahseredjian, G. Olivier & 2008 & \url{10.1109/tpwrd.2007.916096} & IEEE Transactions on Power Delivery & IEEE \\
+ & & & & 36. New procedure for computation of time delays in propagation fonction fitting for transient modeling of cables & I. Kocar, J. Mahseredjian & 2016 & \url{10.1109/tpwrd.2015.2444880} & IEEE Transactions on Power Delivery & IEEE \\
+ & & & & 37. Field Test and Simulation of Transients on the RTE 225 kV Cable & I. Lafaia et al. & 2017 & \url{10.1109/tpwrd.2015.2506733} & IEEE Transactions on Power Delivery & IEEE \\
+ & & & & 38. Frequency and Time domain Responses of Cross-Bonded Cables & I. Lafaia et al. & 2018 & \url{10.1109/tpwrd.2017.2734891} & IEEE Transactions on Power Delivery & IEEE \\
+\midrule
+18 & ENTSO-E & Technical Background and Recommendations for Defence Plans in the Continental Europe Synchronous Area & Stability & 39. Wide-Area Protection against voltage collapse & B. Ingelsson et al. & 1997 & \url{10.1109/67.625371} & IEEE Computer Applications in Power & IEEE \\
+ & & & & 40. Hydro-Quebec defense plan against extreme contingencies & G. Trudel, S. Bernard, G. Scott & 1999 & \url{10.1109/59.780908} & IEEE Transactions on Power Systems & IEEE \\
+\midrule
+19 & Swissgrid & Technical Minimum Requirements for the Connection of Converter-Based Energy Storage Systems & IBRs & 41. Impedance-Based Stability Criterion for Grid-Connected Inverters & J. Sun & 2011 & \url{10.1109/tpel.2011.2136439} & IEEE Transactions on Power Electronics & IEEE \\
+\midrule
+20 & SPP & The Economic Principles and Corresponding Decision-Making Criteria of Energy Market Design & Planning & 42. Transmission rights and market power on electric power networks & P. L. Joskow, J. Tirole & 2000 & \url{10.2307/2600996} & RAND Journal of Economics & Wiley \\
+\midrule
+21 & ENTSO-E & TSO-DSO Challenges \& Opportunities for the Digital EU Electricity System & CROF & 43. A probabilistic graphical model foundation for enabling predictive digital twins at scale & M. G. Kapteyn, J. V. R. Pretorius, K. E. Willcox & 2021 & \url{10.1038/s43588-021-00069-0} & Nature Computational Science & Springer Nature \\
+ & & & & 44. Dynamic thermal rating of transmission lines: A review & S. Karimi, P. Musilek, A. Knight & 2018 & \url{10.1016/j.rser.2018.04.001} & Renewable and Sustainable Energy Reviews & Elsevier \\
+\midrule
+22 & ENTSO-E & Use Cases \& Digital Twin Solutions & CROF & 45. A cyber-physical systems architecture for industry 4.0-based manufacturing systems & J. Lee, B. Bagheri, H.-A. Kao & 2015 & \url{10.1016/j.mfglet.2014.12.001} & Manufacturing Letters & Elsevier \\
+ & & & & 46. A probabilistic graphical model foundation for enabling predictive digital twins at scale & M. G. Kapteyn, J. V. R. Pretorius, K. E. Willcox & 2021 & \url{10.1038/s43588-021-00069-0} & Nature Computational Science & Springer Nature \\
+ & & & & 47. Dynamic thermal rating of transmission lines: A review & S. Karimi, P. Musilek, A. Knight & 2018 & \url{10.1016/j.rser.2018.04.001} & Renewable and Sustainable Energy Reviews & Elsevier \\
+\bottomrule
+\end{longtable}
+}

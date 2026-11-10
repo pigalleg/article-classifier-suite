@@ -1,0 +1,48 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{ieeecolor}{HTML}{042C53}
+\definecolor{jrnlcolor}{HTML}{378ADD}
+\definecolor{othercolor}{HTML}{B4B2A9}
+\definecolor{confcolor}{HTML}{D98B3F}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    ybar stacked, bar width=16pt,
+    width=15cm, height=6.5cm,
+    symbolic x coords={IBRs,Stability,DER,CROF,Services,Planning,Total},
+    xtick=data,
+    x tick label style={font=\small},
+    ylabel={Journal citations},
+    ymin=0, ymax=248,
+    axis line style={color=black!40},
+    tick style={color=black!40},
+    ymajorgrids, grid style={color=black!10},
+    enlarge x limits=0.08,
+]
+\addplot[fill=jrnlcolor] coordinates {(IBRs,25) (Stability,10) (DER,15) (CROF,9) (Services,9) (Planning,58) (Total,126)};
+\addplot[fill=ieeecolor] coordinates {(IBRs,20) (Stability,33) (DER,1) (CROF,2) (Services,1) (Planning,8) (Total,65)};
+\node[font=\tiny, text=white] at (axis cs:IBRs,12.5) {25 (56\%)};
+\node[font=\tiny\bfseries, text=white] at (axis cs:IBRs,35.0) {20 (44\%)};
+\node[font=\small\bfseries, anchor=south] at (axis cs:IBRs,45) {20/45};
+\node[font=\tiny, text=white] at (axis cs:Stability,5.0) {10 (23\%)};
+\node[font=\tiny\bfseries, text=white] at (axis cs:Stability,26.5) {33 (77\%)};
+\node[font=\small\bfseries, anchor=south] at (axis cs:Stability,43) {33/43};
+\node[font=\tiny, text=white] at (axis cs:DER,7.5) {15 (94\%)};
+\node[font=\small\bfseries, anchor=south] at (axis cs:DER,16) {1/16};
+\node[font=\small\bfseries, anchor=south] at (axis cs:CROF,11) {2/11};
+\node[font=\small\bfseries, anchor=south] at (axis cs:Services,10) {1/10};
+\node[font=\tiny, text=white] at (axis cs:Planning,29.0) {58 (88\%)};
+\node[font=\small\bfseries, anchor=south] at (axis cs:Planning,66) {8/66};
+\node[font=\tiny, text=white] at (axis cs:Total,63.0) {126 (66\%)};
+\node[font=\tiny\bfseries, text=white] at (axis cs:Total,158.5) {65 (34\%)};
+\node[font=\small\bfseries, anchor=south] at (axis cs:Total,191) {65/191};
+\end{axis}
+\begin{scope}[shift={(2.0,7.0)}]
+\node[fill=ieeecolor, minimum width=10pt, minimum height=8pt, anchor=west] (legbox0) at (0,0) {}; \node[anchor=west, font=\small, right=3pt of legbox0] (legtxt0) {IEEE PES Transactions}; \node[fill=jrnlcolor, minimum width=10pt, minimum height=8pt, anchor=west, right=16pt of legtxt0] (legbox1) {}; \node[anchor=west, font=\small, right=3pt of legbox1] (legtxt1) {Other journals};
+\end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,262 @@
+# classification_rules.toml
+# =========================
+# Rules for auto-classifying documents and citations.
+# All patterns are case-insensitive regex strings joined with | internally.
+# Edit patterns freely — one pattern per list entry is easiest to read and maintain.
+
+# ── G-PST Research Area Classification ────────────────────────────────────────
+# Documents are matched against filename + first 3000 characters of text.
+# First matching area wins; falls back to "planning" if nothing matches.
+
+[gpst_areas.ibrs]
+label = "IBRs (Q1–6)"
+# Inverter-based resources: grid-forming/following controls, IBR protection,
+# large-load dynamic models, EMT modelling, interconnection requirements.
+patterns = [
+    "grid.form",
+    "GFM\\b",
+    "grid.following",
+    "GFL\\b",
+    "inverter.based",
+    "IBR\\b",
+    "large.load.model",
+    "dynamic.stud",
+    "EMT.model",
+    "interconnection.req",
+    "performance.req.*large.load",
+    "fault.current",
+    "protection.*IBR",
+    "negative.sequence",
+]
+
+[gpst_areas.stability]
+label = "Stability (Q7–11)"
+# Power system stability: oscillations, sub-synchronous interactions,
+# system strength, voltage/frequency reliability services, stability tools.
+patterns = [
+    "oscillat",
+    "sub.?synchron",
+    "SSO\\b",
+    "system.strength",
+    "voltage.frequency.service",
+    "reliability.service.*volt",
+    "stability.tool",
+    "damping",
+    "small.signal",
+    "transient.stab",
+]
+
+[gpst_areas.ders]
+label = "DERs (Q12–18)"
+# Distributed energy resources: DER aggregation, demand response,
+# building/vehicle/industrial electrification, retail pricing, prosumers.
+patterns = [
+    "distributed.energy",
+    "DER\\b",
+    "demand.response",
+    "building.electrif",
+    "vehicle.electrif",
+    "EV.charg",
+    "retail.pric",
+    "rate.design",
+    "industrial.electrif",
+    "hydrogen",
+    "DER.integrat",
+    "wholesale.market.*DER",
+    "prosumer",
+    "load.DER",
+    "behind.the.meter",
+]
+
+[gpst_areas.crof]
+label = "CROF (Q19–27)"
+# Control Room of the Future: grid-enhancing technologies, topology optimisation,
+# transmission planning tools, operational situational awareness, probabilistic ops.
+patterns = [
+    "grid.enhancing",
+    "GET\\b",
+    "topology.optim",
+    "transmission.silo",
+    "multi.driver",
+    "multi.value.transm",
+    "control.room",
+    "operational.tool",
+    "flexibility.assess",
+    "HILP",
+    "high.impact.low.prob",
+    "situational.aware",
+    "visuali",
+    "big.data",
+    "probabilistic.operat",
+]
+
+[gpst_areas.services]
+label = "Services (Q28–36)"
+# System needs and services: ancillary services, market design, capacity markets,
+# black start, synthetic inertia, fast frequency response, capacity accreditation.
+patterns = [
+    "market.vision",
+    "electricity.market",
+    "capacity.market",
+    "ancillary.service",
+    "black.start",
+    "synthetic.inertia",
+    "FFR\\b",
+    "fast.frequency",
+    "system.need",
+    "service.design",
+    "capacity.accredit",
+    "technology.neutral",
+    "inertia",
+    "frequency.response",
+]
+
+[gpst_areas.planning]
+label = "Planning (Q37–48)"
+# System planning: resource adequacy, transmission planning, load forecasting,
+# integrated system plans, resilience, long-duration storage, wide-area planning.
+patterns = [
+    "resource.adequacy",
+    "transmission.plan",
+    "load.forecast",
+    "integrated.plan",
+    "interregional",
+    "stress.test",
+    "resilience",
+    "dunkelflaute",
+    "extreme.event",
+    "wide.area",
+    "long.term.load",
+    "ambitious.target",
+    "probabilistic.plan",
+    "long.duration.storage",
+    "LDES\\b",
+    "hybrid.plant",
+    "no.regret",
+]
+
+# ── Reference Type Classification ─────────────────────────────────────────────
+# Citations extracted from PDFs are matched in order below; first match wins.
+# Add or reorder entries to tune classification priority.
+
+[[reference_types]]
+type = "journal"
+# Peer-reviewed journal articles identified by publisher/title keywords
+# or volume/issue/page-number patterns.
+patterns = [
+    "IEEE Trans",
+    "Nature [A-Z]",
+    "\\bScience\\b",
+    "Energy Policy",
+    "Applied Energy",
+    "Renewable (?:and Sustainable )?Energy",
+    "Electric Power Systems Research",
+    "International Journal",
+    "Journal of",
+    "The Energy Journal",
+    "\\bEnergies\\b",
+    "Electricity Journal",
+    "Joule\\b",
+    "(?:vol\\.|volume)\\s*\\d+.{0,20}(?:no\\.|pp?\\.|issue)",
+    "\\bpp\\.\\s*\\d+[–\\-]\\d+\\b",
+]
+
+[[reference_types]]
+type = "conference"
+# Conference papers and workshop proceedings.
+patterns = [
+    "Proc(?:eedings)?\\.?\\s+of",
+    "In Proc\\.",
+    "IEEE PES\\b",
+    "IEEE PESGM",
+    "Power Systems Computation",
+    "CIGRE",
+    "PSCC\\b",
+    "(?:Annual|International|National)\\s+(?:Conference|Symposium|Workshop|Meeting|Convention)",
+    "Conf\\.\\s+on",
+    "Workshop on",
+    "\\bSummit\\b",
+]
+
+[[reference_types]]
+type = "standard"
+# IEEE, IEC, NERC, ANSI, FERC standards and regulatory orders.
+patterns = [
+    "IEEE Std\\b",
+    "IEEE P\\d{3,}",
+    "IEC \\d{5}",
+    "NERC\\s+(?:Standard|Reliability Standard|FAC|MOD|PRC|TPL|VAR|BAL|CIP)",
+    "ANSI/IEEE",
+    "ISO \\d{4}",
+    "EN \\d{4,}",
+    "FERC Order",
+    "FERC Regulation",
+]
+
+[[reference_types]]
+type = "report"
+# Technical and research reports from national labs, industry bodies, DOE, EPRI, etc.
+patterns = [
+    "Technical Report",
+    "Tech\\. Rep\\.",
+    "NREL/",
+    "DOE/",
+    "\\bEPRI\\b",
+    "Lawrence Berkeley",
+    "LBNL",
+    "Argonne",
+    "Oak Ridge",
+    "Sandia",
+    "National Renewable Energy",
+    "National Laboratory",
+    "Working Paper",
+    "White Paper",
+    "Issue Brief",
+    "Fact Sheet",
+]
+
+[[reference_types]]
+type = "thesis"
+# PhD dissertations and master's theses.
+patterns = [
+    "(?:PhD|Ph\\.D|doctoral|master'?s?|M\\.Sc|M\\.S\\.)\\s+(?:thesis|dissertation)",
+]
+
+[[reference_types]]
+type = "book"
+# Books identified by well-known publishers or ISBN / edited-volume patterns.
+patterns = [
+    "(?:MIT|Cambridge|Oxford|Springer|Elsevier|Wiley|McGraw|CRC|Prentice)\\s+(?:Press|[A-Z])",
+    "\\bIn\\b.{0,60}\\bEd(?:itors?|s\\.)\\b",
+    "\\bISBN\\b",
+]
+
+[[reference_types]]
+type = "magazine"
+# Trade magazines and industry publications.
+patterns = [
+    "IEEE (?:Spectrum|Power(?:\\s*&\\s*Energy|and Energy)\\s*Magazine|Magazine)",
+    "Power Magazine",
+    "Utility Dive",
+    "Bloomberg",
+    "Reuters",
+    "[Mm]agazine\\b",
+]
+
+[[reference_types]]
+type = "dataset"
+# Datasets, databases, EIA/FERC forms, and data accessed via URL.
+patterns = [
+    "[Dd]ataset\\b",
+    "[Dd]atabase\\b",
+    "EIA\\s+(?:Form|Annual Energy Outlook)",
+    "FERC\\s+Form\\s+\\d+",
+    "accessed\\s+(?:at|from|via)\\s+https?://",
+]
+
+[[reference_types]]
+type = "website"
+# Web pages and online resources retrieved from a URL.
+patterns = [
+    "(?:Retrieved|Available|Accessed)\\s+(?:from\\s+)?https?://",
+]

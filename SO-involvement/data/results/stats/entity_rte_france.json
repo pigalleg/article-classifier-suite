@@ -1,0 +1,73 @@
+{
+  "entity": "RTE (France)",
+  "region": "Europe",
+  "total_docs": 1,
+  "total_citations": 1,
+  "ref_type_counts": {
+    "other": 1
+  },
+  "ieee_transactions": 0,
+  "by_gpst_area": {
+    "ibrs": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "stability": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "ders": {
+      "total": 1,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 1,
+      "docs": [
+        "2025-03-resume-executif-benchmark.pdf"
+      ],
+      "by_doc": {
+        "2025-03-resume-executif-benchmark.pdf": {
+          "doc_title": "Comparaison internationale des plans",
+          "doc_year": "2025",
+          "total": 1,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 1
+        }
+      }
+    },
+    "crof": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "services": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "planning": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    }
+  }
+}

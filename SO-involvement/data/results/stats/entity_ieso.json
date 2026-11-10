@@ -1,0 +1,108 @@
+{
+  "entity": "IESO",
+  "region": "Canada",
+  "total_docs": 4,
+  "total_citations": 83,
+  "ref_type_counts": {
+    "report": 5,
+    "other": 73,
+    "book": 1,
+    "standard": 2,
+    "magazine": 1,
+    "journal": 1
+  },
+  "ieee_transactions": 0,
+  "by_gpst_area": {
+    "ibrs": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "stability": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "ders": {
+      "total": 83,
+      "ieee_transactions": 0,
+      "other_journals": 1,
+      "conferences": 0,
+      "other": 82,
+      "docs": [
+        "Conceptual-Models-for-DER-Participation.pdf",
+        "Exploring-Expanded-DER-Participation-in-the-IESO-Administered-Markets-Part-II.pdf",
+        "IESO-T-D-Coordination-Framework.pdf",
+        "Options-to-Enhance-DER-Participation-20201110.pdf"
+      ],
+      "by_doc": {
+        "IESO-T-D-Coordination-Framework.pdf": {
+          "doc_title": "Development of a Transmission-Distribution Interoperability Framework",
+          "doc_year": "2020",
+          "total": 3,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 3
+        },
+        "Options-to-Enhance-DER-Participation-20201110.pdf": {
+          "doc_title": "Options to Enhance DER Participation",
+          "doc_year": "2020",
+          "total": 34,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 34
+        },
+        "Exploring-Expanded-DER-Participation-in-the-IESO-Administered-Markets-Part-II.pdf": {
+          "doc_title": "Exploring Expanded DER Participation in the IESO-Administered Markets Part II",
+          "doc_year": "2021",
+          "total": 6,
+          "ieee_transactions": 0,
+          "other_journals": 0,
+          "conferences": 0,
+          "other": 6
+        },
+        "Conceptual-Models-for-DER-Participation.pdf": {
+          "doc_title": "Conceptual Models for DER Participation",
+          "doc_year": "2019",
+          "total": 40,
+          "ieee_transactions": 0,
+          "other_journals": 1,
+          "conferences": 0,
+          "other": 39
+        }
+      }
+    },
+    "crof": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "services": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    },
+    "planning": {
+      "total": 0,
+      "ieee_transactions": 0,
+      "other_journals": 0,
+      "conferences": 0,
+      "other": 0,
+      "docs": []
+    }
+  }
+}

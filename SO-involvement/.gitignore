@@ -1,0 +1,16 @@
+# Downloaded PDFs are re-creatable from the URLs in data/interim/*.csv
+data/pdfs/
+*.pdf
+
+# SQLite crawl state (its contents are exported to data/interim/documents_catalog.csv)
+data/interim/documents.db
+
+# LaTeX build artifacts from scripts/compile_figures.sh
+*.aux
+*.log
+*.synctex.gz
+
+# Python / OS
+__pycache__/
+*.pyc
+.DS_Store

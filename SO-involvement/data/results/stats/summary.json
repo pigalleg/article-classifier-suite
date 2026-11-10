@@ -1,0 +1,20 @@
+{
+  "total_entities": 13,
+  "total_docs": 143,
+  "total_citations": 1399,
+  "ieee_transactions": 65,
+  "by_region": {
+    "US": 66,
+    "Europe": 68,
+    "Canada": 4,
+    "Global": 5
+  },
+  "by_gpst_area": {
+    "ibrs": 151,
+    "stability": 155,
+    "ders": 321,
+    "crof": 94,
+    "services": 73,
+    "planning": 605
+  }
+}

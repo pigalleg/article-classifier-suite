@@ -47,8 +47,15 @@ FIGURE_DIM = (516, 310)
 PX_PER_PT = 96 / 72
 IEEE_COLUMN_WIDTH_PT = 252  # IEEE Transactions single column, 3.5 in
 IEEE_DOUBLE_COLUMN_WIDTH_PT = 516  # IEEE Transactions full text width, 7.16 in
+# Arial must be installed (it is on Windows and macOS). Without it the browser that Kaleido
+# uses substitutes another font (e.g. DejaVu Sans on Linux), which is wider, so text no
+# longer fits the layout and gets clipped.
 FONT_FAMILY = "Arial"
 ARTICLE_FONT_SIZE_PT = 8
+# A PNG copy of each PDF, for README files and sharing. Plotly sizes are CSS pixels (96 per
+# inch), so the scale factor gives this resolution at print size.
+SAVE_PNG = True
+PNG_DPI = 300
 # Figures saved without Kaleido's PDF page margins, so the page is exactly the figure.
 ZERO_MARGIN_PDF_FIGURES = {
     "article_ra_affinity_distribution",
@@ -164,7 +171,7 @@ def parse_args() -> argparse.Namespace:
         "--output-dir",
         type=Path,
         default=DEFAULT_OUTPUT_DIR,
-        help=f"Directory for PDFs and Excel files (default: {DEFAULT_OUTPUT_DIR})",
+        help=f"Directory for PDFs, PNGs and Excel files (default: {DEFAULT_OUTPUT_DIR})",
     )
     parser.add_argument(
         "--article-run-id",
@@ -1115,6 +1122,13 @@ def write_outputs(output_dir: Path, figures: dict[str, object], tables: dict[str
                 str(figure_dir / f"{slug}.pdf"),
                 width=figure.layout.width,
                 height=figure.layout.height,
+            )
+        if SAVE_PNG:
+            figure.write_image(
+                str(figure_dir / f"{slug}.png"),
+                width=figure.layout.width,
+                height=figure.layout.height,
+                scale=PNG_DPI / 96,
             )
     for slug, table in tables.items():
         table.to_excel(output_dir / f"{slug}.xlsx", index=False)

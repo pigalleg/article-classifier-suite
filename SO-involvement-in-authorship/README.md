@@ -4,8 +4,8 @@
 
 # SO involvement in authorship
 
-Part of the article-classifier-suite, for the paper *Does Power System Research Address Industry
-Needs? LLM-Based Analysis of IEEE Publications, 2000–2026*.
+Part of the article-classifier-suite, for the paper *"Does Power System Research Address Industry Needs? LLM-Based
+Analysis of IEEE Publications, 2000–2026"*.
 
 This project finds which papers in six IEEE Transactions (TPWRS, TPWRD, TSG, TSTE, TEC, TEMPR) 
 have at least one author working at a system operator (SO), a grid company, or a

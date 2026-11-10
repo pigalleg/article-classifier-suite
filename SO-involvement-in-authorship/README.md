@@ -63,11 +63,14 @@ data/ieee_papers.csv              input: doi, title, authors, affiliations, jour
 data/reference/
   so_organisations.csv            SOs, grid companies and their research institutes (135 entries)
   excluded_organisations.csv      organisations reviewed and rejected; mask = 1 rows are blanked out before matching
-  research_institute_names.csv    institute name aliases, used by step 4 only
+  research_institute_names.csv    name aliases for research institutes (step 4 only)
+  university_names.csv            name aliases for the top universities (step 4 only)
+  company_names.csv               name aliases for companies within group entries (step 4 only)
 src/so_matching.py                paths, loading and the affiliation matcher
 scripts/01-05_*.py                the steps above
 results/so_classification.csv     one row per DOI: paper filter, SO flags by type, matched organisations and evidence
-results/top_organisations/        papers per SO, research institute (by owner and by institute) and university
+results/top_organisations/        papers per SO, research institute (by owner and by institute) and university;
+                                  *_variants.csv list the spellings merged into each name
 results/figures/                  the figure in the paper
 ```
 
@@ -82,5 +85,9 @@ after this analysis was run.
   from the LLM-assisted review and were not checked against external sources.
 - An unfamiliar grid company that appears only once, and whose affiliation contains no
   grid-related words, may be missed.
-- In `results/top_organisations/`, a company or university written in two different ways
-  is counted as two entries.
+- In `results/top_organisations/`, spellings are merged by the alias lists and by a
+  normalised name (accents, case, punctuation ignored). The alias lists were reviewed for the
+  top 50 universities and companies. Further down the tables, a name written in two
+  substantially different ways (e.g. as an abbreviation) can still appear twice. Separate
+  campuses of a university system (e.g. UC Berkeley, UC San Diego) and institutions that later
+  merged are kept separate; branch campuses of one university are merged.

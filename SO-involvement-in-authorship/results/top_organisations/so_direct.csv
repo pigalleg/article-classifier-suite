@@ -1,390 +1,332 @@
-organisation,papers
-State Grid Corporation of China (SGCC),598
-China Southern Power Grid (CSG),193
-National Grid (UK),83
-Midcontinent ISO (MISO),82
-ISO New England,73
-BC Hydro / BCTC,70
-Hydro One / Ontario Hydro,66
-RTE (France),57
-Hydro-Quebec,54
-Bonneville Power  [US federal and state power agencies],44
-ERCOT,39
-American Electric Power  [US investor-owned utilities (integrated or transmission-owning)],34
-Energinet (incl. Eltra and Elkraft System),32
-Manitoba Hydro,32
-Southern California Edison  [US investor-owned utilities (integrated or transmission-owning)],31
-Taipower (Taiwan),31
-New York Power Authority  [US federal and state power agencies],29
-PJM Interconnection,27
-Svenska kraftnat,27
-Tokyo Electric Power  [Japanese regional electric power companies],27
-California ISO (CAISO),26
-Dominion Energy  [US investor-owned utilities (integrated or transmission-owning)],23
-Eletrobras and subsidiaries (Brazil),23
-Pacific Gas And Electric  [US investor-owned utilities (integrated or transmission-owning)],21
-Scottish transmission owners (SP Energy Networks / SSEN),20
-Consolidated Edison  [US distribution utilities],19
-Red Electrica (Spain),17
-Southern Company  [US investor-owned utilities (integrated or transmission-owning)],17
-TenneT,17
-Salt River Project  [US investor-owned utilities (integrated or transmission-owning)],16
-Terna,16
-Comed  [US distribution utilities],14
-Dong Energy  [European integrated utility groups with network businesses],14
-Alberta Electric System Operator (AESO),13
-Arizona Public Service  [US investor-owned utilities (integrated or transmission-owning)],13
-Endesa  [European integrated utility groups with network businesses],13
-New York ISO (NYISO),13
-Scottish Power  [European integrated utility groups with network businesses],13
-Statnett,13
-Chubu Electric Power  [Japanese regional electric power companies],12
-Commonwealth Edison  [US distribution utilities],12
-EirGrid,12
-Israel Electric  [Middle Eastern grid companies],12
-Kansai Electric Power  [Japanese regional electric power companies],12
-Swissgrid,12
-AEMO / NEMMCO (Australia),11
-Dominion Virginia  [US investor-owned utilities (integrated or transmission-owning)],11
-Duke Energy  [US investor-owned utilities (integrated or transmission-owning)],10
-Elia,10
-Enel  [European integrated utility groups with network businesses],10
-Entergy  [US investor-owned utilities (integrated or transmission-owning)],10
-IESO (Ontario),10
-Public Power Corporation  [European integrated utility groups with network businesses],10
-Atco  [Other Canadian grid companies],9
-Cemig  [Brazilian state utilities and transmission companies],9
-Elektroprivreda  [European integrated utility groups with network businesses],9
-Eskom (South Africa),9
-IPTO / ADMIE / HTSO (Greece),9
-Iran Grid Management Company (IGMC),9
-KEPCO (Korea),9
-National Grid  [US distribution utilities],9
-National Grid ESO / NESO (Great Britain),9
-Western reliability coordinator (WECC / Peak Reliability),9
-XM (Colombia),9
-TransnetBW,8
-Western Power  [Australian network companies],8
-Xcel  [US investor-owned utilities (integrated or transmission-owning)],8
-Alabama Power  [US investor-owned utilities (integrated or transmission-owning)],7
-Ausnet  [Australian network companies],7
-Electricity North West  [Great Britain distribution network operators],7
-Eversource  [US distribution utilities],7
-Vattenfall  [European integrated utility groups with network businesses],7
-Altalink  [Other Canadian grid companies],6
-Ameren  [US investor-owned utilities (integrated or transmission-owning)],6
-Center Point Energy  [US investor-owned utilities (integrated or transmission-owning)],6
-ELES (Slovenia),6
-Edf  [European integrated utility groups with network businesses],6
-Electricité De France  [European integrated utility groups with network businesses],6
-Esb  [European integrated utility groups with network businesses],6
-Fingrid,6
-GRTN (Italy),6
-Hep  [European integrated utility groups with network businesses],6
-Hokkaido Electrical Power  [Japanese regional electric power companies],6
-Iberdrola  [European integrated utility groups with network businesses],6
-KPX (Korea),6
-Nextera  [US investor-owned utilities (integrated or transmission-owning)],6
-ONS (Brazil),6
-REN (Portugal),6
-Abu Dhabi Distribution  [Middle Eastern grid companies],5
-Alliant Energy  [US investor-owned utilities (integrated or transmission-owning)],5
-Edp  [European integrated utility groups with network businesses],5
-Enel Distribuzione  [European distribution system operators],5
-Enmax  [Other Canadian grid companies],5
-Fortisalberta  [Other Canadian grid companies],5
-HOPS / HEP-OPS (Croatia),5
-Idaho Power  [US investor-owned utilities (integrated or transmission-owning)],5
-Inner Mongolia Power (Group),5
-Pacific Gas & Electric  [US investor-owned utilities (integrated or transmission-owning)],5
-Pacificorp  [US investor-owned utilities (integrated or transmission-owning)],5
-Tenaga Nasional  [Southeast Asian national utilities],5
-Tennessee Valley Authority  [US federal and state power agencies],5
-Transgrid  [Australian network companies],5
-American Transmission Co  [US investor-owned utilities (integrated or transmission-owning)],4
-Amprion,4
-CLP Power / HK Electric (Hong Kong),4
-Cpfl  [Brazilian distribution companies],4
-Energy Queensland  [Australian network companies],4
-Florida Power And Light  [US investor-owned utilities (integrated or transmission-owning)],4
-Interconexión Eléctrica  [Other Latin American grid companies],4
-J-POWER (Japan),4
-Jemena  [Australian network companies],4
-Lower Colorado River Authority  [US federal and state power agencies],4
-Luma Energy  [Other Latin American grid companies],4
-Northern California Power Agency  [US joint action agencies (municipal power agencies)],4
-POWERGRID (India),4
-Pse And G  [US distribution utilities],4
-Pud  [US federal and state power agencies],4
-Riverside Public Utilities  [US federal and state power agencies],4
-Sarawak Energy  [Southeast Asian national utilities],4
-Saskpower  [Other Canadian grid companies],4
-Sp Group  [Southeast Asian national utilities],4
-Transpower (New Zealand),4
-United Illuminating  [US distribution utilities],4
-Western Power Distribution  [Great Britain distribution network operators],4
-50Hertz,3
-Avista  [US investor-owned utilities (integrated or transmission-owning)],3
-Centerpoint  [US investor-owned utilities (integrated or transmission-owning)],3
-Copel  [Brazilian state utilities and transmission companies],3
-E.On  [European integrated utility groups with network businesses],3
-Electricities  [US joint action agencies (municipal power agencies)],3
-Electricity Authority Of Cyprus  [Middle Eastern grid companies],3
-Electricity Generating Authority Of Thailand  [Southeast Asian national utilities],3
-Electricity Supply Board  [European integrated utility groups with network businesses],3
-Enedis  [European distribution system operators],3
-Florida Power & Light  [US investor-owned utilities (integrated or transmission-owning)],3
-Georgia Power  [US investor-owned utilities (integrated or transmission-owning)],3
-Hawaiian Electric  [US investor-owned utilities (integrated or transmission-owning)],3
-Helen Electricity Network  [European distribution system operators],3
-Liander  [European distribution system operators],3
-Nova Scotia Power  [Other Canadian grid companies],3
-Oklahoma Gas & Electric  [US investor-owned utilities (integrated or transmission-owning)],3
-Portland General  [US investor-owned utilities (integrated or transmission-owning)],3
-Powerlink  [Australian network companies],3
-Public Service Company Of New Mexico  [US investor-owned utilities (integrated or transmission-owning)],3
-Rwe  [European integrated utility groups with network businesses],3
-Shikoku Electrical Power  [Japanese regional electric power companies],3
-Singapore Power  [Southeast Asian national utilities],3
-Sp Powergrid  [Southeast Asian national utilities],3
-Uk Power Networks  [Great Britain distribution network operators],3
-A2A  [European integrated utility groups with network businesses],2
-Abu Dhabi Water And Electricity  [Middle Eastern grid companies],2
-Aes Indiana  [US investor-owned utilities (integrated or transmission-owning)],2
-Aes Sul  [Brazilian distribution companies],2
-Alliander  [European distribution system operators],2
-Ausgrid  [Australian network companies],2
-Avangrid  [US distribution utilities],2
-Baltimore Gas And Electric  [US distribution utilities],2
-Bluewater Power  [Canadian local distribution companies],2
-CEPS (Czech Republic),2
-Carolina Power And Light  [US investor-owned utilities (integrated or transmission-owning)],2
-Chugoku Electric Power  [Japanese regional electric power companies],2
-Comisión Federal De Electricidad  [Other Latin American grid companies],2
-Coordinador Electrico Nacional / CDEC (Chile),2
-Detroit Edison  [US investor-owned utilities (integrated or transmission-owning)],2
-Dte  [US investor-owned utilities (integrated or transmission-owning)],2
-Dubai Electricity  [Middle Eastern grid companies],2
-E-Distribuzione  [European distribution system operators],2
-E-Redes  [European distribution system operators],2
-ENTSO-E / UCTE / Nordel (TSO associations),2
-ESB Networks (Ireland),2
-Egyptian Electricity Authority  [Egyptian grid companies (EEHC / distribution companies)],2
-Electric Power Board  [US federal and state power agencies],2
-Elektro Gorenjska  [European distribution system operators],2
-Elektrodistribucija  [European distribution system operators],2
-Elektromreza Srbije (EMS),2
-Elektrovojvodina  [European distribution system operators],2
-Eletropaulo  [Brazilian distribution companies],2
-Elsam  [European integrated utility groups with network businesses],2
-Enexis  [European distribution system operators],2
-Ergon  [Australian network companies],2
-Gas Natural Fenosa  [European integrated utility groups with network businesses],2
-Grid-India / POSOCO / load despatch centres (India),2
-Kansas City Power  [US investor-owned utilities (integrated or transmission-owning)],2
-Kauai Island Utility  [US investor-owned utilities (integrated or transmission-owning)],2
-Liandon  [European distribution system operators],2
-Midamerican  [US investor-owned utilities (integrated or transmission-owning)],2
-Netze Bw  [European distribution system operators],2
-New England Electric  [US distribution utilities],2
-New River Light And Power  [US federal and state power agencies],2
-PSE (Poland),2
-Pepco  [US distribution utilities],2
-Pg&E  [US investor-owned utilities (integrated or transmission-owning)],2
-Ppl  [US distribution utilities],2
-Public Service Electric And Gas  [US distribution utilities],2
-Regional Electric Co  [Iranian grid companies (Tavanir / regional and distribution companies)],2
-River Light And Power  [US investor-owned utilities (integrated or transmission-owning)],2
-SO UES (Russia),2
-SONI (Northern Ireland),2
-San Diego Gas & Electric  [US investor-owned utilities (integrated or transmission-owning)],2
-Sarawak Electricity Supply  [Southeast Asian national utilities],2
-Saskatchewan Power  [Other Canadian grid companies],2
-Sce  [US investor-owned utilities (integrated or transmission-owning)],2
-Shaanxi Regional Electric Power  [Chinese local grid companies (Shaanxi Local Power)],2
-Southwest Power Pool (SPP),2
-Stedin  [European distribution system operators],2
-Suur-Savon Sähkö  [European distribution system operators],2
-Tampa Electric  [US investor-owned utilities (integrated or transmission-owning)],2
-Tasnetworks  [Australian network companies],2
-Tavanir  [Iranian grid companies (Tavanir / regional and distribution companies)],2
-Tohoku Electric Power  [Japanese regional electric power companies],2
-Transelec  [Other Latin American grid companies],2
-Transmission System Operator  [Transmission or independent system operator (unnamed)],2
-Tucson Electric  [US investor-owned utilities (integrated or transmission-owning)],2
-Tva  [US federal and state power agencies],2
-Unareti  [European distribution system operators],2
-Union Fenosa  [European integrated utility groups with network businesses],2
-Union Fenosa Distribucion  [European distribution system operators],2
-Unión Fenosa  [European integrated utility groups with network businesses],2
-Vermont Electric Power  [US investor-owned utilities (integrated or transmission-owning)],2
-Viken Nett  [European distribution system operators],2
-We Energies  [US investor-owned utilities (integrated or transmission-owning)],2
-Westnetz  [European distribution system operators],2
-Administración Nacional De Electricidad  [Other Latin American grid companies],1
-Aep  [US investor-owned utilities (integrated or transmission-owning)],1
-Aes Ohio  [US investor-owned utilities (integrated or transmission-owning)],1
-Akershus Nett  [European distribution system operators],1
-Al Ain Distribution  [Middle Eastern grid companies],1
-Ande  [Other Latin American grid companies],1
-Aurora Energy  [Australian network companies],1
-Austrian Power Grid (APG),1
-Bandeirante De Energia  [Brazilian distribution companies],1
-Bangladesh Power Development Board  [South Asian grid companies],1
-Bayernwerk  [European distribution system operators],1
-Bhutan Power Corporation  [South Asian grid companies],1
-Bnnetze  [European distribution system operators],1
-Bogazici Electric  [Turkish distribution companies],1
-CENACE (Mexico / Ecuador),1
-Ce Electric  [Great Britain distribution network operators],1
-Ceb  [Brazilian distribution companies],1
-Ceee  [Brazilian state utilities and transmission companies],1
-Central Electricity Board  [African national utilities],1
-Cia. Paranaense  [Brazilian state utilities and transmission companies],1
-Cinergy  [US investor-owned utilities (integrated or transmission-owning)],1
-City Utilities Board  [US federal and state power agencies],1
-Comisión Pederal De Electricidad  [Other Latin American grid companies],1
-Companhia Energética De Minas Gerais  [Brazilian state utilities and transmission companies],1
-Con Edison  [US distribution utilities],1
-Coned  [US distribution utilities],1
-Consumers Power  [US investor-owned utilities (integrated or transmission-owning)],1
-Delta Electricity Distribution  [Egyptian grid companies (EEHC / distribution companies)],1
-Dimosia Epichirisi Ilektrismou  [European integrated utility groups with network businesses],1
-Distribuição De Energia  [Brazilian distribution companies],1
-Distribution Electrical Company  [Iranian grid companies (Tavanir / regional and distribution companies)],1
-Domination Energy  [US investor-owned utilities (integrated or transmission-owning)],1
-Dominion Resources  [US investor-owned utilities (integrated or transmission-owning)],1
-Dso  [Distribution system operator (unnamed)],1
-Duke Power  [US investor-owned utilities (integrated or transmission-owning)],1
-Duquesne Light  [US investor-owned utilities (integrated or transmission-owning)],1
-E.ON Netz (former German TSO),1
-Edison Company Of New York  [US distribution utilities],1
-Edp Distribuição  [European distribution system operators],1
-Eidsiva Nett  [European distribution system operators],1
-Electrabel  [European integrated utility groups with network businesses],1
-Electric Power Distribution Company  [Iranian grid companies (Tavanir / regional and distribution companies)],1
-Electric Power Industry  [European integrated utility groups with network businesses],1
-Electric Power Utility Of Serbia  [European integrated utility groups with network businesses],1
-Electrica Muntenia  [European distribution system operators],1
-Electrica S.A  [European distribution system operators],1
-Electrical Membership  [US electric cooperatives],1
-Electricidad De Caracas  [Other Latin American grid companies],1
-Electricite De France  [European integrated utility groups with network businesses],1
-Electricity And Water Authority  [Middle Eastern grid companies],1
-Electricity Distribution Company  [Iranian grid companies (Tavanir / regional and distribution companies)],1
-Electricity Of Vietnam  [Southeast Asian national utilities],1
-Elektrizitätswerk  [European distribution system operators],1
-Elektro Celje  [European distribution system operators],1
-Elektro Primorska  [European distribution system operators],1
-Elektroprenos  [Western Balkan TSOs (NOS BiH / CGES / MEPSO / OST / KOSTT)],1
-Elenia  [European distribution system operators],1
-Elering  [Baltic TSOs (Elering / AST / Litgrid)],1
-Ellevio  [European distribution system operators],1
-Endeavour Energy  [Australian network companies],1
-Energiapro  [European distribution system operators],1
-Energie Ag  [European integrated utility groups with network businesses],1
-Energisa  [Brazilian distribution companies],1
-Energy Australia  [Australian network companies],1
-Energy Company Of Goias  [Brazilian state utilities and transmission companies],1
-Epsa  [Other Latin American grid companies],1
-Equatorial Energia  [Brazilian distribution companies],1
-Escelsa  [Brazilian distribution companies],1
-Essential Energy  [Australian network companies],1
-Exelon  [US distribution utilities],1
-GRIDCo (Ghana),1
-General Electricity Company Of Libya  [African national utilities],1
-Gotland Energi  [European distribution system operators],1
-Hafslund  [European integrated utility groups with network businesses],1
-Hafslund Nett  [European distribution system operators],1
-Hedno  [European distribution system operators],1
-Hellenic Electricity Distribution  [European distribution system operators],1
-Helsinki Energy  [European distribution system operators],1
-Hoosier Energy  [US electric cooperatives],1
-Houston Lighting  [US investor-owned utilities (integrated or transmission-owning)],1
-Hungarian Power Companies  [European integrated utility groups with network businesses],1
-I-De  [European distribution system operators],1
-Iberdrola Distribución  [European distribution system operators],1
-Infrax  [European distribution system operators],1
-Innogy  [European integrated utility groups with network businesses],1
-Integral Energy  [Australian network companies],1
-Isa  [Other Latin American grid companies],1
-Järvi-Suomen Energia  [European distribution system operators],1
-KEGOC (Kazakhstan),1
-Kyushu Electric Power  [Japanese regional electric power companies],1
-Lechwerke  [European integrated utility groups with network businesses],1
-Light Services Of Electricity  [Brazilian distribution companies],1
-Light Serviços De Eletricidade  [Brazilian distribution companies],1
-London Hydro  [Canadian local distribution companies],1
-Madison Gas  [US investor-owned utilities (integrated or transmission-owning)],1
-Mississippi Power  [US investor-owned utilities (integrated or transmission-owning)],1
-Mitnetz  [European distribution system operators],1
-Municipal Light  [US federal and state power agencies],1
-Municipal Light And Power  [US investor-owned utilities (integrated or transmission-owning)],1
-Nat. Grid Usa  [US distribution utilities],1
-Neoenergia  [Brazilian distribution companies],1
-Netz Gmbh  [European distribution system operators],1
-Netze Gmbh  [European distribution system operators],1
-New York State Electric And Gas  [US distribution utilities],1
-Newfoundland And Labrador Hydro  [Other Canadian grid companies],1
-Niagara Mohawk  [US distribution utilities],1
-Northeast Utilities  [US investor-owned utilities (integrated or transmission-owning)],1
-Northern Powergrid  [Great Britain distribution network operators],1
-Nuon  [European integrated utility groups with network businesses],1
-Nv Energy  [US investor-owned utilities (integrated or transmission-owning)],1
-Nyse And G  [US distribution utilities],1
-Nyseg  [US distribution utilities],1
-Oklahoma Gas And Electric  [US investor-owned utilities (integrated or transmission-owning)],1
-Oncor  [US investor-owned utilities (integrated or transmission-owning)],1
-Pacific Energy Company  [Other Latin American grid companies],1
-Pacific Power  [US investor-owned utilities (integrated or transmission-owning)],1
-Paraguayan Electricity Authority  [Other Latin American grid companies],1
-Peco  [US distribution utilities],1
-Pennsylvania Power And Light  [US distribution utilities],1
-People'S Utility District  [US federal and state power agencies],1
-Pln  [Southeast Asian national utilities],1
-Pnm  [US investor-owned utilities (integrated or transmission-owning)],1
-Power And Light  [US investor-owned utilities (integrated or transmission-owning)],1
-Power Distribution Company  [Distribution system operator (unnamed)],1
-Powercor  [Australian network companies],1
-Provincial Electricity Authority  [Southeast Asian distribution companies],1
-Regional Electrical Co  [Iranian grid companies (Tavanir / regional and distribution companies)],1
-Regional Electricity Co  [Iranian grid companies (Tavanir / regional and distribution companies)],1
-Rio De Janeiro Electric Company  [Brazilian distribution companies],1
-Rochester Gas And Electric  [US distribution utilities],1
-Rocky Mountain Power  [US investor-owned utilities (integrated or transmission-owning)],1
-Sacramento Municipal  [US federal and state power agencies],1
-San Diego Gas And Electric  [US investor-owned utilities (integrated or transmission-owning)],1
-Saudi Electricity  [Middle Eastern grid companies],1
-Scottish And Southern  [European integrated utility groups with network businesses],1
-Scottishpower  [European integrated utility groups with network businesses],1
-Seattle City Light  [US federal and state power agencies],1
-Skagerak Grid  [European distribution system operators],1
-South Carolina Electric  [US investor-owned utilities (integrated or transmission-owning)],1
-Southern Electric Power Distribution  [Great Britain distribution network operators],1
-Sse  [European integrated utility groups with network businesses],1
-Stoen Operator  [European distribution system operators],1
-Strasbourg Électricité Réseaux  [European distribution system operators],1
-Sunflower Electric  [US electric cooperatives],1
-Tacoma Power  [US federal and state power agencies],1
-Tauron  [European integrated utility groups with network businesses],1
-Tauron Dystrybucja  [European distribution system operators],1
-Tepco  [Japanese regional electric power companies],1
-Texas Utilities  [US investor-owned utilities (integrated or transmission-owning)],1
-Thy-Mors Energi  [European distribution system operators],1
-Transelectrica (Romania),1
-Transend  [Australian network companies],1
-Tri-State Generation  [US electric cooperatives],1
-Txu  [US investor-owned utilities (integrated or transmission-owning)],1
-U.K. Power Networks  [Great Britain distribution network operators],1
-Unión Fenosa Distribución  [European distribution system operators],1
-Ute  [Other Latin American grid companies],1
-Vattenfall Eldistribution  [European distribution system operators],1
-Vector Ltd  [New Zealand distribution companies],1
-Verbund  [European integrated utility groups with network businesses],1
-Vietnam Electricity  [Southeast Asian national utilities],1
-Virginia Electric  [US investor-owned utilities (integrated or transmission-owning)],1
-Water And Power Authority  [US federal and state power agencies],1
-Westar  [US investor-owned utilities (integrated or transmission-owning)],1
-Western Power Administration  [US federal and state power agencies],1
-Électricité De France  [European integrated utility groups with network businesses],1
-Électricité Réseau Distribution  [European distribution system operators],1
+﻿organisation,group_entry,papers
+State Grid Corporation of China (SGCC),,598
+China Southern Power Grid (CSG),,193
+National Grid (UK),,83
+Midcontinent ISO (MISO),,82
+ISO New England,,73
+BC Hydro / BCTC,,70
+Hydro One / Ontario Hydro,,66
+RTE (France),,57
+Hydro-Quebec,,54
+Bonneville Power Administration (BPA),US federal and state power agencies,44
+ERCOT,,39
+Dominion Energy,US investor-owned utilities (integrated or transmission-owning),37
+American Electric Power (AEP),US investor-owned utilities (integrated or transmission-owning),35
+Southern California Edison (SCE),US investor-owned utilities (integrated or transmission-owning),33
+Energinet (incl. Eltra and Elkraft System),,32
+Manitoba Hydro,,32
+Taipower (Taiwan),,31
+New York Power Authority (NYPA),US federal and state power agencies,29
+Tokyo Electric Power (TEPCO),Japanese regional electric power companies,28
+PJM Interconnection,,27
+Pacific Gas and Electric (PG&E),US investor-owned utilities (integrated or transmission-owning),27
+Svenska kraftnat,,27
+California ISO (CAISO),,26
+Commonwealth Edison (ComEd),US distribution utilities,26
+Eletrobras and subsidiaries (Brazil),,23
+Consolidated Edison (Con Edison),US distribution utilities,22
+Scottish transmission owners (SP Energy Networks / SSEN),,20
+Red Electrica (Spain),,17
+Southern Company,US investor-owned utilities (integrated or transmission-owning),17
+TenneT,,17
+DONG Energy,European integrated utility groups with network businesses,16
+Salt River Project,US investor-owned utilities (integrated or transmission-owning),16
+Terna,,16
+EDF,European integrated utility groups with network businesses,14
+Scottish Power,European integrated utility groups with network businesses,14
+Alberta Electric System Operator (AESO),,13
+Arizona Public Service,US investor-owned utilities (integrated or transmission-owning),13
+Endesa,European integrated utility groups with network businesses,13
+New York ISO (NYISO),,13
+Statnett,,13
+Chubu Electric Power,Japanese regional electric power companies,12
+EirGrid,,12
+Israel Electric Corporation,Middle Eastern grid companies,12
+Kansai Electric Power,Japanese regional electric power companies,12
+Swissgrid,,12
+AEMO / NEMMCO (Australia),,11
+Duke Energy,US investor-owned utilities (integrated or transmission-owning),11
+Public Power Corporation (Greece),European integrated utility groups with network businesses,11
+CEMIG (Brazil),Brazilian state utilities and transmission companies,10
+Elia,,10
+Enel,European integrated utility groups with network businesses,10
+Entergy,US investor-owned utilities (integrated or transmission-owning),10
+IESO (Ontario),,10
+National Grid (US),US distribution utilities,10
+ATCO,Other Canadian grid companies,9
+CenterPoint Energy,US investor-owned utilities (integrated or transmission-owning),9
+ESB (Ireland),European integrated utility groups with network businesses,9
+Eskom (South Africa),,9
+IPTO / ADMIE / HTSO (Greece),,9
+Iran Grid Management Company (IGMC),,9
+KEPCO (Korea),,9
+National Grid ESO / NESO (Great Britain),,9
+Tavanir and Iranian regional electric companies,Iranian grid companies (Tavanir / regional and distribution companies),9
+Western reliability coordinator (WECC / Peak Reliability),,9
+XM (Colombia),,9
+Eversource Energy,US distribution utilities,8
+TransnetBW,,8
+Western Power,Australian network companies,8
+Xcel Energy,US investor-owned utilities (integrated or transmission-owning),8
+Alabama Power,US investor-owned utilities (integrated or transmission-owning),7
+AusNet,Australian network companies,7
+Electricity North West,Great Britain distribution network operators,7
+Florida Power & Light,US investor-owned utilities (integrated or transmission-owning),7
+HEP (Croatia),European integrated utility groups with network businesses,7
+PacifiCorp,US investor-owned utilities (integrated or transmission-owning),7
+Tennessee Valley Authority (TVA),US federal and state power agencies,7
+Vattenfall,European integrated utility groups with network businesses,7
+e-distribuzione (Enel Distribuzione),European distribution system operators,7
+AltaLink,Other Canadian grid companies,6
+Ameren,US investor-owned utilities (integrated or transmission-owning),6
+ELES (Slovenia),,6
+Fingrid,,6
+GRTN (Italy),,6
+Hokkaido Electric Power,Japanese regional electric power companies,6
+Iberdrola,European integrated utility groups with network businesses,6
+KPX (Korea),,6
+NextEra,US investor-owned utilities (integrated or transmission-owning),6
+ONS (Brazil),,6
+Public Service Electric and Gas (PSE&G),US distribution utilities,6
+REN (Portugal),,6
+Sarawak Energy,Southeast Asian national utilities,6
+SaskPower,Other Canadian grid companies,6
+Abu Dhabi Distribution,Middle Eastern grid companies,5
+Alliant Energy,US investor-owned utilities (integrated or transmission-owning),5
+EDP,European integrated utility groups with network businesses,5
+ENMAX,Other Canadian grid companies,5
+Elektroprivreda Srbije (Serbia),European integrated utility groups with network businesses,5
+FortisAlberta,Other Canadian grid companies,5
+HOPS / HEP-OPS (Croatia),,5
+ISA (Colombia),Other Latin American grid companies,5
+Idaho Power,US investor-owned utilities (integrated or transmission-owning),5
+Inner Mongolia Power (Group),,5
+Tenaga Nasional,Southeast Asian national utilities,5
+TransGrid,Australian network companies,5
+American Transmission Co,US investor-owned utilities (integrated or transmission-owning),4
+Amprion,,4
+CLP Power / HK Electric (Hong Kong),,4
+COPEL (Brazil),Brazilian state utilities and transmission companies,4
+CPFL,Brazilian distribution companies,4
+DTE Energy,US investor-owned utilities (integrated or transmission-owning),4
+Energy Queensland,Australian network companies,4
+J-POWER (Japan),,4
+Jemena,Australian network companies,4
+LUMA Energy,Other Latin American grid companies,4
+Lower Colorado River Authority,US federal and state power agencies,4
+Northern California Power Agency,US joint action agencies (municipal power agencies),4
+Oklahoma Gas & Electric,US investor-owned utilities (integrated or transmission-owning),4
+POWERGRID (India),,4
+PUD,US federal and state power agencies,4
+Riverside Public Utilities,US federal and state power agencies,4
+SP Group,Southeast Asian national utilities,4
+Transpower (New Zealand),,4
+UK Power Networks,Great Britain distribution network operators,4
+Union Fenosa,European integrated utility groups with network businesses,4
+United Illuminating,US distribution utilities,4
+Western Power Distribution,Great Britain distribution network operators,4
+50Hertz,,3
+ANDE (Paraguay),Other Latin American grid companies,3
+Avista,US investor-owned utilities (integrated or transmission-owning),3
+Comision Federal de Electricidad (CFE),Other Latin American grid companies,3
+E.ON,European integrated utility groups with network businesses,3
+ElectriCities,US joint action agencies (municipal power agencies),3
+Electricity Authority of Cyprus,Middle Eastern grid companies,3
+Electricity Generating Authority of Thailand,Southeast Asian national utilities,3
+Elektroprivreda HZ HB (Bosnia and Herzegovina),European integrated utility groups with network businesses,3
+Enedis,European distribution system operators,3
+Georgia Power,US investor-owned utilities (integrated or transmission-owning),3
+Hawaiian Electric,US investor-owned utilities (integrated or transmission-owning),3
+Helen Electricity Network,European distribution system operators,3
+Liander,European distribution system operators,3
+New York State Electric and Gas (NYSEG),US distribution utilities,3
+Nova Scotia Power,Other Canadian grid companies,3
+PPL,US distribution utilities,3
+Portland General,US investor-owned utilities (integrated or transmission-owning),3
+Powerlink,Australian network companies,3
+Public Service Company of New Mexico,US investor-owned utilities (integrated or transmission-owning),3
+RWE,European integrated utility groups with network businesses,3
+SP PowerGrid,Southeast Asian national utilities,3
+San Diego Gas & Electric,US investor-owned utilities (integrated or transmission-owning),3
+Shikoku Electric Power,Japanese regional electric power companies,3
+Singapore Power,Southeast Asian national utilities,3
+Union Fenosa Distribucion,European distribution system operators,3
+A2A,European integrated utility groups with network businesses,2
+AES Indiana,US investor-owned utilities (integrated or transmission-owning),2
+AES Sul,Brazilian distribution companies,2
+Abu Dhabi Water and Electricity,Middle Eastern grid companies,2
+Alliander,European distribution system operators,2
+Ausgrid,Australian network companies,2
+Avangrid,US distribution utilities,2
+Baltimore Gas and Electric,US distribution utilities,2
+Bluewater Power,Canadian local distribution companies,2
+CEPS (Czech Republic),,2
+Carolina Power and Light,US investor-owned utilities (integrated or transmission-owning),2
+Chugoku Electric Power,Japanese regional electric power companies,2
+Coordinador Electrico Nacional / CDEC (Chile),,2
+Dubai Electricity,Middle Eastern grid companies,2
+E-REDES,European distribution system operators,2
+ENTSO-E / UCTE / Nordel (TSO associations),,2
+ESB Networks (Ireland),,2
+Egyptian Electricity Authority,Egyptian grid companies (EEHC / distribution companies),2
+Electric Power Board,US federal and state power agencies,2
+Elektro Gorenjska,European distribution system operators,2
+Elektrodistribucija,European distribution system operators,2
+Elektromreza Srbije (EMS),,2
+Elektrovojvodina,European distribution system operators,2
+Eletropaulo (Brazil),Brazilian distribution companies,2
+Enexis,European distribution system operators,2
+Ergon,Australian network companies,2
+Gas Natural Fenosa,European integrated utility groups with network businesses,2
+Grid-India / POSOCO / load despatch centres (India),,2
+HEDNO (Greece),European distribution system operators,2
+Kansas City Power,US investor-owned utilities (integrated or transmission-owning),2
+Kauai Island Utility,US investor-owned utilities (integrated or transmission-owning),2
+Liandon,European distribution system operators,2
+Light (Brazil),Brazilian distribution companies,2
+MidAmerican,US investor-owned utilities (integrated or transmission-owning),2
+Netze BW,European distribution system operators,2
+New England Electric,US distribution utilities,2
+New River Light and Power,US federal and state power agencies,2
+PSE (Poland),,2
+Pepco,US distribution utilities,2
+River Light and Power,US investor-owned utilities (integrated or transmission-owning),2
+SO UES (Russia),,2
+SONI (Northern Ireland),,2
+Shaanxi Regional Electric Power,Chinese local grid companies (Shaanxi Local Power),2
+Southwest Power Pool (SPP),,2
+Stedin,European distribution system operators,2
+Suur-Savon Sähkö,European distribution system operators,2
+TXU,US investor-owned utilities (integrated or transmission-owning),2
+Tampa Electric,US investor-owned utilities (integrated or transmission-owning),2
+TasNetworks,Australian network companies,2
+Tohoku Electric Power,Japanese regional electric power companies,2
+Transelec,Other Latin American grid companies,2
+Transmission System Operator,Transmission or independent system operator (unnamed),2
+Tucson Electric,US investor-owned utilities (integrated or transmission-owning),2
+Unareti,European distribution system operators,2
+Vermont Electric Power,US investor-owned utilities (integrated or transmission-owning),2
+Vietnam Electricity (EVN),Southeast Asian national utilities,2
+Viken Nett,European distribution system operators,2
+We Energies,US investor-owned utilities (integrated or transmission-owning),2
+Westnetz,European distribution system operators,2
+AES Ohio,US investor-owned utilities (integrated or transmission-owning),1
+Akershus Nett,European distribution system operators,1
+Al Ain Distribution,Middle Eastern grid companies,1
+Aurora Energy,Australian network companies,1
+Austrian Power Grid (APG),,1
+Bandeirante de Energia,Brazilian distribution companies,1
+Bangladesh Power Development Board,South Asian grid companies,1
+Bayernwerk,European distribution system operators,1
+Bhutan Power Corporation,South Asian grid companies,1
+Bogazici Electric,Turkish distribution companies,1
+CE Electric,Great Britain distribution network operators,1
+CEB,Brazilian distribution companies,1
+CEEE,Brazilian state utilities and transmission companies,1
+CENACE (Mexico / Ecuador),,1
+Central Electricity Board,African national utilities,1
+Cinergy,US investor-owned utilities (integrated or transmission-owning),1
+City Utilities Board,US federal and state power agencies,1
+Consumers Power,US investor-owned utilities (integrated or transmission-owning),1
+DSO,Distribution system operator (unnamed),1
+Delta Electricity Distribution,Egyptian grid companies (EEHC / distribution companies),1
+Distribuição de Energia,Brazilian distribution companies,1
+Duquesne Light,US investor-owned utilities (integrated or transmission-owning),1
+E.ON Netz (former German TSO),,1
+EDP Distribuição,European distribution system operators,1
+ELECTRICA Muntenia,European distribution system operators,1
+ENERGIE AG,European integrated utility groups with network businesses,1
+EPSA,Other Latin American grid companies,1
+ESCELSA,Brazilian distribution companies,1
+Eidsiva Nett,European distribution system operators,1
+Electrabel,European integrated utility groups with network businesses,1
+Electric Power Industry,European integrated utility groups with network businesses,1
+Electrical Membership,US electric cooperatives,1
+Electricidad de Caracas,Other Latin American grid companies,1
+Electricity and Water Authority,Middle Eastern grid companies,1
+Elektrizitätswerk,European distribution system operators,1
+Elektro Celje,European distribution system operators,1
+Elektro Primorska,European distribution system operators,1
+Elektroprenos,Western Balkan TSOs (NOS BiH / CGES / MEPSO / OST / KOSTT),1
+Elektroprivreda BiH (Bosnia and Herzegovina),European integrated utility groups with network businesses,1
+Elenia,European distribution system operators,1
+Elering,Baltic TSOs (Elering / AST / Litgrid),1
+Ellevio,European distribution system operators,1
+Endeavour Energy,Australian network companies,1
+EnergiaPro,European distribution system operators,1
+Energisa,Brazilian distribution companies,1
+Energy Australia,Australian network companies,1
+Energy Company of Goias,Brazilian state utilities and transmission companies,1
+Equatorial Energia,Brazilian distribution companies,1
+Essential Energy,Australian network companies,1
+Exelon,US distribution utilities,1
+GRIDCo (Ghana),,1
+General Electricity Company of Libya,African national utilities,1
+Gotland Energi,European distribution system operators,1
+Hafslund,European integrated utility groups with network businesses,1
+Hafslund Nett,European distribution system operators,1
+Helsinki Energy,European distribution system operators,1
+Hoosier Energy,US electric cooperatives,1
+Houston Lighting,US investor-owned utilities (integrated or transmission-owning),1
+Hungarian Power Companies,European integrated utility groups with network businesses,1
+Iberdrola Distribución,European distribution system operators,1
+Infrax,European distribution system operators,1
+Innogy,European integrated utility groups with network businesses,1
+Integral Energy,Australian network companies,1
+Järvi-Suomen Energia,European distribution system operators,1
+KEGOC (Kazakhstan),,1
+Kyushu Electric Power,Japanese regional electric power companies,1
+Lechwerke,European integrated utility groups with network businesses,1
+London Hydro,Canadian local distribution companies,1
+Madison Gas,US investor-owned utilities (integrated or transmission-owning),1
+Mississippi Power,US investor-owned utilities (integrated or transmission-owning),1
+Mitnetz,European distribution system operators,1
+Municipal Light,US federal and state power agencies,1
+Municipal Light and Power,US investor-owned utilities (integrated or transmission-owning),1
+NUON,European integrated utility groups with network businesses,1
+NV Energy,US investor-owned utilities (integrated or transmission-owning),1
+Neoenergia,Brazilian distribution companies,1
+Netz GmbH,European distribution system operators,1
+Netze GmbH,European distribution system operators,1
+Newfoundland and Labrador Hydro,Other Canadian grid companies,1
+Niagara Mohawk,US distribution utilities,1
+Northern Powergrid,Great Britain distribution network operators,1
+Oncor,US investor-owned utilities (integrated or transmission-owning),1
+PECO,US distribution utilities,1
+PLN,Southeast Asian national utilities,1
+PNM,US investor-owned utilities (integrated or transmission-owning),1
+Pacific Energy Company,Other Latin American grid companies,1
+People's Utility District,US federal and state power agencies,1
+Power Distribution Company,Distribution system operator (unnamed),1
+PowerCor,Australian network companies,1
+Provincial Electricity Authority,Southeast Asian distribution companies,1
+Rio de Janeiro Electric Company,Brazilian distribution companies,1
+Rochester Gas and Electric,US distribution utilities,1
+SSE,European integrated utility groups with network businesses,1
+Sacramento Municipal,US federal and state power agencies,1
+Saudi Electricity,Middle Eastern grid companies,1
+Scottish and Southern,European integrated utility groups with network businesses,1
+Seattle City Light,US federal and state power agencies,1
+Skagerak Grid,European distribution system operators,1
+South Carolina Electric,US investor-owned utilities (integrated or transmission-owning),1
+Southern Electric Power Distribution,Great Britain distribution network operators,1
+Stoen Operator,European distribution system operators,1
+Strasbourg Électricité Réseaux,European distribution system operators,1
+Sunflower Electric,US electric cooperatives,1
+Tacoma Power,US federal and state power agencies,1
+Tauron,European integrated utility groups with network businesses,1
+Tauron Dystrybucja,European distribution system operators,1
+Thy-Mors Energi,European distribution system operators,1
+Transelectrica (Romania),,1
+Transend,Australian network companies,1
+Tri-State Generation,US electric cooperatives,1
+UTE,Other Latin American grid companies,1
+Vattenfall Eldistribution,European distribution system operators,1
+Vector Ltd,New Zealand distribution companies,1
+Verbund,European integrated utility groups with network businesses,1
+Water and Power Authority,US federal and state power agencies,1
+Westar,US investor-owned utilities (integrated or transmission-owning),1
+Western Power Administration,US federal and state power agencies,1
+bnNETZE,European distribution system operators,1
+electrica S.A,European distribution system operators,1
+Électricité Réseau Distribution,European distribution system operators,1

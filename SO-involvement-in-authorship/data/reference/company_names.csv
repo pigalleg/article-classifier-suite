@@ -1,0 +1,59 @@
+company,pattern,notes
+Bonneville Power Administration (BPA),Bonneville Power,
+New York Power Authority (NYPA),New York Power Authority,
+Israel Electric Corporation,Israel Electric,
+Elektroprivreda Srbije (Serbia),Elektroprivreda Srbije|Electric Power Utility of Serbia,
+Elektroprivreda BiH (Bosnia and Herzegovina),Elektroprivreda BiH,
+Elektroprivreda HZ HB (Bosnia and Herzegovina),Elektroprivreda HZ,
+HEP (Croatia),Hrva\w* Elektroprivreda|(?-i:\bHEP\b),Hrvatska elektroprivreda
+Dominion Energy,Domin\w*ion|Virginia Electric,"Includes Dominion Virginia Power, Dominion Resources and Virginia Electric and Power"
+Commonwealth Edison (ComEd),ComEd|Commonwealth Edison,
+Consolidated Edison (Con Edison),Consolidated Edison|\bCon ?Ed(ison)?\b|Edison Company of New York,
+Pacific Gas and Electric (PG&E),Pacific Gas (and|&) Electric|\bPG ?& ?E\b,
+Southern California Edison (SCE),Southern California Edison|(?-i:\bSCE\b),
+American Electric Power (AEP),American Electric Power|(?-i:\bAEP\b),
+San Diego Gas & Electric,San Diego Gas (and|&) Electric,
+Oklahoma Gas & Electric,Oklahoma Gas (and|&) Electric,
+Public Service Electric and Gas (PSE&G),PSE ?(and|&) ?G\b|Public Service Electric (and|&) Gas,
+New York State Electric and Gas (NYSEG),NYSE ?(and|&) ?G\b|\bNYSEG\b|New York State Electric,
+Florida Power & Light,Florida Power (and|&) Light,
+CenterPoint Energy,Cent(er|re) ?Point,
+Duke Energy,Duke (Energy|Power),Duke Power was renamed Duke Energy
+DTE Energy,\bDTE\b|Detroit Edison,Detroit Edison was renamed DTE Electric
+PPL,\bPPL\b|Pennsylvania Power (and|&) Light,Pennsylvania Power & Light was renamed PPL
+TXU,\bTXU\b|Texas Utilities,Texas Utilities was renamed TXU
+Eversource Energy,Eversource|Northeast Utilities,Northeast Utilities was renamed Eversource in 2015
+PacifiCorp,PacifiCorp|Pacific Power|Rocky Mountain Power,Pacific Power and Rocky Mountain Power are PacifiCorp's business units
+Xcel Energy,\bXcel\b,
+Avangrid,Avangrid,
+Tennessee Valley Authority (TVA),Tennessee Valley|(?-i:\bTVA\b),
+National Grid (US),National Grid|Nat\. Grid USA,
+Tokyo Electric Power (TEPCO),Tokyo Electric|\bTEPCO\b,
+Hokkaido Electric Power,Hokkaido Elec,
+Shikoku Electric Power,Shikoku Elec,
+DONG Energy,\bDONG Energy\b,Now Orsted
+Scottish Power,Scottish ?Power,
+EDF,(?-i:\bEDF\b)|Electricit\w* de France,
+Enel,(?i:\bEnel\b)(?!\s*Distribu),
+e-distribuzione (Enel Distribuzione),Enel Distribuzione|E-distribuzione,e-distribuzione is the renamed Enel Distribuzione
+Endesa,Endesa,
+Iberdrola,Iberdrola(?!\s*Distribu),
+Union Fenosa,Uni[oó]n Fenosa(?!\s*Distribu),
+ESB (Ireland),(?-i:\bESB\b)|Electricity Supply Board,
+Public Power Corporation (Greece),Public Power Corporation|Dimosia Epichirisi Ilektrismou,
+HEDNO (Greece),\bHEDNO\b|Hellenic Electricity Distribution,
+SaskPower,SaskPower|Saskatchewan Power,
+AltaLink,AltaLink,
+TransGrid,TransGrid,
+UK Power Networks,U\.?K\.? Power Networks,
+Sarawak Energy,Sarawak Energy|Sarawak Electricity Supply,Sarawak Electricity Supply Corporation was renamed Sarawak Energy
+Tenaga Nasional,Tenaga Nasional,
+Vietnam Electricity (EVN),Vietnam Electricity|Electricity of Vietnam,
+CEMIG (Brazil),\bCEMIG\b|Minas Gerais,
+COPEL (Brazil),\bCOPEL\b|Cia\.? Paranaense,
+Eletropaulo (Brazil),Eletropaulo,
+Light (Brazil),LIGHT Serv|Light Servi,
+Comision Federal de Electricidad (CFE),Comisi[oó]n [FP]ederal de Electricidad,
+ISA (Colombia),Interconexi[oó]n El[eé]ctrica|(?-i:\bISA\b),
+ANDE (Paraguay),\bANDE\b|Administraci[oó]n Nacional de Electricidad|Paraguayan Electricity Authority,
+Tavanir and Iranian regional electric companies,(?=.*(Tavanir|Iran))(Tavanir|Regional Elec\w* Co|Elec\w* (Power )?Distribution Company|Distribution Elec\w* Company),Names without the region are merged; only affiliations in Iran

@@ -100,6 +100,13 @@ HEADLINE_HEIGHT_PT = 200
 # Years and paper counts on the x axis; 8 pt "2015" is wider than the space per year.
 HEADLINE_YEAR_TICK_FONT_SIZE_PT = 7
 HEADLINE_COUNT_FONT_SIZE_PT = 6  # paper counts "(358)" under each year
+# X-axis title, laid out like the tick labels: the first line at the axis font size, the second
+# (what the counts in brackets are) at HEADLINE_COUNT_FONT_SIZE_PT. None for no title.
+HEADLINE_X_TITLE = ("Year", "(number of papers)")
+HEADLINE_X_TITLE_STANDOFF_PT = 4  # between the tick labels and the title
+# Baseline to baseline between the title's two lines; smaller moves the second line up. The
+# year/count tick labels have 9.1 (1.3 x their 7 pt font).
+HEADLINE_X_TITLE_LINE_SPACING_PT = 6
 # Headline lines, in drawing order: the first is drawn at the back, the last on top.
 # "first"/"last": whether the first and last values sit above or below their markers
 # (chosen so labels of crossing lines do not collide). The line name goes at the right
@@ -107,12 +114,12 @@ HEADLINE_COUNT_FONT_SIZE_PT = 6  # paper counts "(358)" under each year
 # name_dy from the line.
 HEADLINE_LINES = {
     # Papers whose best programme reaches only Low or Low+ (none reaches Moderate).
-    "Low": dict(colour="#808080", first="above", last="below", name_year=None, name_dy=-10),
+    "Low": dict(colour="#808080", first="above", last="below", name_year=None, name_dy=6),
     "Moderate-or-better": dict(
         colour=LEVEL_COLORS["Moderate"], first="above", last="above", name_year=None, name_dy=-7
     ),
     "High-or-better": dict(
-        colour=LEVEL_COLORS["High"], first="below", last="above", name_year=None, name_dy=-15
+        colour=LEVEL_COLORS["High"], first="below", last="above", name_year=None, name_dy=13
     ),
 }
 ARTICLE_RUN_ID = "tpwrs_2026_tpwrs_2026"
@@ -319,8 +326,30 @@ def build_headline_figure(
         # The axes reserve their own space; the small top margin keeps "100%" on the page.
         margin=dict(l=0, r=0, t=round(5 * PX_PER_PT), b=0),
     )
+    if HEADLINE_X_TITLE is None:
+        x_title = None
+    else:
+        main, note = HEADLINE_X_TITLE
+        # Plotly spaces the lines by 1.3 x the title's own font size, whatever size the spans
+        # inside it have. The title's own size therefore only sets the line spacing (every
+        # character is in a span), and each line sets its size in a span: the first as large as
+        # Plotly's default axis title (1.2 x the base font, as on the y axis), the second as
+        # the counts.
+        # Plotly places the title by its own (smaller) font, so the larger first line reaches
+        # up by the difference; the standoff adds it back.
+        main_px = round(1.2 * ARTICLE_FONT_SIZE_PT * PX_PER_PT)
+        base_px = HEADLINE_X_TITLE_LINE_SPACING_PT / 1.3 * PX_PER_PT
+        note_px = HEADLINE_COUNT_FONT_SIZE_PT * PX_PER_PT
+        x_title = dict(
+            text=(
+                f"<span style='font-size:{main_px}px'>{main}</span>"
+                f"<br><span style='font-size:{note_px:.2f}px'>{note}</span>"
+            ),
+            font=dict(size=base_px),
+            standoff=HEADLINE_X_TITLE_STANDOFF_PT * PX_PER_PT + (main_px - base_px),
+        )
     figure.update_xaxes(
-        title=None,  # the partial 2026 is explained in the caption
+        title=x_title,  # the partial 2026 is explained in the caption
         tickmode="array",
         tickvals=years,
         ticktext=year_ticktext,
